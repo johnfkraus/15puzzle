@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html class="js cssanimations" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>Animate.css - a bunch of plug-and-play CSS animations</title>
+    <link rel="stylesheet" href="css/animate-tada.css">
+    <link rel="stylesheet" href="css/animate-style.css">
+    <meta charset="utf-8">
+    <script src="scripts/jquery/jquery-1.8.3.js"></script>
+</head>
+<body data-twttr-rendered="true">
+<div class="container">
+    <div class="content">
+        <div class="sandbox" style="z-index:0;">
+            <div class="" id="animateLogo" style="z-index:0; background-color:#eeeeee;">
+                <img style="z-index:1000;" src="images/johns-15-puzzle.gif"/>
+            </div>
+        </div>
+        <a class="butt butt-small" data-test="tada">tada</a>
+    </div>
+</div>
+<script>
+    function testAnim(x) {
+        $('#animateLogo').removeClass().addClass(x);
+        var wait = window.setTimeout(function () {
+                    $('#animateLogo').removeClass();
+                },
+                1300);
+    }
+    /*
+     $(function(){
+     $pos = $('.sandbox').offset().top - 0;
+
+     $(window).on('scroll', function(){
+     if($(window).scrollTop() >= $pos) {
+     $('.sandbox').addClass('fixed');
+     } else {
+     $('.sandbox').removeClass('fixed');
+     }
+     });
+     });
+     */
+    $(document).ready(function () {
+        $('a[data-test]').click(function () {
+            var anim = $(this).attr('data-test');
+            console.log("anim = " + anim)
+            testAnim(anim);
+            //   testAnim('tada');
+        });
+    });
+</script>
+</body>
+</html>

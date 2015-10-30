@@ -1,0 +1,11 @@
+* { padding:0; margin:0; }
+body { width:100%;font-size:100%;font-family:"Helvetica","Arial",san-serif;background:#a9bdf0;}
+p {margin:.25em;}
+h1, h2 { padding: .25em .5em; }
+dl { clear:left; margin:0;}
+dt, dd { padding: 0.25em 1em 0.25em 0; margin: 0; border-bottom: 1px dashed #666; background: #fff;}
+dt { float: left; width: 50%; overflow: hidden; text-overflow: ellipsis; padding-left:0.25em; max-width: 320px;}
+h3.group { width: 98%; font-size: 1.25em; background: #777; color:#fff; padding: .25em 0 0 2%;}
+.none { background: #ccc;color: #666; font-style: italic; font-size: .9em; }
+#testform { padding: .5em; border-bottom: 1px dotted #999;}
+#useragent_field {width:95%;height:2em;max-width:800px;}

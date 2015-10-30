@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="2.5"
+         xmlns="http://java.sun.com/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+    <description>John's 15-Tile Puzzle plus filters;
+        For the filter to work, you need to
+        (1) decide which servlet or servlets you want to
+        filter and
+        (2) tell the servlet container by declaring the filter in the
+        deployment descriptor using the &lt;filter&gt;
+        element and the &lt;filter-mapping&gt;
+        element.
+        (3) The &lt;filter&gt;
+        element and the &lt;filter-mapping&gt;
+        element must come before any
+        &lt;listener&gt; and &lt;servlet&gt; elements.
+        The deployment descriptor for this example is given in Listing 7.2.
+    </description>
+    <display-name>johns15puzz</display-name>
+    <distributable/>
+
+    <!-- Define servlet-mapped and path-mapped filters -->
+    <filter>
+        <filter-name>
+            Basic Filter
+        </filter-name>
+        <filter-class>
+            com.johnfkraus.filter.BasicFilter
+        </filter-class>
+    </filter>
+
+    <!-- Define filter mappings for the defined filters -->
+    <filter-mapping>
+        <filter-name>
+            Basic Filter
+        </filter-name>
+        <servlet-name>
+            FilteredServlet
+        </servlet-name>
+    </filter-mapping>
+
+    <!-- Define servlet-mapped and path-mapped filters -->
+    <filter>
+        <filter-name>
+            Trim Filter
+        </filter-name>
+        <filter-class>
+            com.johnfkraus.filter.TrimFilter
+        </filter-class>
+    </filter>
+
+    <!-- Define filter mappings for the defined filters -->
+    <filter-mapping>
+        <filter-name>
+            Trim Filter
+        </filter-name>
+        <servlet-name>
+            TrimFilteredServlet
+        </servlet-name>
+    </filter-mapping>
+
+
+    <!-- Define servlet-mapped and path-mapped filters -->
+    <filter>
+        <filter-name>
+            Response Filter
+        </filter-name>
+        <filter-class>
+            com.johnfkraus.filter.ResponseFilter
+        </filter-class>
+    </filter>
+
+    <!-- Define filter mappings for the defined filters -->
+    <filter-mapping>
+        <filter-name>
+            Response Filter
+        </filter-name>
+        <servlet-name>
+            ResponseFilteredServlet
+        </servlet-name>
+    </filter-mapping>
+
+
+    <filter>
+        <filter-name>
+            UpperCase Filter
+        </filter-name>
+        <filter-class>
+            com.johnfkraus.filter.UpperCaseFilter
+        </filter-class>
+    </filter>
+
+    <!-- Define filter mappings for the defined filters -->
+    <filter-mapping>
+        <filter-name>
+            Trim Filter
+        </filter-name>
+        <servlet-name>
+            DoublyFilteredServlet
+        </servlet-name>
+    </filter-mapping>
+
+    <filter-mapping>
+        <filter-name>
+            UpperCase Filter
+        </filter-name>
+        <servlet-name>
+            DoublyFilteredServlet
+        </servlet-name>
+    </filter-mapping>
+
+    <servlet>
+        <servlet-name>
+            DoublyFilteredServlet
+        </servlet-name>
+        <servlet-class>
+            com.johnfkraus.filter.DoublyFilteredServlet
+        </servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>DoublyFilteredServlet</servlet-name>
+        <url-pattern>/DoublyFilteredServlet</url-pattern>
+    </servlet-mapping>
+    <listener>
+        <listener-class>
+            com.johnfkraus.filter.SessionLifeCycleEventDemo
+        </listener-class>
+    </listener>
+
+    <servlet>
+        <servlet-name>
+            FilteredServlet
+        </servlet-name>
+        <servlet-class>
+            com.johnfkraus.filter.FilteredServlet
+        </servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>FilteredServlet</servlet-name>
+        <url-pattern>/FilteredServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>SolvePuzzleServlet</servlet-name>
+        <servlet-class>com.johnfkraus.puzzle.SolvePuzzleServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>SolvePuzzleServlet</servlet-name>
+        <url-pattern>/solve</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>SolvePuzzleServlet2</servlet-name>
+        <servlet-class>com.johnfkraus.puzzle.SolvePuzzleServlet2</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>SolvePuzzleServlet2</servlet-name>
+        <url-pattern>/solve2</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>GetIpServlet</servlet-name>
+        <servlet-class>com.johnfkraus.puzzle.GetIpServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>GetIpServlet</servlet-name>
+        <url-pattern>/GetIpServlet</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>
+            TrimFilteredServlet
+        </servlet-name>
+        <servlet-class>
+            com.johnfkraus.filter.TrimFilteredServlet
+        </servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>TrimFilteredServlet</servlet-name>
+        <url-pattern>/TrimFilteredServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>
+            ResponseFilteredServlet
+        </servlet-name>
+        <servlet-class>
+            com.johnfkraus.filter.ResponseFilteredServlet
+        </servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>ResponseFilteredServlet</servlet-name>
+        <url-pattern>/ResponseFilteredServlet</url-pattern>
+    </servlet-mapping>
+
+</web-app>
+

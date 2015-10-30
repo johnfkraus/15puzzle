@@ -1,0 +1,23 @@
+<?php
+ini_set('display_errors', 'on');
+error_reporting(E_ALL);
+
+/* Important: You need to edit these two paths */
+/* WURFL_DIR needs to point to the install directory for WURFL */
+define("WURFL_DIR", '/path/to/WURFL/');
+/* RESOURCES_DIR needs to point to the resources directory you want to use. */
+define("RESOURCES_DIR", '/path/to/WURFL/resources/');
+
+$app_path         = WURFL_DIR . 'Application.php';
+$wurflConfigFile  = RESOURCES_DIR . 'wurfl-config.xml';
+
+if (!file_exists($app_path)) {
+  print '<h2>Oh, dear</h2> <p>WURFL is looking for the "Application.php" file here:<br /><code>' . $app_path
+    . '"</code><br />Sadly, it is not finding it. Check the path set for "WURFL_DIR" in config.php</p>';
+}
+if (!file_exists($wurflConfigFile)) {
+  print '<h2>Oh, dear</h2> <p>WURFL is looking for the "wurfl-config.xml" file here:<br /><code>' . $wurflConfigFile
+    . '"</code><br />Sadly, it is not finding it. Check the path set for "RESOURCES_DIR" in config.php</p>';
+}
+require_once($app_path);
+?>

@@ -1,0 +1,70 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#go1").click(function () {
+                $("#block1").animate({ width: "90%" }, { queue: false, duration: 3000 })
+                        .animate({ fontSize: "24px" }, 1500)
+                        .animate({ borderRightWidth: "15px" }, 1500);
+            });
+            $("#go2").click(function () {
+                $("#block2").animate({ width: "90%"}, 1000)
+                        .animate({ fontSize: "24px" }, 1000)
+                        .animate({ borderLeftWidth: "15px" }, 1000);
+            });
+            $("#go3").click(function () {
+                $("#go1").add("#go2").click();
+            });
+            $("#go4").click(function () {
+                $("div").css({width: "", fontSize: "", borderWidth: ""});
+            });
+            // Animates all paragraphs to toggle both height and opacity, completing the animation within 600 milliseconds.
+            $("p").animate({
+                "height": "toggle", "opacity": "toggle"
+            }, { duration: "slow" });
+            //Animates all paragraph to a left style of 50 and opacity of 1 (opaque, visible), completing the animation within 500
+            //milliseconds. It also will do it outside the queue, meaning it will automatically start without waiting for its turn.
+            $("p").animate({
+                left: "50px", opacity: 1
+            }, { duration: 500, queue: false });
+            //An example of using an 'easing' function to provide a different style of animation. This will only work if you have
+            //a plugin that provides this easing function.
+            $("p").animate({
+                "opacity": "show"
+            }, { "duration": "slow", "easing": "easein" });
+            //An example of using a callback function. The first argument is an array of CSS properties, the second specifies that
+            //the animation should take 1000 milliseconds to complete, the third states the easing type, and the fourth argument i
+            //s an anonymous callback function.
+            $("p").animate({
+                height: 200, width: 400, opacity: .5
+            }, 1000, "linear", function () {
+                alert("all done");
+            });
+        });
+    </script>
+    <style>div {
+        background-color : #bca;
+        width            : 200px;
+        height           : 1.1em;
+        text-align       : center;
+        border           : 2px solid green;
+        margin           : 3px;
+        font-size        : 14px;
+    }
+    button {
+        font-size : 14px;
+    }
+    </style>
+</head>
+<body>
+<button id="go1">» Animate Block1</button>
+<button id="go2">» Animate Block2</button>
+<button id="go3">» Animate Both</button>
+<button id="go4">» Reset</button>
+<div id="block1">Block1</div>
+<div id="block2">Block2</div>
+</body>
+</html>

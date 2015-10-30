@@ -1,0 +1,44 @@
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Details</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+    <td><p>Message<br />
+      Feb 3 8:54PM EST</p>
+    </td>
+    <td><p><a href="#">Supply Request #493-C4 Approved</a><br />
+    Hi, Jess, Good news! I wanted to let you know that we were successful in tracking down those bottles…</p></td>
+    </tr>
+  
+    <tr>
+    <td><p>Message<br />
+    Feb 3 1:47PM EST</p></td>
+    <td><p><a href="#">Supply Request #493-C4 Received</a><br />
+    This is an automated message to confirm that your recent Supply Request has been received and is in process…</p></td>
+    </tr>
+    
+    <tr>
+    <td><p>Event Scheduled<br />
+    Feb 3 8:22AM EST</p></td>
+    <td><p><a href="#">Itinerary 39924 Approved LAX -> DAC</a><br />
+    Your itinerary for event: "Bangladesh Flood Event" has been approved. Your calendar has been updated…</p></td>
+    </tr>
+    
+    <tr>
+    <td><p>Personnel Event<br />
+    Feb 2 9:23PM EST</p></td>
+    <td><p><a href="#">Re: Personnel Confirmation 03/05 - 03/15</a><br />
+    Jessica! Thanks so much for committing to this operation! I think Dr. Madling is going too and…</p>
+    </td>
+    </tr>
+    
+    <tr>
+    <td colspan="2"><div class="morelink"><p><a href="#">More &gt;&gt;</p></a></div></td>
+    </tr>
+    
+  </tbody>
+</table>

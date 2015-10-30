@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head><!--  https://sites.google.com/site/tipsotron/sequence-diagram-with-javascript --></head>
+<body>
+<div class="wsd" wsd_style="mscgen">
+    <preajaxFunction2->> Auto-Solve Link a.onclick->ajaxFunction2: Execute ajaxFunction2->makeScrambledMapString():
+                       Execute makeScrambledMapString()-->ajaxFunction2: scrambledMapString
+                       ajaxFunction2->makeArray(scrambledMapString): XEQ makeArray(scrambledMapString)-->ajaxFunction2:
+                       inputMapIntArr [isScrambled(inputMapIntArr) === true] and [testArraySum136(inputMapIntArr)===
+                       true] ajaxFunction2->disableSolveButton() [isScrambled(inputMapIntArr) === true] and
+                       [testArraySum136(inputMapIntArr)=== true] ajaxFunction2: var parameters = "content=" +
+                       scrambledMapString; [isScrambled(inputMapIntArr) === true] and
+                       [testArraySum136(inputMapIntArr)=== true] ajaxFunction2->makeXmlHttpRequestDivVisible();
+                       [isScrambled(inputMapIntArr) === true] and [testArraySum136(inputMapIntArr)=== true]
+                       ajaxFunction2->SolvePuzzleServlet: POST SolvePuzzleServlet-->solvePuzzle: getSolution()
+                       solvePuzzle-->SolvePuzzleServlet: msg SolvePuzzleServlet->ajaxFunction2: msg
+                       ajaxFunction2->init()</pre>
+</div>
+<script src="scripts/service.js"></script>
+<!--script src="http://www.websequencediagrams.com/service.js"></script-->
+</body>
+</html>
+

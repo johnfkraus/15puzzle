@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>jQuery shake effect</title>
+    <meta charset="utf-8"/>
+    <style>
+        body {
+            margin  : 0;
+            padding : 2em 0;
+            font    : 100% "Trebuchet MS", Trebuchet, sans-serif;
+        }
+        #navigation {
+            width         : 50%;
+            height        : 2em;
+            margin        : 0 auto;
+            padding       : 0;
+            list-style    : none;
+            border-bottom : 5px solid #3c3c36;
+        }
+        #navigation li {
+            float         : left;
+            height        : 100%;
+            padding       : 0 1em;
+            border-radius : 6px 6px 0 0;
+            line-height   : 2;
+            background    : #2b2b36;
+            margin-right  : 0.5em;
+        }
+        #navigation a {
+            color           : #fff;
+            text-decoration : none;
+            font-weight     : bold;
+        }
+        #navigation a:hover {
+            color : #f50;
+        }
+    </style>
+</head>
+<body>
+<ul id="navigation">
+    <li>
+        <a href="#">Home</a>
+    </li>
+    <li>
+        <a href="#">Articles</a>
+    </li>
+    <li>
+        <a href="#">About</a>
+    </li>
+    <li>
+        <a href="#">Contacts</a>
+    </li>
+</ul>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1/jquery-ui.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#navigation li').each(function () {
+            var $li = $(this);
+            var $a = $li.find('a');
+            $a.hover(function () {
+                $a.effect('shake', {times: 2, distance: 5}, 300);
+            }, function () {
+                $a.effect('shake', {times: 2, direction: 'down', distance: 5}, 300);
+            });
+        });
+    });
+</script>
+</body>
+</html>

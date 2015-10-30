@@ -1,0 +1,120 @@
+html {
+/*
+    background-color    : #EEEEEE;
+
+    */
+/*background-image: url("../images/page-bg-gradient.png");*//*
+
+    background-position : center bottom;
+    background-repeat   : repeat-x;
+    color               : #333333;
+*/
+    font-family         : Helvetica Neue, Helvetica, Arial, sans-serif;
+    font-size           : 125%;
+    line-height         : 1.5;
+}
+.sandbox {
+/*
+    background-attachment : scroll;
+    background-clip       : border-box;
+*/
+    background-color      : transparent;
+W    /* background-image: url("../images/bg-gradient.png");  */
+
+/*
+    background-origin     : padding-box;
+    background-position   : center top;
+    background-repeat     : no-repeat;
+    background-size       : 100% auto;
+    padding-left          : 0;
+    padding-right         : 0;
+    pointer-events        : none;
+*/
+    position              : relative;
+    z-index               : 999;
+}
+#animateLogo {
+    animation-delay           : 0.2s;
+    animation-duration        : 1s;
+    animation-fill-mode       : both;
+    animation-timing-function : ease;
+    backface-visibility       : hidden;
+    background-attachment     : scroll;
+    background-clip           : border-box;
+    /*  background-color: #112233; */
+    background-image          : none;
+    background-origin         : padding-box;
+    background-position       : 0 0;
+    background-repeat         : repeat;
+    background-size           : auto auto;
+    margin-bottom             : 0;
+    margin-left               : auto;
+    margin-right              : auto;
+    margin-top                : 0;
+    text-align                : center;
+    width                     : 500px;
+}
+#animateLogo p {
+    margin-bottom : 0;
+    margin-left   : 0;
+    margin-right  : 0;
+    margin-top    : 0;
+}
+.butt {
+    -moz-text-blink            : none;
+    -moz-text-decoration-color : -moz-use-text-color;
+    -moz-text-decoration-line  : none;
+    -moz-text-decoration-style : solid;
+    background-attachment      : scroll;
+    background-clip            : border-box;
+    /* background-color: #A3ABAE;*/
+    background-image           : linear-gradient(rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0));
+    background-origin          : padding-box;
+    background-position        : 0 0;
+    background-repeat          : repeat;
+    background-size            : auto auto;
+    border-bottom-left-radius  : 5px;
+    border-bottom-right-radius : 5px;
+    border-top-left-radius     : 5px;
+    border-top-right-radius    : 5px;
+    box-shadow                 : 0 0 0 1px rgba(0, 0, 0, 0.1) inset;
+    color                      : #FFFFFF;
+    cursor                     : pointer;
+    display                    : inline-block;
+    font-weight                : bold;
+    line-height                : 1.5em;
+    margin-bottom              : 0.5em;
+    margin-left                : 0.25em;
+    margin-right               : 0.25em;
+    margin-top                 : 0.5em;
+    padding-bottom             : 0.5em;
+    padding-left               : 0.75em;
+    padding-right              : 0.75em;
+    padding-top                : 0.4em;
+    text-shadow                : 0 1px 1px rgba(0, 0, 0, 0.1);
+}
+.butt:hover {
+    color : #FFFFFF;
+}
+.co-logo {
+    margin-bottom              : 0.25em;
+    margin-left                : 0.75em;
+    margin-right               : 0.75em;
+    margin-top                 : 0.75em;
+    opacity                    : 0.4;
+    transition-delay           : 0s;
+    transition-duration        : 0.3s;
+    transition-property        : all;
+    transition-timing-function : ease;
+}
+.co-logo:hover {
+    opacity : 1;
+}
+.bsa_it_t {
+    display     : block;
+    font-weight : 700;
+}
+#bsap_aplink {
+    font-weight : 400;
+    margin-top  : 1.1em;
+}
