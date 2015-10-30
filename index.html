@@ -15,7 +15,8 @@
     <!--link rel="stylesheet" href="http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css"/-->
     <link rel="stylesheet" href="css/jquery-ui.css"/>
     <script src="scripts/jquery/jquery-1.8.3.js" type="text/javascript"></script>
-    <script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js" type="text/javascript"></script>
+    <!--script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js" type="text/javascript"></script-->
+    <script src="scripts/jquery-ui.js" type="text/javascript"></script>
     <link rel="stylesheet" href="css/tooltip.css" type="text/css"/>
     <link rel="stylesheet" href="css/animate-tada.css"/>
     <link rel="stylesheet" href="css/animate-style.css"/>
@@ -25,25 +26,25 @@
 </head>
 <!-- BODY  -->
 <body>
-<div id="wrapper" style="width: 652.2px">
-<!--main content goes here-->
-<div id="main">
-    <!--TILE PUZZLE starts here--
-    <div id="puzzlewrapper">
-        <a name="johnsPuzzle"></a>
-        <div id="logotype">
-            <div class="sandbox">
-                <div id="animateLogo" class="">
-                    <a data-test="tada">
-                        <img class="tada" src="images/johns-15-puzzle.gif" id="johns-15-puzzle" alt="John's 15 Puzzle"/>
-                    </a>
+<div id="wrapper" style="width: 652px">
+    <!--main content goes here-->
+    <div id="main">
+        <!--TILE PUZZLE starts here--
+        <div id="puzzlewrapper">
+            <a name="johnsPuzzle"></a>
+            <div id="logotype">
+                <div class="sandbox">
+                    <div id="animateLogo" class="">
+                        <a data-test="tada">
+                            <img class="tada" src="images/johns-15-puzzle.gif" id="johns-15-puzzle" alt="John's 15 Puzzle"/>
+                        </a>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div id="instructions">
-            <p>Click the tiles to slide them.</p>
-        </div>
-        <!--  # MOVES here-->
+            <div id="instructions">
+                <p>Click the tiles to slide them.</p>
+            </div>
+            <!--  # MOVES here-->
         <div id="xmlHttpRequestDiv">
             <img src="images/xmlhttprequest.gif" id="xmlHttpRequestImg" alt="XMLHTTPRequest"/>
         </div>
@@ -188,7 +189,7 @@
     </div>
     <!-- end of puzzlewrapper -->
 </div>
-</div>
+<!--/div-->
 <!-- end of wrapper -->
 <script type="text/javascript">
     // do not reformat file 'animate-tada.css' or tada effect will break
@@ -208,6 +209,6 @@
 </script>
 <div id="black"
      style="position:absolute;top:-800px;bottom:-500px;left:-500px;width:500%;height:600%;background-color: black;z-index: -3;"></div>
-</div>
+<!--/div-->
 </body>
 </html>
