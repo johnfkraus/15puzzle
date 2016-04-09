@@ -1,6 +1,6 @@
 // java to javascript lessons learned:
 // in javascript, if you want an array filled with zeros, you must explicitly insert the zeros.
-
+// puzzle solver:
 jQuery(document).ready(function () {
 	// debugger;
 
@@ -61,41 +61,41 @@ jQuery(document).ready(function () {
     // var map = [];
 	// var map = new Array(36);
     var map = Array.apply(null, Array(36)).map(Number.prototype.valueOf,0);
-	document.getElementById("map").innerHTML = "map = " + map;
+	// document.getElementById("map").innerHTML = "map = " + map;
 	// var holder = new Array(20);
     var holder = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
-	document.getElementById("holder").innerHTML = "holder = " + holder;
+	// document.getElementById("holder").innerHTML = "holder = " + holder;
 	assert(holder.length == 20, "assertion error, holder length = " + holder.length);
 	// alert('line ' + new Error().lineNumber);
 	// console.log("11 holder = " + holder.toString())
     var i, j;
     var displace;
-    document.getElementById("demo").innerHTML = testMap3;
+    // document.getElementById("demo").innerHTML = testMap3;
 
     function moveHole(tg, ppos) {
-    	document.getElementById("map").innerHTML = "map = " + map;
+    	// document.getElementById("map").innerHTML = "map = " + map;
         k = 0;
         posCount = 0;
         negCount = 0;
-    	document.getElementById("holder").innerHTML = "holder = " + holder;
+    	// document.getElementById("holder").innerHTML = "holder = " + holder;
         i = locate(0);
         // alert('line ' + new Error().lineNumber + (i & 3));
         // alert('line ' + new Error().lineNumber + (ppos & 3));
         var while_counter = 0;
         while (Math.abs((i & 3) - (ppos & 3)) > 1 || Math.abs(i / 4 - ppos / 4) > 1) {
-        	document.getElementById("map").innerHTML = "map = " + map;
-        	document.getElementById("holder").innerHTML = "holder = " + holder;
+        	// document.getElementById("map").innerHTML = "map = " + map;
+        	// document.getElementById("holder").innerHTML = "holder = " + holder;
         	// console.log('line ' + new Error().lineNumber + ", i = " + i);
         	while_counter += 1;
         	if (while_counter > 100) {
-            	document.getElementById("message").innerHTML = "62 Exited when while_counter = " + while_counter;
+            	// document.getElementById("message").innerHTML = "62 Exited when while_counter = " + while_counter;
         		exit();
         		// alert("59 while_counter = " + while_counter);
         	}
-        	document.getElementById("while_counter").innerHTML = "while_counter = " + while_counter;
-        	document.getElementById("i_value").innerHTML = i + ", " + dec2bin(i);
-            document.getElementById("i_&3").innerHTML = " (" + i + " & 3 ) = " + " (" + dec2bin(i) + " & " + dec2bin(3)  + ") = " + (i & 3);
-            document.getElementById("ppos").innerHTML = ppos;
+        	// document.getElementById("while_counter").innerHTML = "while_counter = " + while_counter;
+        	// document.getElementById("i_value").innerHTML = i + ", " + dec2bin(i);
+            // document.getElementById("i_&3").innerHTML = " (" + i + " & 3 ) = " + " (" + dec2bin(i) + " & " + dec2bin(3)  + ") = " + (i & 3);
+            // document.getElementById("ppos").innerHTML = ppos;
             if ((i & 3) != 0) {
             	// alert("i & 3 != 0");
             }
@@ -106,7 +106,7 @@ jQuery(document).ready(function () {
                 if (confirm('line ' + new Error().lineNumber + ", Math.abs((i & 3) - (ppos & 3)) = " + Math.abs((i & 3) - (ppos & 3)))) {
                     // resume
                 } else {
-                	document.getElementById("message").innerHTML = "78 Exited intentionally";
+                	// document.getElementById("message").innerHTML = "78 Exited intentionally";
             		exit();
                 }           
             } 
@@ -152,13 +152,13 @@ jQuery(document).ready(function () {
                 i = k;
             }
         }
-    	document.getElementById("line_number").innerHTML = 'line ' + new Error().lineNumber;
+    	// document.getElementById("line_number").innerHTML = 'line ' + new Error().lineNumber;
         // alert('line ' + new Error().lineNumber);
         // printHolderAlone();
     }
 
     function moveTo(p, t) {
-    	document.getElementById("holder").innerHTML = "holder = " + holder;
+    	// document.getElementById("holder").innerHTML = "holder = " + holder;
     	// alert('line ' + new Error().lineNumber);
         // console.log("76 moveTo(p=" + p + ", t=" + t + ")");
         i3 = 0;
@@ -180,7 +180,7 @@ jQuery(document).ready(function () {
             holder[whereNow] = 0;
             holder[ppath[i3]] = -1;
             whereNow = ppath[i3];
-            document.getElementById("moves").innerHTML = "moves = " + moves;
+            // document.getElementById("moves").innerHTML = "moves = " + moves;
             // printHolderAlone();
         }
     }
@@ -190,7 +190,7 @@ jQuery(document).ready(function () {
     	// public int[] solvePuzzle(int[] inputMap) {
         // inputMap = inputMap;
         problemAndSolution = inputMap.toString();
-    	document.getElementById("holder").innerHTML = "holder = " + holder;
+    	// document.getElementById("holder").innerHTML = "holder = " + holder;
         // setProblemAndSolution(new StringBuilder().append(Arrays.toString(inputMap)));
         // System.out.println("problemAndSolution = " + problemAndSolution.toString());
         // System.out.println("problemAndSolution = " + problemAndSolution.getClass());
@@ -204,9 +204,9 @@ jQuery(document).ready(function () {
         // printMap();
         solve();
         // printMap();
-        document.getElementById("moves").innerHTML = "moves = " + moves;
+        // document.getElementById("moves").innerHTML = "moves = " + moves;
         // run();
-        document.getElementById("movecount").innerHTML = "moveCount = " + moveCount;
+        // document.getElementById("movecount").innerHTML = "moveCount = " + moveCount;
 
         var solution = new Array(moveCount);
         for (var i = 0; i < moveCount; ++i) {
@@ -230,7 +230,7 @@ jQuery(document).ready(function () {
         }
         // console.log("185 inMap() map[7 + h=" + h + " + 6 * v="+v+"] = map[" + (7+h+6*v) + "] = " + map[7 + h + 6 * v]);        
         // console.log("186 map = " + map);
-    	document.getElementById("map").innerHTML = "map = " + map;
+    	// document.getElementById("map").innerHTML = "map = " + map;
         return map[7 + h + 6 * v];
     }
 
@@ -251,7 +251,7 @@ jQuery(document).ready(function () {
     	var holder_index = 0;
     	var value_for_holder_from_inmap = 0;
     	// alert('solve() line ' + new Error().lineNumber);
-    	document.getElementById("holder").innerHTML = "holder = " + holder;
+    	// document.getElementById("holder").innerHTML = "holder = " + holder;
     	try {
             var i2 = 0;
             // solve while #1
@@ -269,7 +269,7 @@ jQuery(document).ready(function () {
                     // console.log("217 solve inMap(j2=" + j2 + ", i2=" + i2 + ") = " + inMap(j2,i2));
                 	value_for_holder_from_inmap = inMap(j2, i2);
                     holder[holder_index] = inMap(j2, i2);
-                	document.getElementById("holder").innerHTML = "holder = " + holder;
+                	// document.getElementById("holder").innerHTML = "holder = " + holder;
                     
                     
                     
@@ -309,7 +309,7 @@ jQuery(document).ready(function () {
                 ++goalsDone;
             	// alert('line ' + new Error().lineNumber);
                 // console.log("214 goalsDone = " + goalsDone);
-            	document.getElementById("holder").innerHTML = "holder = " + holder;
+            	// document.getElementById("holder").innerHTML = "holder = " + holder;
 
             }
             i = 0;
@@ -319,7 +319,7 @@ jQuery(document).ready(function () {
             while (i < j) {
                 if (subGoals[i] > 0) {
                     holder[subGoals[i] - 1] = -1;
-                	document.getElementById("holder").innerHTML = "holder = " + holder;                    
+                	// document.getElementById("holder").innerHTML = "holder = " + holder;                    
                     
                 }
                 ++i;
@@ -333,7 +333,7 @@ jQuery(document).ready(function () {
             // solve while #4
             while (goalsDone < 9) {
             	// alert('solve() line ' + new Error().lineNumber);
-            	document.getElementById("message").innerHTML = "solve_while_counter_4 = " + ++solve_while_counter_4;
+            	// document.getElementById("message").innerHTML = "solve_while_counter_4 = " + ++solve_while_counter_4;
             	// console.log("holder = " + holder.toString() + ", goalsDone = " + goalsDone);
                 // // printHolderAlone();
                 detour = false;
@@ -341,13 +341,13 @@ jQuery(document).ready(function () {
                     case 0: {
 			            // console.log("holder = " + holder.toString() + ", goalsDone = " + goalsDone);
                         moveTo(1, 0);
-                    	document.getElementById("holder").innerHTML = "holder = " + holder;
+                    	// document.getElementById("holder").innerHTML = "holder = " + holder;
                         break;
                     }
                     case 1: {
                     	// console.log("case 1 holder = " + holder.toString());                       
                         moveTo(2, 1);
-                    	document.getElementById("holder").innerHTML = "holder = " + holder;                        
+                    	// document.getElementById("holder").innerHTML = "holder = " + holder;                        
                         break;
                     }
                     case 2: {
@@ -363,13 +363,13 @@ jQuery(document).ready(function () {
                             if (holder[2] == 4) {
                                 makeDetour(detour3, 7);
                                 detour = true;
-                            	document.getElementById("holder").innerHTML = "holder = " + holder;
+                            	// document.getElementById("holder").innerHTML = "holder = " + holder;
                             }
                         } else if (i == 2) {
                             if (holder[6] == 4) {
                                 makeDetour(detour4, 2);
                                 detour = true;
-                            	document.getElementById("holder").innerHTML = "holder = " + holder;
+                            	// document.getElementById("holder").innerHTML = "holder = " + holder;
                             }
                         } else if (holder[2] == 4) {
                             moveTo(4, 6);
@@ -387,13 +387,13 @@ jQuery(document).ready(function () {
                         holder[7] = 4;
                         moveTo(4, 3);
                         break;
-                    	document.getElementById("holder").innerHTML = "holder = " + holder;
+                    	// document.getElementById("holder").innerHTML = "holder = " + holder;
 
                     }
                     case 3: {
                     	// console.log("145 case 3 holder = " + holder.toString());
                         moveTo(5, 4);
-                    	document.getElementById("holder").innerHTML = "holder = " + holder;
+                    	// document.getElementById("holder").innerHTML = "holder = " + holder;
                         break;
                     }
                     case 4: {
@@ -523,11 +523,11 @@ jQuery(document).ready(function () {
                     }
                     default: {
                         // console.log("312 case default holder = " + holder.toString());
-                    	document.getElementById("holder").innerHTML = "holder = " + holder;
+                    	// document.getElementById("holder").innerHTML = "holder = " + holder;
                     }
                 }
                 // console.log("315 goals done holder = " + holder.toString());                
-            	document.getElementById("holder").innerHTML = "holder = " + holder;
+            	// document.getElementById("holder").innerHTML = "holder = " + holder;
                 ++goalsDone;
             }
             if (moveCount > 0) {
@@ -536,11 +536,11 @@ jQuery(document).ready(function () {
                 // getNextMove();
                 oldDragControl = dragControl;
                 dragControl = false;
-            	document.getElementById("holder").innerHTML = "holder = " + holder;
+            	// document.getElementById("holder").innerHTML = "holder = " + holder;
             }
         }
         catch (err) {
-        	document.getElementById("holder").innerHTML = "holder = " + holder;
+        	// document.getElementById("holder").innerHTML = "holder = " + holder;
         	// console.log("line 505 error = " + err  + ", goalsDone = " + goalsDone)
             // empty catch block
         }
@@ -548,8 +548,8 @@ jQuery(document).ready(function () {
 
 
     function init() {
-    	document.getElementById("map").innerHTML = "map = " + map;
-    	document.getElementById("holder").innerHTML = "holder = " + holder;
+    	// document.getElementById("map").innerHTML = "map = " + map;
+    	// document.getElementById("holder").innerHTML = "holder = " + holder;
     	// console.log('init() line ' + new Error().lineNumber);
         i = 0;
         while (i < 6) {
@@ -566,7 +566,7 @@ jQuery(document).ready(function () {
             }
             ++i;
         }
-    	document.getElementById("map").innerHTML = "map = " + map;
+    	// document.getElementById("map").innerHTML = "map = " + map;
         // console.log("350 init() map = " + map.toString());
         // printMap();
         // printHolder();
@@ -596,6 +596,6 @@ jQuery(document).ready(function () {
 
     var resultArray = solvePuzzle(testMap3);
     // jQuery("#copyright_year").html((new Date).getFullYear());
-    document.getElementById("result_array").innerHTML = "resultArray = " + resultArray;
+    // document.getElementById("result_array").innerHTML = "resultArray = " + resultArray;
     console.log("resultArray = " + resultArray);
 });
