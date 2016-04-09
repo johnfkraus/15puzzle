@@ -1316,7 +1316,7 @@ function getSolution() {
         //makeXmlHttpRequestDivVisible();
         $.ajax({
             type: "POST",
-            url: "/johns15puzz/solve",
+            url: "http://104.238.80.20:8080/johns15puzz/solve",
             data: parameters
         }).done(function (msg) {
                 solution = msg;
