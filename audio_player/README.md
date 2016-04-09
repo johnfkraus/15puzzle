@@ -1,1 +1,0 @@
-Sample Music: © [Kevin MacLeod](http://incompetech.com/m/c/royalty-free/index.html)
