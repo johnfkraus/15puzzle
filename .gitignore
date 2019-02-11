@@ -60,4 +60,7 @@ bootstrap.json
 build/
 ext/
 
-
+archives/
+.DS_Store
+images/.DS_Store
+scripts/.DS_Store

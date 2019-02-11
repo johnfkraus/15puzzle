@@ -10,7 +10,7 @@ function addEvent(obj, type, fn) {
         obj["e" + type + fn] = fn;
         obj[type + fn] = function () {
             obj["e" + type + fn](window.event);
-        }
+        };
         obj.attachEvent("on" + type, obj[type + fn]);
         EventCache.add(obj, type, fn);
     }
@@ -32,18 +32,14 @@ var EventCache = function () {
                 if (item[0].removeEventListener) {
                     item[0].removeEventListener(item[1], item[2], item[3]);
                 }
-                ;
-                if (item[1].substring(0, 2) != "on") {
+              if (item[1].substring(0, 2) != "on") {
                     item[1] = "on" + item[1];
                 }
-                ;
-                if (item[0].detachEvent) {
+              if (item[0].detachEvent) {
                     item[0].detachEvent(item[1], item[2]);
                 }
-                ;
-                item[0][item[1]] = null;
+              item[0][item[1]] = null;
             }
-            ;
         }
     };
 }();
@@ -63,7 +59,7 @@ function addLoadEvent(func) {
 }
 /* grab Elements from the DOM by className */
 function getElementsByClass(searchClass, node, tag) {
-    var classElements = new Array();
+    var classElements = [];
     if (node == null)
         node = document;
     if (tag == null)
@@ -117,7 +113,7 @@ function deleteCookie(name, path, domain) {
 }
 /* quick getElement reference */
 function $() {
-    var elements = new Array();
+    var elements = [];
     for (var i = 0; i < arguments.length; i++) {
         var element = arguments[i];
         if (typeof element == 'string')

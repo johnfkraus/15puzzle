@@ -31,7 +31,7 @@
             if ($.json2html.options.prepend) $.fn.prepend.apply($(this), $.json2html(JSONObject, transform));
             else  $.fn.append.apply($(this), $.json2html(JSONObject, transform));
         });
-    }
+    };
     //Perform the transformation
     $.json2html = function (json, transform) {
         var type = jQuery.type(json);
@@ -55,12 +55,12 @@
         }
         //Return the element array
         return( elements );
-    }
+    };
     //Default Options
     $.json2html.options = {
         'eventData': undefined,
         'prepend': false
-    }
+    };
     //Apply the transform (at the first level)
     $.json2html.apply = function (json, transform, index) {
         var elements = [];
@@ -79,7 +79,7 @@
                 break;
         }
         return(elements);
-    }
+    };
     //Apply the transform at the second level
     $.json2html.applyTransform = function (obj, transform, index) {
         //var html = $(document.createElement('div'));
@@ -157,7 +157,7 @@
                 break;
         }
         return(objects);
-    }
+    };
     //Get the html value of the object
     $.json2html.getValue = function (obj, transform, key, index) {
         var out = '';
@@ -198,7 +198,7 @@
                 break;
         }
         return(out);
-    }
+    };
     //Tokenizer
     $.json2html.tokenizer = function (tokenizers, doBuild) {
         if (!(this instanceof $.json2html.tokenizer ))
@@ -212,14 +212,14 @@
             this.tokens = [ ];
             do this.next(); while (!this.ended);
             return this.tokens;
-        }
+        };
         this.build = function (src, real) {
             if (src)
                 this.tokens.push(
                     !this.doBuild ? src :
                         this.doBuild(src, real, this.tkn)
                 );
-        }
+        };
         this.next = function () {
             var self = this,
                 plain;
@@ -232,7 +232,7 @@
             });
             if (!self.src)
                 self.ended = true;
-        }
+        };
         this.findMin = function () {
             var self = this, i = 0, tkn, idx;
             self.min = -1;

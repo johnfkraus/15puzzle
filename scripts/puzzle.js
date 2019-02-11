@@ -860,31 +860,7 @@ function scramble() {
 /******************/
 /* ENABLE/DISABLE */
 /******************/
-/*
-function enableTurboSolveButton() {
-    turboSolveEnabledFlag += 1;
-    // call function scramble() when clicked
-    if (turboSolveEnabledFlag < 2) {
-        $("a#turboSolve").on("click", function () {
-            msPerMoveInt = 1;
-            setMovesPerSecStrLabel(getMsPerMoveInt());
-            $("option[value='1']").attr('selected', 'selected');
-            if (isItScrambled()) {
-                playSolution();
-            } else {
-                alertNotScrambled();
-            }
-        });
-        //linkUpstage("a#turboSolve", "a#solve");
-    }
-}
-function disableTurboSolve() {
-    turboSolveEnabledFlag -= 1;
-    //jQuery("#turboSolve").css("display", "none");
-    jQuery("#turboSolve").off("click", (function () {
-    }));
-}
-*/
+
 function enableAutoSolveButton() {
     autoSolveEnabledFlag += 1;
     if (debug && console && console.log) {
@@ -916,14 +892,7 @@ function enableScrambleButton() {
         });
     }
 }
-/*
-function disableScrambleButton() {
-    $("a#scramble").off("click", function () {
-        //scrambleButtonClicked();
-    });
-    clearTimeout(t03);
-}
-*/
+
 function mouseEnter(elementIdStr) {
     // Bind the mouse enter to the second DIV.
     $(elementIdStr).bind("mouseenter mouseleave",
@@ -1176,7 +1145,7 @@ function getNextMove() {// Called by the automatic solver, get move from queue.
     //printMap();
     var i, j;
     //j = moves[moveNum];
-    console.log("typeof moveStack = " + (typeof moveStack))
+    console.log("typeof moveStack = " + (typeof moveStack));
     j = moveStack.shift();
     i = parseInt(j / 4, 10);
     j = parseInt(j & 3, 10);
@@ -1301,7 +1270,7 @@ function swap(currentMove) {
         console.log("numberedCellTileClasses = " + numberedCellTileClasses);
     }
     catch (err) {
-        console.error(err)
+        console.error(err);
         txt = "737 - There was an error on this page.<br /><br />";
         txt += "Error description: " + err.message + "<br /><br />";
         txt += "Click OK to continue.<br /><br />";
@@ -1814,13 +1783,13 @@ function replaceNodeText(id, newText) {
 /* source:  http://www.softcomplex.com/docs/get_window_size_and_scrollbar_position.html  */
 String.prototype.trim = function () {
     return this.replace(/^\s+|\s+$/g, "");
-}
+};
 String.prototype.ltrim = function () {
     return this.replace(/^\s+/, "");
-}
+};
 String.prototype.rtrim = function () {
     return this.replace(/\s+$/, "");
-}
+};
 /***********/
 /*  HINTS  */
 /***********/
@@ -1889,11 +1858,11 @@ function getSolution() {
             // console.log("parameters = " + parameters);
         }
         //makeXmlHttpRequestDivVisible();
-        console.log("parameters = " + parameters)
-        console.log("scrambledMapArray = " + scrambledMapArray)
+        console.log("parameters = " + parameters);
+        console.log("scrambledMapArray = " + scrambledMapArray);
         // solution = solvePuzzle(parameters);
         solution = solvePuzzle(scrambledMapArray);
-        console.log("solution = " + solution)
+        console.log("solution = " + solution);
         // if puzzle is solved on remote server:
         if (false) {
             $.ajax({
@@ -2019,21 +1988,17 @@ function showData() {
  By John Kraus
  john@johnfkraus.com
  www.johnfkraus.com
- The 15 Puzzle is solved in a Java class, puzzle.PuzzleSolver.
- PuzzleSolver is deployed on a server and
- called by puzzle.SolvePuzzleServlet.  John Kraus extracted the
- solution algorithm in PuzzleSolver from a Java applet by Karl Hornell
+ The 15 Puzzle used to be solved in a Java class, puzzle.PuzzleSolver. PuzzleSolver was deployed on a server and
+ called by puzzle.SolvePuzzleServlet.  John Kraus extracted the solution algorithm in PuzzleSolver from a Java applet by Karl Hornell
  http://www.javaonthebrain.com/index.html
  John Kraus translated the applet into a Java business class,
  "puzzle.PuzzleSolver".
+ Later John Kraus converted the puzzle solving algorithm to JavaScript.
+ So no more Java here.
  TO DO:
  Convert to object-oriented JavaScript or add a namespace to help prevent naming collisions
- Add Ajax to asynchronously obtain the puzzle solution upon initialization
- and every time state changes.
+ There are too many global variables.
  Add capability for user to request a hint for the next puzzle move.
- Debug filters
- Debug logging
 
  */
 
-// });

@@ -77,7 +77,7 @@
             this._parameters.animateTo = (typeof parameters.animateTo === "number") ? (parameters.animateTo) : (this._angle);
             this._parameters.easing = parameters.easing || this._parameters.easing || function (x, t, b, c, d) {
                 return -c * ((t = t / d - 1) * t * t * t - 1) + b;
-            }
+            };
             this._parameters.duration = parameters.duration || this._parameters.duration || 1000;
             this._parameters.callback = parameters.callback || this._parameters.callback || function () {
             };
@@ -135,7 +135,7 @@
                     this._rootObj.className = this._img.className;
                     this._eventObj = this._rootObj;
                     this._handleRotation(parameters);
-                }
+                };
             else
                 return function (parameters) {
                     this._rootObj.setAttribute('id', this._img.getAttribute('id'));
@@ -204,12 +204,12 @@
                 return function (angle) {
                     this._angle = angle;
                     this._container.style.rotation = (angle % 360) + "deg";
-                }
+                };
             else if (supportedCSS)
                 return function (angle) {
                     this._angle = angle;
                     this._img.style[supportedCSS] = "rotate(" + (angle % 360) + "deg)";
-                }
+                };
             else
                 return function (angle) {
                     this._angle = angle;
@@ -226,7 +226,7 @@
                     this._cnv.drawImage(this._img, 0, 0);							// First - we draw image
                 }
         })()
-    }
+    };
     if (IE) {
         Wilq32.PhotoEffect.prototype.createVMLNode = (function () {
             document.createStyleSheet().addRule(".rvml", "behavior:url(#default#VML)");

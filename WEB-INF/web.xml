@@ -21,127 +21,18 @@
     <distributable/>
 
     <!-- Define servlet-mapped and path-mapped filters -->
-    <filter>
-        <filter-name>
-            Basic Filter
-        </filter-name>
-        <filter-class>
-            com.johnfkraus.filter.BasicFilter
-        </filter-class>
-    </filter>
 
     <!-- Define filter mappings for the defined filters -->
-    <filter-mapping>
-        <filter-name>
-            Basic Filter
-        </filter-name>
-        <servlet-name>
-            FilteredServlet
-        </servlet-name>
-    </filter-mapping>
 
     <!-- Define servlet-mapped and path-mapped filters -->
-    <filter>
-        <filter-name>
-            Trim Filter
-        </filter-name>
-        <filter-class>
-            com.johnfkraus.filter.TrimFilter
-        </filter-class>
-    </filter>
 
     <!-- Define filter mappings for the defined filters -->
-    <filter-mapping>
-        <filter-name>
-            Trim Filter
-        </filter-name>
-        <servlet-name>
-            TrimFilteredServlet
-        </servlet-name>
-    </filter-mapping>
-
 
     <!-- Define servlet-mapped and path-mapped filters -->
-    <filter>
-        <filter-name>
-            Response Filter
-        </filter-name>
-        <filter-class>
-            com.johnfkraus.filter.ResponseFilter
-        </filter-class>
-    </filter>
 
     <!-- Define filter mappings for the defined filters -->
-    <filter-mapping>
-        <filter-name>
-            Response Filter
-        </filter-name>
-        <servlet-name>
-            ResponseFilteredServlet
-        </servlet-name>
-    </filter-mapping>
-
-
-    <filter>
-        <filter-name>
-            UpperCase Filter
-        </filter-name>
-        <filter-class>
-            com.johnfkraus.filter.UpperCaseFilter
-        </filter-class>
-    </filter>
 
     <!-- Define filter mappings for the defined filters -->
-    <filter-mapping>
-        <filter-name>
-            Trim Filter
-        </filter-name>
-        <servlet-name>
-            DoublyFilteredServlet
-        </servlet-name>
-    </filter-mapping>
-
-    <filter-mapping>
-        <filter-name>
-            UpperCase Filter
-        </filter-name>
-        <servlet-name>
-            DoublyFilteredServlet
-        </servlet-name>
-    </filter-mapping>
-
-    <servlet>
-        <servlet-name>
-            DoublyFilteredServlet
-        </servlet-name>
-        <servlet-class>
-            com.johnfkraus.filter.DoublyFilteredServlet
-        </servlet-class>
-    </servlet>
-
-    <servlet-mapping>
-        <servlet-name>DoublyFilteredServlet</servlet-name>
-        <url-pattern>/DoublyFilteredServlet</url-pattern>
-    </servlet-mapping>
-    <listener>
-        <listener-class>
-            com.johnfkraus.filter.SessionLifeCycleEventDemo
-        </listener-class>
-    </listener>
-
-    <servlet>
-        <servlet-name>
-            FilteredServlet
-        </servlet-name>
-        <servlet-class>
-            com.johnfkraus.filter.FilteredServlet
-        </servlet-class>
-    </servlet>
-
-    <servlet-mapping>
-        <servlet-name>FilteredServlet</servlet-name>
-        <url-pattern>/FilteredServlet</url-pattern>
-    </servlet-mapping>
 
     <servlet>
         <servlet-name>SolvePuzzleServlet</servlet-name>
@@ -154,16 +45,6 @@
     </servlet-mapping>
 
     <servlet>
-        <servlet-name>SolvePuzzleServlet2</servlet-name>
-        <servlet-class>com.johnfkraus.puzzle.SolvePuzzleServlet2</servlet-class>
-    </servlet>
-
-    <servlet-mapping>
-        <servlet-name>SolvePuzzleServlet2</servlet-name>
-        <url-pattern>/solve2</url-pattern>
-    </servlet-mapping>
-
-    <servlet>
         <servlet-name>GetIpServlet</servlet-name>
         <servlet-class>com.johnfkraus.puzzle.GetIpServlet</servlet-class>
     </servlet>
@@ -171,33 +52,6 @@
     <servlet-mapping>
         <servlet-name>GetIpServlet</servlet-name>
         <url-pattern>/GetIpServlet</url-pattern>
-    </servlet-mapping>
-    <servlet>
-        <servlet-name>
-            TrimFilteredServlet
-        </servlet-name>
-        <servlet-class>
-            com.johnfkraus.filter.TrimFilteredServlet
-        </servlet-class>
-    </servlet>
-
-    <servlet-mapping>
-        <servlet-name>TrimFilteredServlet</servlet-name>
-        <url-pattern>/TrimFilteredServlet</url-pattern>
-    </servlet-mapping>
-
-    <servlet>
-        <servlet-name>
-            ResponseFilteredServlet
-        </servlet-name>
-        <servlet-class>
-            com.johnfkraus.filter.ResponseFilteredServlet
-        </servlet-class>
-    </servlet>
-
-    <servlet-mapping>
-        <servlet-name>ResponseFilteredServlet</servlet-name>
-        <url-pattern>/ResponseFilteredServlet</url-pattern>
     </servlet-mapping>
 
 </web-app>
