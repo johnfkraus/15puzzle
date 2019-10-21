@@ -1,0 +1,11 @@
+
+addin jasmine tests
+
+file:///Users/johnkraus/workspaces/15puzzle/jasmine/SpecRunner.html
+
+
+https://github.com/jasmine/jasmine#installation
+
+
+look in specs directory
+
