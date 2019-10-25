@@ -919,6 +919,7 @@ function enableProfilePhotoRotate() {
 /**********************/
 /* GRATUITOUS EFFECTS */
 /**********************/
+/*
 function rotateJohnBoy() {
     jQuery("img#profilePhoto").rotate({
         animateTo: -15,
@@ -929,6 +930,8 @@ function rotateJohnBoy() {
         }
     });
 }
+*/
+
 // one link upstages another
 function linkUpstage(inUpElementString, inDownElementString) {
     var $inDownElement = $(inDownElementString); // link to be upstaged
@@ -1100,8 +1103,8 @@ function runAuto() {
 }
 function init() {
     makeXmlHttpRequestDivHidden();
-    var i;
-    var j;
+    let i;
+    let j;
     for (i = 0; i < map.length; i++) {
         map[i] = 0;
     }
@@ -1120,8 +1123,8 @@ function init() {
         tileMap = [];
     }
     tileMap.splice(0, 0, "11", "12", "13", "14", "21", "22", "23", "24", "31", "32", "33", "34", "41", "42", "43", "44");
-    console.log("solution = " + solution);
-    console.log("typeof solution = " + (typeof solution));
+    // console.log("solution = " + solution);
+    // console.log("typeof solution = " + (typeof solution)); // object
     if (typeof solution == 'array') {
         moves = solution.split(",");
         moveStack = solution.split(",");
