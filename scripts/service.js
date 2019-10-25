@@ -1,3 +1,4 @@
+/*
 (function () {
 
     // The script location
@@ -211,3 +212,4 @@
     process(document.getElementsByTagName("div"));
     process(document.getElementsByTagName("span"));
 })();
+*/

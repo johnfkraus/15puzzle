@@ -45,8 +45,8 @@ body {
     background-size       : auto auto;
     color                 : #000000;
     background-color: black;
-    font-size             : 62.5%;
-    z-index               : -1;
+    /* font-size             : 62.5%; */
+    /* z-index               : -1;  */
     margin                : 0 auto;
    /* min-width             : 1000px; */
 }
@@ -79,7 +79,7 @@ p, h1, h2, h3, h4, h5, h5, ol, ul {
     background-color : #FFF;
     z-index          : 2;
 }
-
+/*
 COLOR REFERENCE
 red: ff6666/cc0000
 blue-green: 33cccc/009999
@@ -87,6 +87,7 @@ blue: 3399cc/006699
 yellow: ffcc66/cc9900
 purple: 3399cc/003366
 green: 33cc66/009933
+*/
 /*********************/
 /* LEFT SIDEBAR */
 /*********************/
@@ -99,7 +100,7 @@ green: 33cc66/009933
 /*********************/
 /* FEATURED PICTURE */
 /*********************/
-
+/*
 h1 {
     color       : #294E56;
     margin-top  : 10px;
@@ -107,7 +108,7 @@ h1 {
     border-top  : 4px solid #294E56;
     line-height : 100%;
 }
-
+*/
 /*********************/
 /* FOOTER */
 /*********************/
@@ -133,14 +134,17 @@ h1 {
 }
 
 /* added by tidy? */
+/*
 p.c1 {
     text-align : left
 }
+*/
+
 /*** styles from usa.css ***/
 /*********************/
 /*** BIG RED FOOTER ***/
 /*********************/
-
+/*
 #footer2 {
     background-clip       : border-box;
     background-origin     : padding-box;
@@ -162,6 +166,8 @@ p.c1 {
     padding-bottom : 100px;
     text-align     : center;
 }
+*/
+/*
 #copyright-strip {
     margin        : 0 auto;
     text-align    : left;
@@ -181,9 +187,7 @@ p.c1 {
 #copyright-strip ul li {
     display             : inline;
     line-height         : 36px;
-    list-style-image    : none;
-    list-style-position : outside;
-    list-style-type     : none;
+    list-style: none outside none;
     margin              : 0 0 35px;
     padding             : 0 0 0 13px;
     text-align          : center;
@@ -193,9 +197,10 @@ p.c1 {
     padding-right : 20px;
     padding-top   : 2px;
 }
+*/
 
 #puzzlewrapper {
-    font-family : Trebuchet MS, Verdana, Helvetica, Arial, san-serif;
+    font-family: "Trebuchet MS", Verdana, Helvetica, Arial, sans-serif;
     font-style  : normal;
     height           : 506px;
     margin           : 0 auto;
@@ -223,7 +228,7 @@ p.c1 {
     text-decoration : none;
     text-align      : center;
 }
-
+/*
 #johnspuzzle {
     float    : right;
     position : relative;
@@ -232,8 +237,8 @@ p.c1 {
     width    : 648px;
     border   : 1px solid black;
 }
-
-/* "JOHN'S TILE PUZZLE" logo -- background 650 px wide minus logo 316px wide = 334px/2 = 167px left */
+*/
+/* "JOHN'S 15 PUZZLE" logo -- background 650 px wide minus logo 316px wide = 334px/2 = 167px left */
 #logotype {
     /*	background: url('../images/johns-tile-puzzle-glow.gif') no-repeat;  /*  size 316px x 59px */
     height           : 80px;
@@ -306,7 +311,7 @@ p.c1 {
 #jquery-effects-container {
     position         : relative;
     padding          : 0;
-    border           : 0px solid black;
+    border           : 0 solid black;
     /* visibility       : none; */
 
     visibility: hidden;
@@ -340,10 +345,7 @@ p.c1 {
     visibility    : visible;
     height        : 320px;
     width         : 320px;
-    margin-left   : auto;
-    margin-right  : auto;
-    margin-top    : 0;
-    margin-bottom : auto;
+    margin: 0 auto auto;
 }
 /* background 650 px wide minus letterbox 320px wide = 330px/2 = 165px left */
 #letterboxBackground {
@@ -751,7 +753,7 @@ So if top is 40px, thumbnail bar height should be 506-40 = 466. */
     color : #FF3;
 }
 div#hintDiv {
-    font-family : Trebuchet MS, Verdana, Helvetica, Arial, san-serif;
+    font-family : Trebuchet MS, Verdana, Helvetica, Arial, sans-serif;
     font-style  : normal;
     font-size   : 22px;
     position    : relative;
@@ -899,8 +901,7 @@ div#solve-scramble {
     width       : 298px;
     height      : 89px;
     text-align  : center;
-    margin      : auto;
-    margin-top  : 110px;
+    margin: 110px auto auto;
     color       : #323232;
     font        : normal 14px/normal Verdana, Geneva, sans-serif;
     padding-top : 5px;
