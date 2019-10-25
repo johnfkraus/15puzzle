@@ -1,35 +1,12 @@
 html {
-/*
-    background-color    : #EEEEEE;
 
-    */
-/*background-image: url("../images/page-bg-gradient.png");*//*
-
-    background-position : center bottom;
-    background-repeat   : repeat-x;
-    color               : #333333;
-*/
     font-family         : Helvetica Neue, Helvetica, Arial, sans-serif;
     font-size           : 125%;
     line-height         : 1.5;
 }
 .sandbox {
-/*
-    background-attachment : scroll;
-    background-clip       : border-box;
-*/
-    background-color      : transparent;
-W    /* background-image: url("../images/bg-gradient.png");  */
 
-/*
-    background-origin     : padding-box;
-    background-position   : center top;
-    background-repeat     : no-repeat;
-    background-size       : 100% auto;
-    padding-left          : 0;
-    padding-right         : 0;
-    pointer-events        : none;
-*/
+    background-color      : transparent;
     position              : relative;
     z-index               : 999;
 }
