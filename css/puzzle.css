@@ -584,7 +584,7 @@ So if top is 40px, thumbnail bar height should be 506-40 = 466. */
     top      : 40px;
 }
 
-/* comment */
+
 #puzzlewrapper  .thumbnailbarLeft a img {
     clip     : rect(0px, 80px, 80px, 0);
     height   : 100px;
@@ -594,7 +594,6 @@ So if top is 40px, thumbnail bar height should be 506-40 = 466. */
     left     : 30px;
 }
 
-/* comment */
 #puzzlewrapper  .thumbnailbar a img {
     clip     : rect(0px, 80px, 80px, 0);
     height   : 100px;
@@ -651,26 +650,22 @@ So if top is 40px, thumbnail bar height should be 506-40 = 466. */
     margin  : 0;
 }
 
-/* comment */
 #thumbnailsLeft li {
     display         : inline;
     white-space     : nowrap; /* - ensures that text (image, whatever?) stays on one line.*/
     list-style-type : none; /*- removes the bullet from the list (not absolutely necessary).*/
 }
 
-/* comment */
 #thumbnails li {
     display         : inline;
     white-space     : nowrap; /* - ensures that text (image, whatever?) stays on one line.*/
     list-style-type : none; /*- removes the bullet from the list (not absolutely necessary).*/
 }
 
-/* comment */
 #thumbnailsLeft li a {
     text-decoration : none;
 }
 
-/* comment */
 #thumbnails li a {
     text-decoration : none;
 }
@@ -748,7 +743,6 @@ So if top is 40px, thumbnail bar height should be 506-40 = 466. */
     text-align  : center;
 }
 
-/* comment */
 #credit a {
     color : #000;
 }
@@ -785,7 +779,7 @@ div#hintDiv a:hover {
     color : #FFFF00;
 }
 
-/* comment */
+
 div#hintDiv a.disabled:hover {
     background : none;
     color      : #000;
@@ -803,7 +797,6 @@ div#solve-scramble {
     bottom     : 34px;
 }
 
-/* comment */
 #solve-scramble a {
     color        : #FF0000;
     margin-left  : 20px;
@@ -821,7 +814,6 @@ div#solve-scramble {
     color : #FFFF00;
 }
 
-/* comment */
 #solve-scramble a.disabled:hover {
     background : none;
     color      : #000;
@@ -838,11 +830,6 @@ div#solve-scramble {
     font-style : normal;
 }
 
-/* red-yellow links: TurboSolve */
-/*.redYellowLinks {
-    font-style : normal;
-}
-  */
 .redYellowLinks a {
     font-style : normal;
     color        : #FF0000;
@@ -860,7 +847,6 @@ div#solve-scramble {
     color : #FFFF00;
 }
 
-/* comment */
 .redYellowLinks a.disabled:hover {
     background : none;
     color      : #000;
@@ -872,8 +858,6 @@ div#solve-scramble {
     /*  -moz-opacity: .25;
       opacity: .25; */
 }
-
-/*   */
 
 #commands a.solve {
     position : absolute;
