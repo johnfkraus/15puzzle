@@ -1869,6 +1869,8 @@ function getSolution() {
         solution = solvePuzzle(scrambledMapArray);
         console.log("solution = " + solution);
         // if puzzle is solved on remote server:
+        // DEPRECATED
+        /*
         if (false) {
             $.ajax({
                 type: "POST",
@@ -1882,7 +1884,7 @@ function getSolution() {
                 hint = getHint(solution);
                 setHintTooltip();
             });
-        }
+        } */
     }
 }
 function makeScrambledMapString() {
@@ -1925,7 +1927,7 @@ function getInputMapIntArray() {
 function makeInputMapIntArray(scrambledMapString) {
     var inputMapStrArr = scrambledMapString.split(",");
     // convert the string array of scrambled tile values into an INTEGER array
-    for (var i = 0; i < inputMapStrArr.length; i++) {
+    for (let i = 0; i < inputMapStrArr.length; i++) {
         inputMapIntArr[i] = parseInt(inputMapStrArr[i], 10);
     }
     return inputMapIntArr;
