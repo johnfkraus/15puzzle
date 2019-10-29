@@ -565,7 +565,8 @@ window.alert = function (message) {
     jQuery(document.createElement('div'))
         .attr({title: 'Alert', 'class': 'alert'})
         .html(message)
-        .dialog({
+        .dialog(
+          {
             buttons: {OK: function () {
                 jQuery(this).dialog('close');
             }},
@@ -620,6 +621,7 @@ var scrambleButtonEnabledFlag = 0;
 var scrambledMapString = "12,14,13,9,5,6,3,0,15,10,11,2,8,7,4,1"; // for testing
 var seed = 1;
 var simpleMap = [16];
+
 var slideH;
 var slidePiece;
 var slideV;
@@ -1953,9 +1955,9 @@ function alertNotScrambled() {
         "<span style='font-weight:bold;font-size:24px;position:relative; top:10px;left:10px;z-index: 1000'>OOPS!</span></div><br />" +
         "You clicked \"Solve\".<br />This 15 Tile Puzzle is already solved, however.<br />" +
         "The tiles are in numerical order and are not scrambled.<br />" +
-        "The current tile order is: <br />" + inputMapIntArr.toString() + "<br />(where 0 or 16 = the empty space)<br /><br />" +
-        "No tiles, therefore, can be moved and no solution<br />or hint can be computed.<br />" +
-        "To play, click \"Scramble\" or <em>Refresh</em> the Page.<br />" +
+        "The current tile order is: <br />" + inputMapIntArr.toString() + "<br />(where 16 represents the empty space)<br /><br />" +
+        "No tiles, therefore, can be moved and no solution<br /> can be computed.<br />" +
+        "To play, click \"Scramble\" or <em>Refresh</em> the web page.<br />" +
         "<br />Or click one of the alternate game board icons.");
     jQuery('.ui-dialog').css('left', '40px;');
     //jQuery(".ui-dialog").css('width', '600px;');
