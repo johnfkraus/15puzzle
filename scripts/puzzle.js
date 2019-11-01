@@ -17,8 +17,8 @@
 // alert('Hello from MarPuzzleSolver.js, line ' + new Error().lineNumber);
 // console.log('thisline = ' + new Error().lineNumber);
 
-var autoDisplace = [0, 5, 12, 21, 32, 32, 27, 20, 11, 0 ];
-var detour;
+let autoDisplace = [0, 5, 12, 21, 32, 32, 27, 20, 11, 0 ];
+let detour;
 var detour1 = [11, 10, 6, 7, 11, 10, 6, 7, 3, 2, 6, 7, 11, -1];
 var detour2 = [15, 14, 10, 11, 15, 14, 10, 11, 7, 6, 10, 11, 15, -1];
 var detour3 = [6, 2, 3, 7, -1];
@@ -79,7 +79,6 @@ function makeDetour(dList, hole) {
         moves[this.moveCount++] = dList[i++];
     }
 }
-
 
 function moveHole(tg, ppos) {
     // document.getElementById("map").innerHTML = "map = " + map;
@@ -155,10 +154,9 @@ function moveHole(tg, ppos) {
 }
 
 function moveTo(p, t) {
-
-    i3 = 0;
-    whereNow = i3 = locate(p);
-    j3 = 0;
+    let i3 = 0;
+    let whereNow = i3 = locate(p);
+    let j3 = 0;
     while ((i3 & 3) != (t & 3)) {
         i3 = (i3 & 3) < (t & 3) ? ++i3 : --i3;
         ppath[j3++] = i3;
@@ -194,11 +192,13 @@ function solvePuzzle(inputMap) {
     // run();
 
     solution = new Array(moveCount);
-    for (var i = 0; i < moveCount; ++i) {
+    for (let i = 0; i < moveCount; ++i) {
         solution[i] = moves[i];
     }
     console.log("typeof solution = " + (typeof solution));
     console.log("solution = " + solution);
+    console.log("solution length = " + solution.length);
+    console.log("last move = " + solution[solution.length - 1]);
     return solution;
     /*
     solution = new int[moveCount];
@@ -210,7 +210,7 @@ function solvePuzzle(inputMap) {
     */
 }
 function inMap(h, v) {
-    myArray = new Array(36);
+    let myArray = new Array(36);
     i = 0;
     while (i < myArray.length) {
         myArray[i] = i++;
@@ -515,7 +515,7 @@ function solve() {
 
 
 function init_solver() {
-    i = 0;
+    let i = 0;
     while (i < 6) {
         map[i] = 1;
         map[i * 6] = 1;
@@ -534,7 +534,7 @@ function init_solver() {
 
 // fillMap param is an array of integers
 function fillMap(fillMap) {
-    mapCounter = 0;
+    let mapCounter = 0;
     i = 0;
     while (i < 4) {
         j = 0;
@@ -559,7 +559,6 @@ function fillMap(fillMap) {
 /**************/
 /* INITIALIZE */
 /**************/
-
 
 window.alert = function (message) {
     jQuery(document.createElement('div'))
@@ -609,7 +608,12 @@ var moveCount = 0;
 var moveNum = 0;
 // var moves = []; //new Array();
 var moveStack = []; //new Array();
-var msPerMoveInt = 1000;
+let msPerMoveInt; // = 1000;
+function setMsPerMoveInt(inMsPerMoveInt) {
+    msPerMoveInt = inMsPerMoveInt;
+    jQuery("#msPerMoveDropdown option[value='" + msPerMoveInt + "']").attr("selected", "selected");
+}
+
 var numText;
 //var nextHintStr;
 var oldDragControl;
@@ -901,7 +905,7 @@ function mouseEnter(elementIdStr) {
         //$("span#scrambleSpan").bind("mouseenter mouseleave",
         function (event) {
             if (debug && console && console.log) {
-                console.log(event.type, " :: ", this.id);
+                // console.log(event.type, " :: ", this.id);
             }
         }
     );
@@ -988,7 +992,7 @@ function setMsPerMoveStrLabel() {
 }
 // called by select dropDown box on puzzle in index.html
 function getMsPerMove() {
-    var msPerMoveStr = $('#msPerMove').find(":selected").text();
+    let msPerMoveStr = $('#msPerMove').find(":selected").text();
     if (debug && console && console.log) {
         console.log("msPerMove = " + parseInt(msPerMoveStr, 10));
     }
@@ -1001,9 +1005,9 @@ function getMsPerMoveInt() {
     return getSecondsPerMoveFloat() * 1000;
 }
 function getSecondsPerMoveStr() {
-    var count001 = 0;
+    let count001 = 0;
     count001 += 1;
-    var secondsPerMoveStr = $('#msPerMove').find(":selected").text();
+    let secondsPerMoveStr = $('#msPerMove').find(":selected").text();
     if (debug && console && console.log && (count001 % 11 === 0)) {
         console.log("476 secondsPerMoveStr = $('#msPerMove').find(':selected').text() = " + $('#msPerMove').find(":selected").text());
     }
@@ -1021,8 +1025,8 @@ function getSecondsPerMoveFloat() {
     return parseFloat(getSecondsPerMoveStr());
 }
 function setMovesPerSecStrLabel(msPerMoveInt) {
-    var movesPerSecInt = 0;
-    var movesPerSecRounded = 0;
+    let movesPerSecInt = 0;
+    let movesPerSecRounded = 0;
     var rateUnitsStr = " moves/sec.";
     var secondsPerMove = msPerMoveInt / 1000;
     var movesPerSec = 1 / secondsPerMove;
@@ -1224,7 +1228,7 @@ function highlightCurrentMoveLocationCode(locCode) {
             txt += "Click OK to continue.   1250\n\n";
             alert(txt);
         }
-        console.log("currentMoveClassName = [" + currentMoveDivClassName + "]");
+        // console.log("currentMoveClassName = [" + currentMoveDivClassName + "]");
         document.getElementById(locCode).className = currentMoveDivClassName + " highlight";
     }
 }
@@ -1270,9 +1274,9 @@ function swap(currentMove) {
     var numberClass = "";
     var numberedCellTileClasses = [];
     try {
-        console.log("numberedCellClassName = " + numberedCellClassName);
+        // console.log("numberedCellClassName = " + numberedCellClassName);
         numberedCellTileClasses = numberedCellClassName.split(/ +/);
-        console.log("numberedCellTileClasses = " + numberedCellTileClasses);
+        // console.log("numberedCellTileClasses = " + numberedCellTileClasses);
     }
     catch (err) {
         console.error(err);
@@ -1282,10 +1286,10 @@ function swap(currentMove) {
         alert(txt);
         //initPageScramble();
     }
-    console.log("numberedCellTileClasses = " + numberedCellTileClasses);
-    console.log("numberedCellTileClasses[3] = " + numberedCellTileClasses[3]);
+    //console.log("numberedCellTileClasses = " + numberedCellTileClasses);
+    //console.log("numberedCellTileClasses[3] = " + numberedCellTileClasses[3]);
     numberClass = numberedCellTileClasses[3];
-    console.log("numberClass = " + numberClass);
+    //console.log("numberClass = " + numberClass);
     var numberOnTile = parseInt(numberClass.substring(1, 3), 10);
     var modifiedEmptyCellClassName = emptyCellClassName.replace(/n\d{1,2}/, "n" + numberOnTile);
     document.getElementById(emptyLocationCode).className = modifiedEmptyCellClassName;
@@ -1302,12 +1306,13 @@ function doHighlighting() {
     unHighlightBlankTile();
 }
 function runControl(msPerMoveInt) {
-    if (debug && console && console.log) {
-        console.log("781 runControl() getMsPerMoveInt() = " + getMsPerMoveInt() + "; local msPerMoveInt = " + msPerMoveInt);
+    if (true || debug && console && console.log) {
+        console.log("1318 runControl() msPerMoveInt() = " + msPerMoveInt + "; local msPerMoveInt = " + msPerMoveInt);
     }
     runAuto();
     t06 = setTimeout("doHighlighting()", msPerMoveInt / 2);
-    t07 = setTimeout("runControl(getMsPerMoveInt())", msPerMoveInt);
+////    t07 = setTimeout("runControl(getMsPerMoveInt())", msPerMoveInt);
+    t07 = setTimeout("runControl(msPerMoveInt)", msPerMoveInt);
 }
 function showPleaseWait() {
     var lbBackgroundDivStyle = document.getElementById("letterboxBackground").style;
@@ -1827,7 +1832,11 @@ function getHint(solution) {
     }
     return tileNum;
 }
-function playSolution() {
+function playSolution(msPerMoveInt) {
+    if(!msPerMoveInt) {
+        msPerMoveInt = getMsPerMoveInt();
+    }
+    console.log("playSolution msPerMoveInt = " + msPerMoveInt);
     if (debug && console && console.log) {
         console.log("solution = " + solution);
     }
@@ -1836,8 +1845,9 @@ function playSolution() {
     if ((isItScrambled()) && testArraySum136(getInputMapIntArray())) {
         //disableSolveButton();
         init();
-        makeXmlHttpRequestDivHidden();
-        runControl(getMsPerMoveInt());
+        // makeXmlHttpRequestDivHidden();
+        // runControl(getMsPerMoveInt());
+        runControl(msPerMoveInt);
         if (debug && console && console.log) {
             console.log("scrambledMapString = " + makeScrambledMapString());
         }
@@ -1902,6 +1912,7 @@ function makeScrambledMapString() {
             scrambledMapString += ",";
         }
     }
+    // console.log(scrambledMapString.split(',').length);
     return scrambledMapString;
 }
 // blank tile value is 0 until the puzzle is solved when the blank tile value becomes 16
@@ -1913,6 +1924,7 @@ function testArraySum136(inputMapIntArr) {
         inArrayIntSum += inputMapIntArr[i];
     }
     //inArrayStr += (" Sum = " + inArrayIntSum);
+    console.log(inArrayIntSum);
     if ((inArrayIntSum === 120) || (inArrayIntSum === 136)) {
         return true;
     } else {
