@@ -43,7 +43,30 @@ describe("Puzzle", function () {
     });
 
     it("not scrambled alert should work", function () {
-       expect(alertNotScrambled()).toBeDefined();
+
+      console.log("alertNotScrambled() = " + alertNotScrambled());
+      //console.log(document.getElementById('alertNotScrambled'));
+      //jQuery('.ui-dialog').getElementsByTagName('button').click();
+      let buttons = $("#alertNotScrambled").dialog("option", "buttons");
+// Calls the event
+      buttons["OK"]();
+      // dialog.buttons.OK().
+      //dialog.buttons.OK();
+
+// Calls the event
+      let nsAlert = document.getElementById('notScrambledAlert');
+      console.log('nsAlert = ' +  nsAlert);
+      console.log('nsAlert = ' +  JSON.stringify(nsAlert, null, 2));
+      //buttons["OK"]();
+      let alertModal = document.getElementById('alertNotScrambled');
+      //let buttons = alertModal.getElementsByTagName('button');
+      // console.log('buttons = ' + JSON.stringify(buttons, null, 2));
+      //expect(alertNotScrambled()).toBeDefined();
+      //let spyEvent = spyOnEvent('#some_element', 'click')
+      //$('#some_element').click()
+      //expect('click').toHaveBeenTriggeredOn('#some_element')
+      expect(true).toBeTrue();
+
      });
 
   });

@@ -562,7 +562,7 @@ function fillMap(fillMap) {
 
 window.alert = function (message) {
     jQuery(document.createElement('div'))
-        .attr({title: 'Alert', 'class': 'alert'})
+        .attr({title: 'Alert', 'class': 'alert', id:'notScrambledAlert'})
         .html(message)
         .dialog(
           {
@@ -1108,7 +1108,7 @@ function runAuto() {
     }
 }
 function init() {
-    makeXmlHttpRequestDivHidden();
+    // makeXmlHttpRequestDivHidden();
     let i;
     let j;
     for (i = 0; i < map.length; i++) {
@@ -1152,9 +1152,9 @@ function init() {
 }  // end init()
 function getNextMove() {// Called by the automatic solver, get move from queue.
     //printMap();
-    var i, j;
+    let i, j;
     //j = moves[moveNum];
-    console.log("typeof moveStack = " + (typeof moveStack));
+    // console.log("typeof moveStack = " + (typeof moveStack));
     j = moveStack.shift();
     i = parseInt(j / 4, 10);
     j = parseInt(j & 3, 10);
@@ -1307,7 +1307,7 @@ function doHighlighting() {
 }
 function runControl(msPerMoveInt) {
     if (true || debug && console && console.log) {
-        console.log("1318 runControl() msPerMoveInt() = " + msPerMoveInt + "; local msPerMoveInt = " + msPerMoveInt);
+        // console.log("1318 runControl() msPerMoveInt() = " + msPerMoveInt + "; local msPerMoveInt = " + msPerMoveInt);
     }
     runAuto();
     t06 = setTimeout("doHighlighting()", msPerMoveInt / 2);
@@ -1315,21 +1315,21 @@ function runControl(msPerMoveInt) {
     t07 = setTimeout("runControl(msPerMoveInt)", msPerMoveInt);
 }
 function showPleaseWait() {
-    var lbBackgroundDivStyle = document.getElementById("letterboxBackground").style;
+    let lbBackgroundDivStyle = document.getElementById("letterboxBackground").style;
     lbBackgroundDivStyle.visibility = 'visible';
 }
 function hidePleaseWait() {
-    var lbBackgroundDivStyle = document.getElementById("letterboxBackground").style;
+    let lbBackgroundDivStyle = document.getElementById("letterboxBackground").style;
     lbBackgroundDivStyle.visibility = 'hidden';
 }
-function makeXmlHttpRequestDivHidden() {
+//function makeXmlHttpRequestDivHidden() {
     // var xmlDivStyle = document.getElementById("xmlHttpRequestDiv").style;
     // xmlDivStyle.visibility = 'hidden';
-}
-function makeXmlHttpRequestDivVisible() {
-    var xmlDivStyle = document.getElementById("xmlHttpRequestDiv").style;
-    xmlDivStyle.visibility = 'visible';
-}
+//}
+//function makeXmlHttpRequestDivVisible() {
+  //  var xmlDivStyle = document.getElementById("xmlHttpRequestDiv").style;
+  //  xmlDivStyle.visibility = 'visible';
+//}
 // Functions in alpha order start here
 function activateBoards() {
     var boards = document.getElementById("thumbnails").getElementsByTagName("img");
