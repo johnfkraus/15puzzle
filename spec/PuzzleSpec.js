@@ -5,7 +5,7 @@
 describe("Puzzle", function () {
   /* ... */
 
-  beforeAll(function() {
+  beforeAll(async function() {
     let scrambledMapString = makeScrambledMapString();
     let scrambledMapArray = scrambledMapString.split(",");
     let inputMapIntArr = makeInputMapIntArray(scrambledMapString);
@@ -14,9 +14,44 @@ describe("Puzzle", function () {
     //let msPerMoveInt = 1;
     // setMsPerMoveInt(1);
     // jQuery("#msPerMoveDropdown option[value='1']").attr("selected", "selected");
-    playSolution(1);
-    // console.log("spec 18 getInputMapIntArray() = " + getInputMapIntArray());
+    let solutionMap;
+    let doStuff = function() {
+      solutionMap = playSolution(1);
+      console.log("spec 20 solutionMap = " + solutionMap);
+    }
 
+    await doStuff();
+/*
+    let promise = new Promise(function(resolve, reject) {
+      resolve(playSolution(1));
+    });
+    promise.then(function(val) {
+      solutionMap = val;
+      console.log("spec 23 solutionMap = " + solutionMap); // 1
+      //return val + 2;
+    });
+
+
+    var getSolutionMap = function() {
+      return new Promise(function(resolve) {
+        //setTimeout(function(){
+          resolve(playSolution(1));
+        // }, 2000);
+      });
+    }
+    // We start an 'async' function to use the 'await' keyword
+    (async function(){
+      var result = await getSolutionMap();
+      console.log('Woo done!', result);
+
+      // But the best part is, we can just keep awaiting different stuff, without ugly .then()s
+      //var somethingElse = await getSomethingElse()
+      //var moreThings = await getMoreThings()
+    })()
+
+
+    // console.log("spec 18 getInputMapIntArray() = " + getInputMapIntArray());
+*/
   });
 
   describe(">Puzzle Functions", function () {

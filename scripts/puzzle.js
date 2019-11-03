@@ -1325,9 +1325,12 @@ function runControl(msPerMoveInt) {
     //console.log("1316 getInputMapIntArray() = " + getInputMapIntArray());
     setSolvedMap(getInputMapIntArray());
     //console.log("1306 msPerMoveInt = " + msPerMoveInt);
-    t06 = setTimeout("doHighlighting()", msPerMoveInt / 2);
+    if(isItScrambled()) {
+        t06 = setTimeout("doHighlighting()", msPerMoveInt / 2);
 ////    t07 = setTimeout("runControl(getMsPerMoveInt())", msPerMoveInt);
-    t07 = setTimeout("runControl(msPerMoveInt)", msPerMoveInt);
+        t07 = setTimeout("runControl(msPerMoveInt)", msPerMoveInt);
+    }
+    return getSolvedMap();
 }
 function showPleaseWait() {
     let lbBackgroundDivStyle = document.getElementById("letterboxBackground").style;
@@ -1848,6 +1851,7 @@ function getHint(solution) {
     return tileNum;
 }
 function playSolution(msPerMoveInt) {
+    let solvedMap1;
     console.log("1830 msPerMoveInt = " + msPerMoveInt);
     if(!msPerMoveInt) {
         msPerMoveInt = getMsPerMoveInt();
@@ -1864,7 +1868,7 @@ function playSolution(msPerMoveInt) {
         // makeXmlHttpRequestDivHidden();
         // runControl(getMsPerMoveInt());
         console.log("1845 msPerMoveInt = " + msPerMoveInt);
-        runControl(msPerMoveInt);
+        solvedMap1 = runControl(msPerMoveInt);
         if (debug && console && console.log) {
             console.log("scrambledMapString = " + makeScrambledMapString());
         }
@@ -1872,6 +1876,7 @@ function playSolution(msPerMoveInt) {
         console.log("1862 inputMapIntArray = " + inputMapIntArr);
     }
     //jQuery('li#autosolve').css('display','block');
+    return solvedMap1;
 }
 // using jQuery Ajax
 function getSolution() {
