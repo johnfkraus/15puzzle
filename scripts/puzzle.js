@@ -742,7 +742,13 @@ function initVars() {
     moveStack = []; //new Array();
     if (debug) {
         //msPerMoveInt = 1;
-        jQuery("option[value='1']").attr('selected', 'selected');
+
+
+        // this might work:
+        // jQuery("option[value='1']").attr('selected', 'selected');
+
+
+
         //jQuery("#msPerMoveDropdown option[value='1000']").attr("selected", "selected");
     } else {
         //msPerMoveInt = getMsPerMoveInt(); // 1000;
@@ -875,7 +881,7 @@ function enableAutoSolveButton() {
     if (autoSolveEnabledFlag < 2) {
         $("a#solve").on("click", function () {
             if (isItScrambled()) {
-                playSolution();
+                playSolution(1000);
             } else {
                 alertNotScrambled();
             }
@@ -925,19 +931,6 @@ function enableProfilePhotoRotate() {
 /**********************/
 /* GRATUITOUS EFFECTS */
 /**********************/
-/*
-function rotateJohnBoy() {
-    jQuery("img#profilePhoto").rotate({
-        animateTo: -15,
-        duration: 250,
-        callback: function () {
-            // back to 0 degrees
-            jQuery("img#profilePhoto").rotate(0);
-        }
-    });
-}
-*/
-
 // one link upstages another
 function linkUpstage(inUpElementString, inDownElementString) {
     var $inDownElement = $(inDownElementString); // link to be upstaged
@@ -981,9 +974,18 @@ function rotateLetterBox() {
 /* GETTERS/SETTERS */
 /*******************/
 
+function setMsPerMoveFromDropdown() {
+    let secondsPerMoveStr = $('#msPerMove').find(":selected").text();
+    let secondsPerMoveInt = parseInt(secondsPerMoveStr);
+    setMsPerMoveInt(secondsPerMoveInt * 1000);
+}
+
 function setMsPerMoveStrLabel() {
-    var secondsPerMoveStr = $('#msPerMove').find(":selected").text();
-    var secondsPerMoveFloat = parseFloat(secondsPerMoveStr);
+    let secondsPerMoveStr = $('#msPerMove').find(":selected").text();
+    // let secondsPerMoveInt = parseInt(secondsPerMoveStr);
+    // setMsPerMoveInt(secondsPerMoveInt * 1000);
+
+    let secondsPerMoveFloat = parseFloat(secondsPerMoveStr);
     //msPerMoveInt = secondsPerMoveFloat * 1000; //Math.round(1 / secondsPerMoveFloat);
     setMovesPerSecStrLabel(secondsPerMoveFloat * 1000);
     if (debug && console && console.log) {
@@ -1306,10 +1308,13 @@ function doHighlighting() {
     unHighlightBlankTile();
 }
 function runControl(msPerMoveInt) {
+    setMsPerMoveInt(msPerMoveInt);
     if (true || debug && console && console.log) {
         // console.log("1318 runControl() msPerMoveInt() = " + msPerMoveInt + "; local msPerMoveInt = " + msPerMoveInt);
     }
-    runAuto();
+    runAuto();  // UI makes a move
+
+    console.log("1306 msPerMoveInt = " + msPerMoveInt);
     t06 = setTimeout("doHighlighting()", msPerMoveInt / 2);
 ////    t07 = setTimeout("runControl(getMsPerMoveInt())", msPerMoveInt);
     t07 = setTimeout("runControl(msPerMoveInt)", msPerMoveInt);
@@ -1833,6 +1838,7 @@ function getHint(solution) {
     return tileNum;
 }
 function playSolution(msPerMoveInt) {
+    console.log("1830 msPerMoveInt = " + msPerMoveInt);
     if(!msPerMoveInt) {
         msPerMoveInt = getMsPerMoveInt();
     }
@@ -1847,6 +1853,7 @@ function playSolution(msPerMoveInt) {
         init();
         // makeXmlHttpRequestDivHidden();
         // runControl(getMsPerMoveInt());
+        console.log("1845 msPerMoveInt = " + msPerMoveInt);
         runControl(msPerMoveInt);
         if (debug && console && console.log) {
             console.log("scrambledMapString = " + makeScrambledMapString());
