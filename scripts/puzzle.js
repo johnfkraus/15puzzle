@@ -50,6 +50,15 @@ var solution = [];
 var subGoals = [1, 0, 2, 0, 3, 4, 0, 5, 0, 6, 0, 7, 8, 0, 9, 13, 0, 10, 14, 0, 11, 12, 15, 0, 16];
 // var testMap3 = [1, 12, 11, 13, 5, 2, 7, 9, 10, 15, 3, 14, 6, 8, 4, 0];
 // var thisline = new Error().lineNumber;
+let solvedMap;
+
+function setSolvedMap(solvedMap) {
+    this.solvedMap = solvedMap;
+}
+
+function getSolvedMap() {
+    return this.solvedMap;
+}
 
 assert(holder.length == 20, "assertion error, holder length = " + holder.length);
 // var displace;
@@ -1313,8 +1322,9 @@ function runControl(msPerMoveInt) {
         // console.log("1318 runControl() msPerMoveInt() = " + msPerMoveInt + "; local msPerMoveInt = " + msPerMoveInt);
     }
     runAuto();  // UI makes a move
-
-    console.log("1306 msPerMoveInt = " + msPerMoveInt);
+    //console.log("1316 getInputMapIntArray() = " + getInputMapIntArray());
+    setSolvedMap(getInputMapIntArray());
+    //console.log("1306 msPerMoveInt = " + msPerMoveInt);
     t06 = setTimeout("doHighlighting()", msPerMoveInt / 2);
 ////    t07 = setTimeout("runControl(getMsPerMoveInt())", msPerMoveInt);
     t07 = setTimeout("runControl(msPerMoveInt)", msPerMoveInt);
@@ -1859,6 +1869,7 @@ function playSolution(msPerMoveInt) {
             console.log("scrambledMapString = " + makeScrambledMapString());
         }
         inputMapIntArr = getInputMapIntArray(); // makeInputMapIntArray(scrambledMapString);
+        console.log("1862 inputMapIntArray = " + inputMapIntArr);
     }
     //jQuery('li#autosolve').css('display','block');
 }
@@ -1955,7 +1966,7 @@ function isItScrambled() {
     return isScrambled(getInputMapIntArray());
 }
 function isScrambled(inputMapIntArr) {
-    //alert("running isScrambled" + inputMapIntArr.toString());
+    console.log("running isScrambled, inputMapIntArray = " + inputMapIntArr.toString());
     var k = 0;
     var i;
     for (i = 0; i < inputMapIntArr.length; i++) {
