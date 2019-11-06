@@ -893,7 +893,8 @@ function enableAutoSolveButton() {
                 // solution speed msPerMoveInt, was 1000
                 playSolution(1);
             } else {
-                alertNotScrambled();
+                // alertNotScrambled();
+                console.log("897 Error");
             }
         });
     }
@@ -905,18 +906,16 @@ function enableScrambleButton() {
         $("a#scramble").on("click", function () {
             printTileClasses("377");
             clearAllTimers();
-            //enableSolveButton();
             t01 = setTimeout("initPageScramble()", 800);
-            //scrambleButtonClicked();
             shake("div#letterboxmargin2", 2, 15);
             printTileClasses("383");
             t02 = setTimeout("rotateLetterBox()", 700);
-            // now that the board is scrambled, enable AutoSolve button
+            // now that the board is scrambled, display AutoSolve button
             jQuery('li#autosolve').css('display', 'block');
         });
     }
 }
-
+/*
 function mouseEnter(elementIdStr) {
     // Bind the mouse enter to the second DIV.
     $(elementIdStr).bind("mouseenter mouseleave",
@@ -928,6 +927,8 @@ function mouseEnter(elementIdStr) {
         }
     );
 }
+
+ */
 /*
 function enableProfilePhotoRotate() {
     jQuery("img#profilePhoto").click(function () {
@@ -948,8 +949,8 @@ function enableProfilePhotoRotate() {
 /**********************/
 // one link upstages another
 function linkUpstage(inUpElementString, inDownElementString) {
-    var $inDownElement = $(inDownElementString); // link to be upstaged
-    var $inUpElement = $(inUpElementString);  // link to do the upstaging
+    let $inDownElement = $(inDownElementString); // link to be upstaged
+    let $inUpElement = $(inUpElementString);  // link to do the upstaging
     $inUpElement.hover(function () {
         $inUpElement.css("font-size", "22px");
         $inUpElement.css("left", "10px");
@@ -965,13 +966,13 @@ function linkUpstage(inUpElementString, inDownElementString) {
     });
 }
 function shake(shakeElementString, timesInt, distanceInt) {
-    var $shakeElement = $(shakeElementString);
+    let $shakeElement = $(shakeElementString);
     $shakeElement.effect('shake', {times: timesInt, direction: 'left', distance: distanceInt}, 200);
     $shakeElement.effect('shake', {times: timesInt, direction: 'down', distance: distanceInt}, 100);
 }
 function animateLogo(x) {
     jQuery('#animateLogo').removeClass().addClass(x);
-    var wait = window.setTimeout(function () {
+    let wait = window.setTimeout(function () {
         jQuery('#animateLogo').removeClass();
     }, 1300);
 }
@@ -1041,7 +1042,7 @@ function getSecondsPerMoveFloat() {
     if (debug && console && console.log) {
         console.log("getSecondsPerMoveStr = " + parseFloat(getSecondsPerMoveStr()));
     }
-    var mpm = $("#msPerMove").val();
+    let mpm = $("#msPerMove").val();
     if (debug && console && console.log) {
         console.log("499 mpm = " + mpm + "; getSecondsPerMoveStr = " + getSecondsPerMoveStr() + "; parseFloat(getSecondsPerMoveStr()) = " + parseFloat(getSecondsPerMoveStr()));
     }
@@ -1217,8 +1218,8 @@ function getNextMove() {// Called by the automatic solver, get move from queue.
 }
 // display array elements separated by commas in a String for an error message/alert
 function printArray(inArray) {
-    var inArrayStr = "inArrayStr[" + inArray.length + "]";
-    for (var i = 0; i < inArray.length; i++) {
+    let inArrayStr = "inArrayStr[" + inArray.length + "]";
+    for (let i = 0; i < inArray.length; i++) {
         inArrayStr += inArray[i] + ", ";
     }
     inArrayStr += "\n" + document.write(inArray);
@@ -1251,15 +1252,15 @@ function highlightCurrentMoveLocationCode(locCode) {
 }
 function unHighlightBlankTile() {
     updateBlankTileLoc();
-    var emptyTileClassName = document.getElementById(emptyLocationCode).className;
-    var modifiedEmptyTileClassName = emptyTileClassName.replace(/highlight/, "");
+    let emptyTileClassName = document.getElementById(emptyLocationCode).className;
+    let modifiedEmptyTileClassName = emptyTileClassName.replace(/highlight/, "");
     document.getElementById(emptyLocationCode).className = modifiedEmptyTileClassName;
 }
 function unHighlightAllTiles() {
     tiles = document.getElementById("letterbox").getElementsByTagName("a");
-    var currentTileClassName = "";
-    var modifiedTileClassName = "";
-    for (var i = 0; i < tiles.length; i++) {
+    let currentTileClassName = "";
+    let modifiedTileClassName = "";
+    for (let i = 0; i < tiles.length; i++) {
         currentTileClassName = tiles[i].className;
         modifiedTileClassName = currentTileClassName.replace(/highlight/, "");
         tiles[i].className = modifiedTileClassName;
@@ -1387,11 +1388,11 @@ function hidePleaseWait() {
 //}
 // Functions in alpha order start here
 function activateBoards() {
-    var boards = document.getElementById("thumbnails").getElementsByTagName("img");
-    for (var i = 0; i < boards.length; i++) {
+    let boards = document.getElementById("thumbnails").getElementsByTagName("img");
+    for (let i = 0; i < boards.length; i++) {
         boards[i].onclick = newBoard;
     }
-    var boardsLeft = document.getElementById("thumbnailsLeft").getElementsByTagName("img");
+    let boardsLeft = document.getElementById("thumbnailsLeft").getElementsByTagName("img");
     for (i = 0; i < boardsLeft.length; i++) {
         boardsLeft[i].onclick = newBoard;
     }
@@ -1422,31 +1423,31 @@ function cellIsEmpty(row, col) {
     return (row === emptyClRow) && (col === emptyClCol);
 }
 function cellNumIs16(myThis) {
-    var row = getRowNum(myThis);
-    var col = getColNum(myThis);
-    var squareNum49 = getSquareNumber(row, col);
+    let row = getRowNum(myThis);
+    let col = getColNum(myThis);
+    let squareNum49 = getSquareNumber(row, col);
     return ('' + row + col) === "16";
 }
 function clearAllTimers() {
-    var i;
-    for (i = 0; i < timerArray.length; i++) {
+    // var i;
+    for (let i = 0; i < timerArray.length; i++) {
         clearTimeout(timerArray[i]);
     }
 }
 /* given tile row and col, returns the number (as text) graphically in the square and
  contained in the className after the n, "tile b# t11 n12" */
 function getSquareNumber(row, col) {
-    var tileClassName = (tiles[cellIndex(row, col)].className);
-    var tileClasses = tileClassName.split(" ");
-    var squareNum = tileClasses[3].substring(1, 3);
+    let tileClassName = (tiles[cellIndex(row, col)].className);
+    let tileClasses = tileClassName.split(" ");
+    let squareNum = tileClasses[3].substring(1, 3);
     return squareNum;
 }
 function getTilesIndexIntegerFromSquareNumberText(tileNumText) {
     tiles = document.getElementById("letterbox").getElementsByTagName("a");
-    var tileClassName1 = "";
-    var tileClassesArr1 = [];
-    var tileNum1 = "";
-    for (var i = 0; i < tiles.length; i++) {
+    let tileClassName1 = "";
+    let tileClassesArr1 = [];
+    let tileNum1 = "";
+    for (let i = 0; i < tiles.length; i++) {
         tileClassName1 = tiles[i].className;  // "tile b1 t11 n12"
         tileClassesArr1 = tileClassName1.split(" ");  // "tile b1 t11 n12"
         tileNum1 = tileClassesArr1[3].substring(1, 3);
@@ -1458,27 +1459,23 @@ function getTilesIndexIntegerFromSquareNumberText(tileNumText) {
 }
 /* given tile array index, returns the number (as text) displayed graphically in the square (unless it is a numbers-hidden puzzle) and contained in the className after the n, "tile b# t11 n12" */
 function getSquareNumberAsText(index) {
-    var tileClassName = (tiles[index].className);
-    var tileClasses = tileClassName.split(" ");
-    var squareNum = tileClasses[3].substring(1, 3);
+    let tileClassName = (tiles[index].className);
+    let tileClasses = tileClassName.split(" ");
+    let squareNum = tileClasses[3].substring(1, 3);
     return squareNum;
     /* (tiles[cellIndex(row,col)].className).substring(13,15);  // example result: "12" of "tile b1 t11 n12" */
 }
 function getLocationCode(myThis) {
-    var tileClassName = myThis.className;
-    var tileClasses = tileClassName.split(" ");
+    let tileClassName = myThis.className;
+    let tileClasses = tileClassName.split(" ");
     return tileClasses[2].substring(1, 3);
 }
 function getRowNum(myThis) {
-    var locationCode = getLocationCode(myThis);
+    let locationCode = getLocationCode(myThis);
     return locationCode.charAt(0);
-    // var rowNum = (locationCode.charAt(0));
-    // return rowNum;
 }
 function getColNum(myThis) {
-    var locationCode = getLocationCode(myThis);
-    // var colNum = (locationCode.charAt(1));
-    // return colNum;
+    let locationCode = getLocationCode(myThis);
     return locationCode.charAt(1);
 }
 function incrementMoves() {
@@ -1504,7 +1501,7 @@ function incrementMoves() {
 }
 function makeRandomArray() {
     //var arr = [];
-    var arr = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]; // array of numbers
+    let arr = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]; // array of numbers
     arr.sort(function () {
         return Math.floor(Math.random() * 5) - 1
     }); // randomize the array
@@ -1512,17 +1509,14 @@ function makeRandomArray() {
 }
 // recall  // "tile b# t## n16"
 function makeHash() {
-    var hash = "";
+    let hash = "";
     tiles = document.getElementById("letterbox").getElementsByTagName("a");
-    for (var i = 0; i < tiles.length; i++) {
+    for (let i = 0; i < tiles.length; i++) {
         hash += getSquareNumberAsText(i);
     }
     return hash;
 }
 function makeSortedArray() {
-    //var arr2 = [];
-    // var arr2 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 16, 12, 13, 14, 15]; // array of numbers
-    // return arr2;
     return [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 16, 12, 13, 14, 15]; // array of numbers
 }
 function newBoard() {
@@ -1546,8 +1540,6 @@ function newBoard() {
 // add numbers 0-15 to each tile classname -> " n##"
 function placeTiles2() {
     // randomize the array
-    // var frequencyTable = makeArray();
-    // tileMap.splice(0,0,"11","12","13","14","21","22","23","24","31","32","33","34","41","42","43","44");
     var number = 0;
     var tileId = "";
     var classname = "";
@@ -1720,23 +1712,7 @@ function slideCol(currentCol, emptyClCol, myThis) {
         updateBlankTileLoc();
     }
 }
-/*
-function sortTiles() {
-    tiles = document.getElementById("letterbox").getElementsByTagName("a");
-    var frequencyTable = makeSortedArray();
-    for (var i = 0; i < tiles.length; i++) {
-        var number = frequencyTable[i];
-        // assign a number to each tile in the letterbox -- randomly
-        tiles[i].className = tiles[i].className.replace(/n\d{1,2}/, "n" + (number));
-        tiles[i].onclick = tileClick;
-    }
-    updateBlankTileLoc();
-    zeroMoves();
-    if (puzzleIsComplete()) {
-        win();
-    }
-}
-*/
+
 function solvedAlert() {
     replaceNodeText("solved", "Solved in");
 }
@@ -1859,19 +1835,21 @@ String.prototype.rtrim = function () {
 /***********/
 /*  HINTS  */
 /***********/
-
+/*
 function setHintTooltip() {
     if (solution) {
         var hintString = " " + getHint(solution) + " ";
         jQuery("#hintLink").attr("title", hintString)
     }
 }
+ */
 function setHintTooltipSolved() {
     if (solution) {
-        var hintString = " Solved! ";
+        let hintString = " Solved! ";
         jQuery("#hintLink").attr("title", hintString)
     }
 }
+/*
 function getHint(solution) {
     if (debug && console && console.log) {
         // console.log("getHint(solution), solution = " + solution);
@@ -1888,6 +1866,8 @@ function getHint(solution) {
     }
     return tileNum;
 }
+
+ */
 function playSolution(msPerMoveInt) {
     let solvedMap1;
     console.log("1830 msPerMoveInt = " + msPerMoveInt);
@@ -1903,13 +1883,10 @@ function playSolution(msPerMoveInt) {
     if ((isItScrambled()) && testArraySum136(getInputMapIntArray())) {
         //disableSolveButton();
         init();
-        // makeXmlHttpRequestDivHidden();
         // runControl(getMsPerMoveInt());
         console.log("1845 msPerMoveInt = " + msPerMoveInt);
 
         runControl(msPerMoveInt);
-        // solvedMap1 = runControlLoop(msPerMoveInt);
-
 
         if (debug && console && console.log) {
             console.log("scrambledMapString = " + makeScrambledMapString());
@@ -2014,9 +1991,9 @@ function isItScrambled() {
 }
 function isScrambled(inputMapIntArr) {
     console.log("running isScrambled, inputMapIntArray = " + inputMapIntArr.toString());
-    var k = 0;
-    var i;
-    for (i = 0; i < inputMapIntArr.length; i++) {
+    let k = 0;
+    // var i;
+    for (let i = 0; i < inputMapIntArr.length; i++) {
         k = i + 1;
         if (inputMapIntArr[i] !== (k)) {
             if (debug && console && console.log) {
@@ -2027,6 +2004,7 @@ function isScrambled(inputMapIntArr) {
     }
     return false;
 }
+/*
 function alertNotScrambled() {
     alert("<div id='alertNotScrambled' style='margin:0 auto; display: block; width: 178px; z-index: 1000;'>" +
         "<img src='images/error-60x.png' " +
@@ -2044,6 +2022,7 @@ function alertNotScrambled() {
     jQuery('.ui-dialog').css('z-index', '1000');
 }
 
+ */
 function getPuzzleComplete() {
     return puzzleComplete;
 }
