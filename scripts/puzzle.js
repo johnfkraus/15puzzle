@@ -660,7 +660,7 @@ function startPage() {
         }
     });
     // default auto-solve speed: 1000 ms/move
-    jQuery("#msPerMoveDropdown option[value='1000']").attr("selected", "selected");
+    // jQuery("#msPerMoveDropdown option[value='1000']").attr("selected", "selected");
     jQuery("div#black").css("background-color", "red");
     jQuery("div#black").fadeTo("slow", 0);
     jQuery("div#black").css("display", "none");
@@ -986,6 +986,9 @@ function rotateLetterBox() {
 function setMsPerMoveFromDropdown() {
     let secondsPerMoveStr = $('#msPerMove').find(":selected").text();
     let secondsPerMoveInt = parseInt(secondsPerMoveStr);
+    let msPerMoveIntLocal = secondsPerMoveInt * 1000;
+    console.log("989 msPerMoveIntLocal = " + msPerMoveIntLocal);
+
     setMsPerMoveInt(secondsPerMoveInt * 1000);
 }
 
@@ -1007,13 +1010,20 @@ function getMsPerMove() {
     if (debug && console && console.log) {
         console.log("msPerMove = " + parseInt(msPerMoveStr, 10));
     }
-    return parseInt(msPerMoveStr, 10);
+
+    let msPerMoveLocal =  parseInt(msPerMoveStr, 10);
+    console.log("1015 msPerMoveLocal = + " + msPerMoveLocal);
+    return msPerMoveLocal; // parseInt(msPerMoveStr, 10);
+
 }
 function getMsPerMoveInt() {
     if (debug && console && console.log) {
         console.log("502 getMsPerMoveInt() = " + getSecondsPerMoveFloat() * 1000);
     }
-    return getSecondsPerMoveFloat() * 1000;
+
+    let msPerMoveIntLocal = getSecondsPerMoveFloat() * 1000;
+    console.log("1025 msPerMoveLocal = " + msPerMoveIntLocal);
+    return msPerMoveIntLocal; // getSecondsPerMoveFloat() * 1000;
 }
 function getSecondsPerMoveStr() {
     let count001 = 0;
@@ -1022,7 +1032,8 @@ function getSecondsPerMoveStr() {
     if (debug && console && console.log && (count001 % 11 === 0)) {
         console.log("476 secondsPerMoveStr = $('#msPerMove').find(':selected').text() = " + $('#msPerMove').find(":selected").text());
     }
-    return $('#msPerMove').find(":selected").text();
+    let secondsPerMoveStrLocal =  $('#msPerMove').find(":selected").text();
+    return secondsPerMoveStrLocal; //  $('#msPerMove').find(":selected").text();
 }
 // called by select dropdown box on puzzle in index.html
 function getSecondsPerMoveFloat() {
@@ -1033,14 +1044,16 @@ function getSecondsPerMoveFloat() {
     if (debug && console && console.log) {
         console.log("499 mpm = " + mpm + "; getSecondsPerMoveStr = " + getSecondsPerMoveStr() + "; parseFloat(getSecondsPerMoveStr()) = " + parseFloat(getSecondsPerMoveStr()));
     }
-    return parseFloat(getSecondsPerMoveStr());
+    let secondsPerMoveFloatLocal =  parseFloat(getSecondsPerMoveStr());
+    console.log("secondsPerMoveFloatLocal = " + secondsPerMoveFloatLocal);
+    return secondsPerMoveFloatLocal; // parseFloat(getSecondsPerMoveStr());
 }
 function setMovesPerSecStrLabel(msPerMoveInt) {
     let movesPerSecInt = 0;
     let movesPerSecRounded = 0;
-    var rateUnitsStr = " moves/sec.";
-    var secondsPerMove = msPerMoveInt / 1000;
-    var movesPerSec = 1 / secondsPerMove;
+    let rateUnitsStr = " moves/sec.";
+    let secondsPerMove = msPerMoveInt / 1000;
+    let movesPerSec = 1 / secondsPerMove;
     if (msPerMoveInt !== 0) {
         //movesPerSecInt = 1 / (msPerMoveInt / 1000);
         movesPerSecInt = 1000 / msPerMoveInt;
@@ -1055,7 +1068,7 @@ function setMovesPerSecStrLabel(msPerMoveInt) {
             movesPerSecRounded = movesPerSecInt.toFixed(0);
         }
     }
-    var movesPerSecStr = movesPerSecRounded + rateUnitsStr;
+    let movesPerSecStr = movesPerSecRounded + rateUnitsStr;
     replaceNodeText("movesPerSec", movesPerSecStr);
 }
 // generate a random integer where LowerBound <= random <=UpperBound
@@ -1123,16 +1136,16 @@ function init() {
     // makeXmlHttpRequestDivHidden();
     let i;
     let j;
-    for (i = 0; i < map.length; i++) {
+    for (let i = 0; i < map.length; i++) {
         map[i] = 0;
     }
-    for (i = 0; i < 6; i++) {
+    for (let i = 0; i < 6; i++) {
         map[i] = 1;
         map[i * 6] = 1;
     }
     // put values in map[]
-    for (i = 0; i < 4; i++) {
-        for (j = 0; j < 4; j++) {
+    for (let i = 0; i < 4; i++) {
+        for (let j = 0; j < 4; j++) {
             map[7 + i * 6 + j] = (i * 4 + j + 1) & 15;
         }
     }
@@ -1163,7 +1176,6 @@ function init() {
     dragControl = false;
 }  // end init()
 function getNextMove() {// Called by the automatic solver, get move from queue.
-    //printMap();
     let i, j;
     //j = moves[moveNum];
     // console.log("typeof moveStack = " + (typeof moveStack));
@@ -1214,14 +1226,9 @@ function printArray(inArray) {
     inArrayStr += "\n" + document.write(inArray);
     return inArrayStr;
 }
-// returns value in map[] given horizontal row number (range=0-3) and vertical column number (range=0-3)
-// function inMap(h, v) {
-//    var index = parseInt(7 + h + 6 * v, 10);
-//    return map[index];
-//}
-// parameter = 1-15
+
 function highlightCurrentMove(currentMove) {
-    console.log("1224 running highlightCurrentMove");
+    // console.log("1224 running highlightCurrentMove");
     let locCode = tileMap[currentMove];
     highlightCurrentMoveLocationCode(locCode);
 }
@@ -1229,8 +1236,8 @@ function highlightCurrentMove(currentMove) {
 // same as id for tile anchors
 function highlightCurrentMoveLocationCode(locCode) {
     if (locCode) {
-        var txt;
-        var currentMoveDivClassName;
+        let txt;
+        let currentMoveDivClassName;
         try {
             currentMoveDivClassName = document.getElementById(locCode).className.trim();
         } catch (err) {
@@ -1241,7 +1248,6 @@ function highlightCurrentMoveLocationCode(locCode) {
             txt += "Click OK to continue.   1250\n\n";
             alert(txt);
         }
-        // console.log("currentMoveClassName = [" + currentMoveDivClassName + "]");
         document.getElementById(locCode).className = currentMoveDivClassName + " highlight";
     }
 }

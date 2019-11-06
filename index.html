@@ -159,12 +159,12 @@
                             <form id="msPerMoveDropdown" name="menuForm" action="">
                                 <select name="msPerMove" id="msPerMove"
                                         onchange="setMsPerMoveStrLabel();setMsPerMoveFromDropdown();getMsPerMoveInt();"
-                                        onload="getMsPerMove();">
+                                        onload="getMsPerMove();setMsPerMoveStrLabel();">
                                     <option value="10000">10</option>
                                     <option value="5000">5</option>
                                     <option value="3000">3</option>
                                     <option value="2000">2</option>
-                                    <option value="1000" selected="selected">1</option>
+                                    <option value="1000">1</option>
                                     <option value="800">0.8</option>
                                     <option value="500">0.5</option>
                                     <option value="300">0.3</option>
@@ -172,7 +172,7 @@
                                     <option value="100">0.1</option>
                                     <option value="50">0.05</option>
                                     <option value="25">0.025</option>
-                                    <option value="1">0.001</option>
+                                    <option value="1" selected="selected">0.001</option>
                                 </select>
                             </form>
                         </li>
