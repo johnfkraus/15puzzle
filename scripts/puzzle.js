@@ -79,8 +79,8 @@ function assert(condition, message) {
 }
 
 function makeDetour(dList, hole) {
-    i = 0;
-    j = hole;
+    let i = 0;
+    let j = hole;
     while (dList[i] >= 0) {
         holder[j] = holder[dList[i]];
         holder[dList[i]] = 0;
@@ -91,11 +91,11 @@ function makeDetour(dList, hole) {
 
 function moveHole(tg, ppos) {
     // document.getElementById("map").innerHTML = "map = " + map;
-    k = 0;
-    posCount = 0;
-    negCount = 0;
+    let k = 0;
+    let posCount = 0;
+    let negCount = 0;
     // document.getElementById("holder").innerHTML = "holder = " + holder;
-    i = locate(0);
+    let i = locate(0);
     // alert('line ' + new Error().lineNumber + (i & 3));
     // alert('line ' + new Error().lineNumber + (ppos & 3));
     let while_counter = 0;
@@ -645,7 +645,7 @@ var t01, t02, t03, t04, t06, t07;
 var timerArray = [t01, t02, t03, t04,  t06, t07];
 var tileMap = []; //new Array(0);
 var tiles;
-var turboSolveEnabledFlag = 0;
+// var turboSolveEnabledFlag = 0;
 var autoSolveEnabledFlag = 0;
 var vertical;
 function startPage() {
@@ -691,7 +691,7 @@ function startPage() {
     activateBoards();
     //enableHintButton();
     // ENABLE EFFECTS
-    enableProfilePhotoRotate();
+    // enableProfilePhotoRotate();
     //enableScrambleButtonHoverEffect();
     hidePleaseWait();
     //checkEvents();
@@ -890,7 +890,8 @@ function enableAutoSolveButton() {
     if (autoSolveEnabledFlag < 2) {
         $("a#solve").on("click", function () {
             if (isItScrambled()) {
-                playSolution(1000);
+                // solution speed msPerMoveInt, was 1000
+                playSolution(1);
             } else {
                 alertNotScrambled();
             }
@@ -910,6 +911,8 @@ function enableScrambleButton() {
             shake("div#letterboxmargin2", 2, 15);
             printTileClasses("383");
             t02 = setTimeout("rotateLetterBox()", 700);
+            // now that the board is scrambled, enable AutoSolve button
+            jQuery('li#autosolve').css('display', 'block');
         });
     }
 }
@@ -925,6 +928,7 @@ function mouseEnter(elementIdStr) {
         }
     );
 }
+/*
 function enableProfilePhotoRotate() {
     jQuery("img#profilePhoto").click(function () {
         jQuery("img#profilePhoto").rotate({
@@ -937,6 +941,8 @@ function enableProfilePhotoRotate() {
         });
     });
 }
+*/
+
 /**********************/
 /* GRATUITOUS EFFECTS */
 /**********************/
@@ -988,17 +994,12 @@ function setMsPerMoveFromDropdown() {
     let secondsPerMoveInt = parseInt(secondsPerMoveStr);
     let msPerMoveIntLocal = secondsPerMoveInt * 1000;
     console.log("989 msPerMoveIntLocal = " + msPerMoveIntLocal);
-
     setMsPerMoveInt(secondsPerMoveInt * 1000);
 }
 
 function setMsPerMoveStrLabel() {
     let secondsPerMoveStr = $('#msPerMove').find(":selected").text();
-    // let secondsPerMoveInt = parseInt(secondsPerMoveStr);
-    // setMsPerMoveInt(secondsPerMoveInt * 1000);
-
     let secondsPerMoveFloat = parseFloat(secondsPerMoveStr);
-    //msPerMoveInt = secondsPerMoveFloat * 1000; //Math.round(1 / secondsPerMoveFloat);
     setMovesPerSecStrLabel(secondsPerMoveFloat * 1000);
     if (debug && console && console.log) {
         console.log("setMsPerMoveStrLabel() secondsPerMoveFloat = " + secondsPerMoveFloat + "; msPerMoveInt = " + getMsPerMoveInt());
@@ -1116,16 +1117,13 @@ function runAuto() {
                     if (puzzleIsComplete()) {
                         win();
                         solvedAlert();
-                        //enableSolveButton();
                     }
                     automatic = false;
                     dragControl = oldDragControl;
                     clearTimeout(t);
                 } else {
                     lastMove = currentMove;
-                    //unHighlightCurrentMove(currentMove);
                     currentMove = getNextMove();
-                    //highlightCurrentMove(currentMove);
                     break;
                 }
             }
@@ -1160,7 +1158,7 @@ function init() {
         moves = solution.split(",");
         moveStack = solution.split(",");
         moveCount = moves.length;
-        for (i = 0; i < moves.length; i++) {
+        for (let i = 0; i < moves.length; i++) {
             moves[i] = moves[i].trim();
         }
     }
@@ -1529,6 +1527,7 @@ function makeSortedArray() {
 }
 function newBoard() {
     clearTimeout(t);
+    // enable AutoSolve button
     jQuery('li#autosolve').css('display', 'block');
     jQuery('li#scrambleCommand').css('display', 'block');
     var boardId = (this.id.charAt(0));
@@ -1830,7 +1829,7 @@ function win() {
     updateBlankTileLoc();
     setBlankTileImage();
     setHintTooltipSolved();
-    jQuery('li#autosolve').css('display', 'block');
+    // jQuery('li#autosolve').css('display', 'block');
     jQuery('li#scrambleCommand').css('display', 'block');
 }
 function zeroMoves() {
