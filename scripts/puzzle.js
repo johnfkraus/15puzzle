@@ -19,37 +19,37 @@
 
 let autoDisplace = [0, 5, 12, 21, 32, 32, 27, 20, 11, 0 ];
 let detour;
-var detour1 = [11, 10, 6, 7, 11, 10, 6, 7, 3, 2, 6, 7, 11, -1];
-var detour2 = [15, 14, 10, 11, 15, 14, 10, 11, 7, 6, 10, 11, 15, -1];
-var detour3 = [6, 2, 3, 7, -1];
-var detour4 = [3, 7, -1];
-var detour5 = [10, 6, 7, 11, -1];
-var detour6 = [7, 11, -1];
-var detour7 = [13, 12, 8, 9, -1];
-var detour8 = [8, 9, -1];
-var detour9 = [10, 14, 13, 9, 10, 14, 13, 9, 8, 12, 13, 9, 10, -1];
-var detour10 = [14, 13, 9, 10, -1];
-var detour11 = [9, 10, -1];
-var detour12 = [11, 15, 14, 10, 11, 15, 14, 10, 9, 13, 14, 10, 11, -1];
-// var dragControl = true;
+let detour1 = [11, 10, 6, 7, 11, 10, 6, 7, 3, 2, 6, 7, 11, -1];
+let detour2 = [15, 14, 10, 11, 15, 14, 10, 11, 7, 6, 10, 11, 15, -1];
+let detour3 = [6, 2, 3, 7, -1];
+let detour4 = [3, 7, -1];
+let detour5 = [10, 6, 7, 11, -1];
+let detour6 = [7, 11, -1];
+let detour7 = [13, 12, 8, 9, -1];
+let detour8 = [8, 9, -1];
+let detour9 = [10, 14, 13, 9, 10, 14, 13, 9, 8, 12, 13, 9, 10, -1];
+let detour10 = [14, 13, 9, 10, -1];
+let detour11 = [9, 10, -1];
+let detour12 = [11, 15, 14, 10, 11, 15, 14, 10, 9, 13, 14, 10, 11, -1];
+// let dragControl = true;
 // private int[] inputMap;
 // private int[] moves = new int[400];
-// var moves = Array.apply(null, Array(400)).map(Number.prototype.valueOf,0);
-// var moveCount = 0;
-// var moveNum = 0;
-var holder = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
-var i, j;
-var map = Array.apply(null, Array(36)).map(Number.prototype.valueOf,0);
-var moves = Array.apply(null, Array(400)).map(Number.prototype.valueOf,0);
-var ppath = Array.apply(null, Array(9)).map(Number.prototype.valueOf,0);
-var problemAndSolution;
-var roundabout = [11, 10, 14, 15, -1];
-var roundDisp = [-4, -3, 1, 5, 4, 3, -1, -5, -4, -3, 1, 5, 4, 3, -1, -5, -4, -3, 1, 5, 4, 3, -1, -5, -4];
-var rounddx = [0, 1, 1, 1, 0, -1, -1, -1, 0, 1, 1, 1, 0, -1, -1, -1, 0, 1, 1, 1, 0, -1, -1, -1, 0];
-var solution = [];
-var subGoals = [1, 0, 2, 0, 3, 4, 0, 5, 0, 6, 0, 7, 8, 0, 9, 13, 0, 10, 14, 0, 11, 12, 15, 0, 16];
-// var testMap3 = [1, 12, 11, 13, 5, 2, 7, 9, 10, 15, 3, 14, 6, 8, 4, 0];
-// var thisline = new Error().lineNumber;
+// let moves = Array.apply(null, Array(400)).map(Number.prototype.valueOf,0);
+// let moveCount = 0;
+// let moveNum = 0;
+let holder = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
+let i, j;
+let map = Array.apply(null, Array(36)).map(Number.prototype.valueOf,0);
+let moves = Array.apply(null, Array(400)).map(Number.prototype.valueOf,0);
+let ppath = Array.apply(null, Array(9)).map(Number.prototype.valueOf,0);
+let problemAndSolution;
+let roundabout = [11, 10, 14, 15, -1];
+let roundDisp = [-4, -3, 1, 5, 4, 3, -1, -5, -4, -3, 1, 5, 4, 3, -1, -5, -4, -3, 1, 5, 4, 3, -1, -5, -4];
+let rounddx = [0, 1, 1, 1, 0, -1, -1, -1, 0, 1, 1, 1, 0, -1, -1, -1, 0, 1, 1, 1, 0, -1, -1, -1, 0];
+let solution = [];
+let subGoals = [1, 0, 2, 0, 3, 4, 0, 5, 0, 6, 0, 7, 8, 0, 9, 13, 0, 10, 14, 0, 11, 12, 15, 0, 16];
+// let testMap3 = [1, 12, 11, 13, 5, 2, 7, 9, 10, 15, 3, 14, 6, 8, 4, 0];
+// let thisline = new Error().lineNumber;
 let solvedMap;
 
 function setSolvedMap(solvedMap) {
@@ -61,7 +61,7 @@ function getSolvedMap() {
 }
 
 assert(holder.length == 20, "assertion error, holder length = " + holder.length);
-// var displace;
+// let displace;
 
 function dec2bin(dec){
     // return (dec >>> 0).toString(2);
@@ -98,7 +98,7 @@ function moveHole(tg, ppos) {
     i = locate(0);
     // alert('line ' + new Error().lineNumber + (i & 3));
     // alert('line ' + new Error().lineNumber + (ppos & 3));
-    var while_counter = 0;
+    let while_counter = 0;
     while (Math.abs((i & 3) - (ppos & 3)) > 1 || Math.abs(i / 4 - ppos / 4) > 1) {
         // document.getElementById("map").innerHTML = "map = " + map;
         // document.getElementById("holder").innerHTML = "holder = " + holder;
@@ -1060,8 +1060,8 @@ function setMovesPerSecStrLabel(msPerMoveInt) {
 }
 // generate a random integer where LowerBound <= random <=UpperBound
 function makeRandInt() {
-    var Lower_Bound = 1;
-    var Upper_Bound = 3000;
+    let Lower_Bound = 1;
+    let Upper_Bound = 3000;
     return Math.floor((Lower_Bound + Math.random() * (Upper_Bound - Lower_Bound) + 0.5));
 }
 function randi() {
@@ -1073,8 +1073,9 @@ function randi() {
 /*****************/
 
 function runAuto() {
-    if (debug && window.console && console.log) {
-        // console.log("running puzzle.js run() line 554");
+
+    if (true || debug && window.console && console.log) {
+        console.log("running puzzle.js runAuto() line 1078");
     }
     while ((counter <= 9) && (automatic)) {
         if (automatic) { // (counter <= 9)   //(automatic)
@@ -1220,7 +1221,8 @@ function printArray(inArray) {
 //}
 // parameter = 1-15
 function highlightCurrentMove(currentMove) {
-    var locCode = tileMap[currentMove];
+    console.log("1224 running highlightCurrentMove");
+    let locCode = tileMap[currentMove];
     highlightCurrentMoveLocationCode(locCode);
 }
 // parameter is location code: string of two numbers, first=row, second=column, like 23 for row 2, column 3
@@ -1319,7 +1321,7 @@ function doHighlighting() {
 function runControl(msPerMoveInt) {
     setMsPerMoveInt(msPerMoveInt);
     if (true || debug && console && console.log) {
-        // console.log("1318 runControl() msPerMoveInt() = " + msPerMoveInt + "; local msPerMoveInt = " + msPerMoveInt);
+        console.log("1318 runControl() msPerMoveInt = " + msPerMoveInt + "; local msPerMoveInt = " + msPerMoveInt);
     }
     runAuto();  // UI makes a move
     //console.log("1316 getInputMapIntArray() = " + getInputMapIntArray());
@@ -1327,9 +1329,40 @@ function runControl(msPerMoveInt) {
     //console.log("1306 msPerMoveInt = " + msPerMoveInt);
     if(isItScrambled()) {
         t06 = setTimeout("doHighlighting()", msPerMoveInt / 2);
-////    t07 = setTimeout("runControl(getMsPerMoveInt())", msPerMoveInt);
         t07 = setTimeout("runControl(msPerMoveInt)", msPerMoveInt);
     }
+    // return getSolvedMap();
+}
+const sleepPromise = (milliseconds) => {
+    return new Promise(resolve => setTimeout(resolve, milliseconds))
+}
+function sleepSimulate(milliseconds) {
+    let start = new Date().getTime();
+    for (let i = 0; i < 1e7; i++) {
+        if ((new Date().getTime() - start) > milliseconds){
+            break;
+        }
+    }
+}
+function runControlLoop(msPerMoveInt) {
+    setMsPerMoveInt(msPerMoveInt);
+
+        let start = new Date().getTime();
+        for (let i = 0; i < 1e7; ) {
+            if ((new Date().getTime() - start) > msPerMoveInt/2){
+                doHighlighting();
+                // break;
+            }
+            if ((new Date().getTime() - start) > msPerMoveInt){
+                runAuto();  // UI makes a move
+                console.log("1316 msPerMoveInt = " + msPerMoveInt + ", getInputMapIntArray() = " + getInputMapIntArray());
+                setSolvedMap(getInputMapIntArray());
+                // break;
+            }
+            if(!(isItScrambled())) {
+                break;
+            }
+        }
     return getSolvedMap();
 }
 function showPleaseWait() {
@@ -1868,7 +1901,11 @@ function playSolution(msPerMoveInt) {
         // makeXmlHttpRequestDivHidden();
         // runControl(getMsPerMoveInt());
         console.log("1845 msPerMoveInt = " + msPerMoveInt);
-        solvedMap1 = runControl(msPerMoveInt);
+
+        runControl(msPerMoveInt);
+        // solvedMap1 = runControlLoop(msPerMoveInt);
+
+
         if (debug && console && console.log) {
             console.log("scrambledMapString = " + makeScrambledMapString());
         }

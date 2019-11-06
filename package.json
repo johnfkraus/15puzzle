@@ -2,7 +2,7 @@
   "name": "15puzzle",
   "version": "1.0.0",
   "description": "[Classic 15-tile puzzle but with a few twists](http://johnfkraus.com/15puzzle/index.html \"John's 15-Tile Puzzle\").  It solves itself.",
-  "main": "index.js",
+  "main": "archives/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
