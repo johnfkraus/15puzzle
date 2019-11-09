@@ -1925,24 +1925,7 @@ function isScrambled(inputMapIntArr) {
     }
     return false;
 }
-/*
-function alertNotScrambled() {
-    alert("<div id='alertNotScrambled' style='margin:0 auto; display: block; width: 178px; z-index: 1000;'>" +
-        "<img src='images/error-60x.png' " +
-        "align='middle' alt='Error!!!'/>" +
-        "<span style='font-weight:bold;font-size:24px;position:relative; top:10px;left:10px;z-index: 1000'>OOPS!</span></div><br />" +
-        "You clicked \"Solve\".<br />This 15 Tile Puzzle is already solved, however.<br />" +
-        "The tiles are in numerical order and are not scrambled.<br />" +
-        "The current tile order is: <br />" + inputMapIntArr.toString() + "<br />(where 16 represents the empty space)<br /><br />" +
-        "No tiles, therefore, can be moved and no solution<br /> can be computed.<br />" +
-        "To play, click \"Scramble\" or <em>Refresh</em> the web page.<br />" +
-        "<br />Or click one of the alternate game board icons.");
-    jQuery('.ui-dialog').css('left', '40px;');
-    //jQuery(".ui-dialog").css('width', '600px;');
-    jQuery('.ui-dialog').css('width', '600px');
-    jQuery('.ui-dialog').css('z-index', '1000');
-}
- */
+
 function getPuzzleComplete() {
     return puzzleComplete;
 }
@@ -1955,7 +1938,8 @@ function showData() {
     //jQuery('p#dataHere').append(msPerMoveInt);
     //jQuery('p#dataHere').innerHTML = msPerMoveInt;
     if (debug && console && console.log) {
-        console.log("1483 msPerMoveInt = " + getMsPerMoveInt() + "; secPerMoveFl = " + getSecondsPerMoveFloat() + "; OK = " +
+        console.log("1483 msPerMoveInt = " + getMsPerMoveInt() +
+          "; secPerMoveFl = " + getSecondsPerMoveFloat() + "; OK = " +
             (getMsPerMoveInt() == getSecondsPerMoveFloat() * 1000));
     }
 }
