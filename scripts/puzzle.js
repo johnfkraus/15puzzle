@@ -1552,21 +1552,6 @@ function placeTiles() {
     }
     updateBlankTileLoc();
 }
-// add numbers 0-15 to each tile classname -> " n##" randomly
-/*
-function placeTiles() {
-    tiles = document.getElementById("letterbox").getElementsByTagName("a");
-    // randomize the array
-    let frequencyTable = makeRandomArray();
-    for (let i = 0; i < tiles.length; i++) {
-        let number = frequencyTable[i];
-        // assign a number to each tile in the letterbox -- randomly
-        tiles[i].className = tiles[i].className + ' n' + number;
-        tiles[i].onclick = tileClick;
-    }
-    updateBlankTileLoc();
-}
- */
 function puzzleIsComplete() {
     var hash = makeHash();
     if ((hash == "12345678910111612131415") || (hash == "12316456789101112131415") || (hash == "12345671689101112131415") ||
@@ -1587,22 +1572,6 @@ function sleep(ms) {
     dt.setTime(dt.getTime() + ms);
     while (new Date().getTime() < dt.getTime());
 }
-/*
-function showClasses() {
-    tiles = document.getElementById("letterbox").getElementsByTagName("a");
-    //tiles = letterboxDiv.getElementsByTagName("a");
-    var cellText = "";
-    var numText = "";
-    for (var i = 0; i < tiles.length; i++) {
-        cellText += "(" + i + ") " + tiles[i].className + ", ";
-        numText += "(" + i + ") " + (tiles[i].className).substring(10, 13) + ", ";
-        if (( (i + 1) % 4 == 0 ) || (i == 15)) {
-            cellText += "<br />";
-            numText += "<br />";
-        }
-    }
-}
-*/
 function slideRow(currentRow, emptyClRow, myThis) {
     let tileText = "";
     let emptyLocationCode = '' + emptyClRow + emptyClCol;
@@ -1658,10 +1627,10 @@ function slideRow(currentRow, emptyClRow, myThis) {
     }
 }
 function slideCol(currentCol, emptyClCol, myThis) {
-    var emptyLocationCode = '' + emptyClRow + emptyClCol;
-    var tileText = '';
-    var shiftNum = (currentRow - emptyClRow);
-    var shiftNumSign = 0;
+    let emptyLocationCode = '' + emptyClRow + emptyClCol;
+    let tileText = '';
+    let shiftNum = (currentRow - emptyClRow);
+    let shiftNumSign = 0;
     if (shiftNum < 0) {
         shiftNumSign = -1
     } else if (shiftNum > 0) {
@@ -1676,8 +1645,8 @@ function slideCol(currentCol, emptyClCol, myThis) {
     updateBlankTileLoc();
     //var x = shiftNum;
     //var y = shiftNumSign;
-    var numberedCellRow = 0;
-    var i = Math.abs(shiftNum);
+    let numberedCellRow = 0;
+    let i = Math.abs(shiftNum);
     for (i; i > 0; i--) {
         if (false) {
             for (var j = 0; j < tiles.length; j++) {
@@ -1689,12 +1658,12 @@ function slideCol(currentCol, emptyClCol, myThis) {
         }
         updateBlankTileLoc();
         numberedCellRow = parseInt(emptyClRow, 10) + parseInt(shiftNumSign, 10);
-        var numberedCellClassName = (tiles[cellIndex(numberedCellRow, currentCol)].className);  // "tile b1 tx3 n?"
-        var emptyCellClassName = (tiles[cellIndex(emptyClRow, currentCol)].className);  // "tile b1 tx4 n16"
-        var numberedCellNum = getSquareNumber(numberedCellRow, currentCol);
-        var modifiedNumberedCellClassName = numberedCellClassName.replace(/n\d{1,2}/, "n0");
+        let numberedCellClassName = (tiles[cellIndex(numberedCellRow, currentCol)].className);  // "tile b1 tx3 n?"
+        let emptyCellClassName = (tiles[cellIndex(emptyClRow, currentCol)].className);  // "tile b1 tx4 n16"
+        let numberedCellNum = getSquareNumber(numberedCellRow, currentCol);
+        let modifiedNumberedCellClassName = numberedCellClassName.replace(/n\d{1,2}/, "n0");
         (tiles[cellIndex(numberedCellRow, currentCol)].className) = modifiedNumberedCellClassName;
-        var modifiedEmptyCellClassName = emptyCellClassName.replace(/n\d{1,2}/, "n" + numberedCellNum);
+        let modifiedEmptyCellClassName = emptyCellClassName.replace(/n\d{1,2}/, "n" + numberedCellNum);
         (tiles[cellIndex(emptyClRow, currentCol)].className) = modifiedEmptyCellClassName;
         updateBlankTileLoc();
     }
@@ -1760,14 +1729,14 @@ function updateBlankTileLoc() {
     return false;
 }
 function getBlankTileLocCodeStr() {
-    var blankTileLocCodeStr;
+    let blankTileLocCodeStr;
     tiles = document.getElementById("letterbox").getElementsByTagName("a");
-    for (var i = 0; i < tiles.length; i++) {
+    for (let i = 0; i < tiles.length; i++) {
         tiles[i].onclick = tileClick;
-        var tileClassName = (tiles[i].className);
-        var tileClasses = tileClassName.split(" ");
-        var numberClass = tileClasses[3];
-        var locationClass = tileClasses[2];
+        let tileClassName = (tiles[i].className);
+        let tileClasses = tileClassName.split(" ");
+        let numberClass = tileClasses[3];
+        let locationClass = tileClasses[2];
         if ((numberClass.substring(1, 3) === "0") ||
             (numberClass.substring(1, 3) === "16")) {
             blankTileLocCodeStr = locationClass.substring(1, 3);
@@ -1802,7 +1771,7 @@ function zeroMoves() {
 }
 /* used with unhide to hide/unhide blocks of text */
 function replaceNodeText(id, newText) {
-    var node = document.getElementById(id);
+    let node = document.getElementById(id);
     while (node.firstChild)
         node.removeChild(node.firstChild);
     node.appendChild(document.createTextNode(newText));
@@ -1819,40 +1788,7 @@ String.prototype.ltrim = function () {
 String.prototype.rtrim = function () {
     return this.replace(/\s+$/, "");
 };
-/***********/
-/*  HINTS  */
-/***********/
-/*
-function setHintTooltip() {
-    if (solution) {
-        var hintString = " " + getHint(solution) + " ";
-        jQuery("#hintLink").attr("title", hintString)
-    }
-}
-function setHintTooltipSolved() {
-    if (solution) {
-        let hintString = " Solved! ";
-        jQuery("#hintLink").attr("title", hintString)
-    }
-}
-function getHint(solution) {
-    if (debug && console && console.log) {
-        // console.log("getHint(solution), solution = " + solution);
-    }
-    var solutionArr = solution.split(",");
-    var tileIndex = solutionArr[0];
-    var boardArrayIndex = parseInt(solutionArr[0], 10) + 1;
-    var locCode = tileMap[tileIndex];
-    var tileNum = getSquareNumberAsText(tileIndex);
-    var hintString = ("hint = rowCol:" + locCode + "; arrayIndex:" + boardArrayIndex + "; tile#:" + tileNum);
-    if (debug && console && console.log) {
-        // console.log(hintString);
-        //console.log("hint = (" + locCode + ")" + (parseInt(hint, 10)) + "#" + tileNum);
-    }
-    return tileNum;
-}
 
- */
 function playSolution(msPerMoveInt) {
     let solvedMap1;
     console.log("1830 msPerMoveInt = " + msPerMoveInt);
