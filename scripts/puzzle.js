@@ -1032,7 +1032,7 @@ function getSecondsPerMoveStr() {
     count001 += 1;
     let secondsPerMoveStr = $('#msPerMove').find(":selected").text();
     if (debug && console && console.log && (count001 % 11 === 0)) {
-        console.log("476 secondsPerMoveStr = $('#msPerMove').find(':selected').text() = " + $('#msPerMove').find(":selected").text());
+        console.log("1035 secondsPerMoveStr = $('#msPerMove').find(':selected').text() = " + $('#msPerMove').find(":selected").text());
     }
     let secondsPerMoveStrLocal =  $('#msPerMove').find(":selected").text();
     return secondsPerMoveStrLocal; //  $('#msPerMove').find(":selected").text();
@@ -1088,7 +1088,6 @@ function randi() {
 /*****************/
 
 function runAuto() {
-
     if (true || debug && window.console && console.log) {
         console.log("running puzzle.js runAuto() line 1078");
     }
@@ -1286,10 +1285,9 @@ function swap(currentMove) {
         txt += "Error description: " + err.message + "<br /><br /><br />";
         txt += "Click OK to continue.  1291<br /><br />";
         alert(txt);
-        //initPageScramble();
     }
     var emptyCellClassName = document.getElementById(emptyLocationCode).className;  // "tile b1 tx4 n16"
-    var numberClass = "";
+    let numberClass = "";
     var numberedCellTileClasses = [];
     try {
         // console.log("numberedCellClassName = " + numberedCellClassName);
@@ -1341,6 +1339,8 @@ function runControl(msPerMoveInt) {
 const sleepPromise = (milliseconds) => {
     return new Promise(resolve => setTimeout(resolve, milliseconds))
 }
+
+/*
 function sleepSimulate(milliseconds) {
     let start = new Date().getTime();
     for (let i = 0; i < 1e7; i++) {
@@ -1349,9 +1349,9 @@ function sleepSimulate(milliseconds) {
         }
     }
 }
+*/
 function runControlLoop(msPerMoveInt) {
     setMsPerMoveInt(msPerMoveInt);
-
         let start = new Date().getTime();
         for (let i = 0; i < 1e7; ) {
             if ((new Date().getTime() - start) > msPerMoveInt/2){
@@ -1398,7 +1398,7 @@ function activateBoards() {
     }
 }
 function unsetBlankTileImage() {
-    var emptyCellClassName = (tiles[cellIndex(emptyClRow, emptyClCol)].className);  // "tile tx1 n?"
+    let emptyCellClassName = (tiles[cellIndex(emptyClRow, emptyClCol)].className);  // "tile tx1 n?"
     emptyCellClassName = emptyCellClassName.replace(/n16/, "n0");
     if (debug && console && console.log) {
         console.log("786 emptyCellClassName = " + emptyCellClassName);
@@ -1406,7 +1406,7 @@ function unsetBlankTileImage() {
     (tiles[cellIndex(emptyClRow, emptyClCol)].className) = emptyCellClassName;
 }
 function setBlankTileImage() {
-    var emptyCellClassName = (tiles[cellIndex(emptyClRow, emptyClCol)].className);  // "tile b# t## n16"
+    let emptyCellClassName = (tiles[cellIndex(emptyClRow, emptyClCol)].className);  // "tile b# t## n16"
     emptyCellClassName = emptyCellClassName.replace(/n0/, "n16");
     if (debug && console && console.log) {
         console.log("786 emptyCellClassName = " + emptyCellClassName);
@@ -1500,7 +1500,6 @@ function incrementMoves() {
     }
 }
 function makeRandomArray() {
-    //var arr = [];
     let arr = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]; // array of numbers
     arr.sort(function () {
         return Math.floor(Math.random() * 5) - 1
@@ -1524,12 +1523,12 @@ function newBoard() {
     // enable AutoSolve button
     jQuery('li#autosolve').css('display', 'block');
     jQuery('li#scrambleCommand').css('display', 'block');
-    var boardId = (this.id.charAt(0));
-    var boardClassName = "tile b" + boardId;
-    var newTileClassName = "";
+    let boardId = (this.id.charAt(0));
+    let boardClassName = "tile b" + boardId;
+    let newTileClassName = "";
     tiles = document.getElementById("letterbox").getElementsByTagName("a");
-    var oldTileClassName;
-    for (var i = 0; i < tiles.length; i++) {
+    let oldTileClassName;
+    for (let i = 0; i < tiles.length; i++) {
         oldTileClassName = tiles[i].className;
         newTileClassName = tiles[i].className.replace(/tile b\d/, boardClassName);
         tiles[i].className = newTileClassName;
@@ -1540,8 +1539,8 @@ function newBoard() {
 // add numbers 0-15 to each tile classname -> " n##"
 function placeTiles2() {
     // randomize the array
-    var number = 0;
-    var tileId = "";
+    let number = 0;
+    let tileId = "";
     var classname = "";
     var currentElem;
     for (var i = 0; i < simpleMap.length; i++) {
@@ -1565,9 +1564,9 @@ function placeTiles2() {
 function placeTiles() {
     tiles = document.getElementById("letterbox").getElementsByTagName("a");
     // randomize the array
-    var frequencyTable = makeRandomArray();
-    for (var i = 0; i < tiles.length; i++) {
-        var number = frequencyTable[i];
+    let frequencyTable = makeRandomArray();
+    for (let i = 0; i < tiles.length; i++) {
+        let number = frequencyTable[i];
         // assign a number to each tile in the letterbox -- randomly
         tiles[i].className = tiles[i].className + ' n' + number;
         tiles[i].onclick = tileClick;
@@ -1590,7 +1589,7 @@ function replaceContent(show) {
     document.getElementById("your_div").innerHTML = display[show];
 }
 function sleep(ms) {
-    var dt = new Date();
+    let dt = new Date();
     dt.setTime(dt.getTime() + ms);
     while (new Date().getTime() < dt.getTime());
 }
