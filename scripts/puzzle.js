@@ -1541,9 +1541,9 @@ function placeTiles2() {
     // randomize the array
     let number = 0;
     let tileId = "";
-    var classname = "";
-    var currentElem;
-    for (var i = 0; i < simpleMap.length; i++) {
+    let classname = "";
+    let currentElem;
+    for (let i = 0; i < simpleMap.length; i++) {
         number = simpleMap[i];
         tileId = tileMap[i];
         currentElem = document.getElementById(tileId);
@@ -1561,6 +1561,7 @@ function placeTiles2() {
     updateBlankTileLoc();
 }
 // add numbers 0-15 to each tile classname -> " n##" randomly
+/*
 function placeTiles() {
     tiles = document.getElementById("letterbox").getElementsByTagName("a");
     // randomize the array
@@ -1573,6 +1574,7 @@ function placeTiles() {
     }
     updateBlankTileLoc();
 }
+ */
 function puzzleIsComplete() {
     var hash = makeHash();
     if ((hash == "12345678910111612131415") || (hash == "12316456789101112131415") || (hash == "12345671689101112131415") ||
@@ -1610,10 +1612,10 @@ function showClasses() {
 }
 */
 function slideRow(currentRow, emptyClRow, myThis) {
-    var tileText = "";
-    var emptyLocationCode = '' + emptyClRow + emptyClCol;
-    var shiftNum = currentCol - emptyClCol;
-    var shiftNumSign = 0;
+    let tileText = "";
+    let emptyLocationCode = '' + emptyClRow + emptyClCol;
+    let shiftNum = currentCol - emptyClCol;
+    let shiftNumSign = 0;
     if (shiftNum < 0) {
         shiftNumSign = -1
     } else if (shiftNum > 0) {
@@ -1626,18 +1628,18 @@ function slideRow(currentRow, emptyClRow, myThis) {
         alert("currentRow!=emptyClRow!   ");
     }
     updateBlankTileLoc();
-    var x = shiftNum;
-    var y = shiftNumSign;
-    var numberedCellCol = 0;
-    var alerta = document.getElementById("alerta");
-    var alert0 = document.getElementById("alert0");
-    var alert1 = document.getElementById("alert1");
-    var alert2 = document.getElementById("alert2");
-    var alert3 = document.getElementById("alert3");
-    var alert4 = document.getElementById("alert4");
-    var alert5 = document.getElementById("alert5");
-    var alert6 = document.getElementById("alert6");
-    var alert7 = document.getElementById("alert7");
+    let x = shiftNum;
+    let y = shiftNumSign;
+    let numberedCellCol = 0;
+
+
+    //var alert1 = document.getElementById("alert1");
+    //var alert2 = document.getElementById("alert2");
+    //var alert3 = document.getElementById("alert3");
+    //var alert4 = document.getElementById("alert4");
+    //var alert5 = document.getElementById("alert5");
+
+    //var alert7 = document.getElementById("alert7");
     var i = Math.abs(shiftNum);
     for (i; i > 0; i--) {
         if (false) {
@@ -1649,10 +1651,13 @@ function slideRow(currentRow, emptyClRow, myThis) {
             }
         }
         updateBlankTileLoc();
+        var alert6 = document.getElementById("alert6");
         if (false) {
             alert6.innerHTML += " emptyLocationCode = " + emptyLocationCode + " emptyClCol = " + emptyClCol + "; ";
         }
         numberedCellCol = parseInt(emptyClCol, 10) + parseInt(shiftNumSign, 10);
+        let alerta = document.getElementById("alerta");
+        let alert0 = document.getElementById("alert0");
         if (false) {
             alerta.innerHTML +=
                 " numberedCellCol = emptyClCol (" + parseInt(emptyClCol, 10) + ") + " + parseInt(shiftNumSign, 10) + " = " + numberedCellCol + "; ";
