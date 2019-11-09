@@ -678,7 +678,7 @@ function startPage() {
     initMap();
     scramble();
     makeSimpleMap();
-    placeTiles2();
+    placeTiles();
     replaceNodeText("solved", " ");
     sleep(50);
     getSolution();
@@ -706,7 +706,7 @@ function initPageScramble() {
     initMap();
     scramble();
     makeSimpleMap();
-    placeTiles2();
+    placeTiles();
     replaceNodeText("solved", " ");
     sleep(50);
     getSolution();
@@ -1529,7 +1529,7 @@ function newBoard() {
     updateBlankTileLoc();
 }
 // add numbers 0-15 to each tile classname -> " n##"
-function placeTiles2() {
+function placeTiles() {
     // randomize the array
     let number = 0;
     let tileId = "";
@@ -1623,15 +1623,6 @@ function slideRow(currentRow, emptyClRow, myThis) {
     let x = shiftNum;
     let y = shiftNumSign;
     let numberedCellCol = 0;
-
-
-    //var alert1 = document.getElementById("alert1");
-    //var alert2 = document.getElementById("alert2");
-    //var alert3 = document.getElementById("alert3");
-    //var alert4 = document.getElementById("alert4");
-    //var alert5 = document.getElementById("alert5");
-
-    //var alert7 = document.getElementById("alert7");
     let i = Math.abs(shiftNum);
     for (i; i > 0; i--) {
         if (false) {
