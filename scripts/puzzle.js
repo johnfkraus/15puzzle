@@ -1266,14 +1266,14 @@ function unHighlightAllTiles() {
     }
 }
 function swap(currentMove) {
-    var txt;
+    let txt;
     // var numberedCellTileClasses;
-    var numberedCellClassName;
+    let numberedCellClassName;
     if (debug && window.console && console.log) {
-        console.log("698 currentMove = " + currentMove);
-        console.log("699 tileMap[] = " + tileMap.toString());
+        console.log("1273 currentMove = " + currentMove);
+        console.log("1274 tileMap[] = " + tileMap.toString());
     }
-    var currentMoveId = tileMap[currentMove];
+    let currentMoveId = tileMap[currentMove];
     if (updateBlankTileLoc() === false) {
         alert("1283 can't find empty tile");
     }
@@ -1286,9 +1286,9 @@ function swap(currentMove) {
         txt += "Click OK to continue.  1291<br /><br />";
         alert(txt);
     }
-    var emptyCellClassName = document.getElementById(emptyLocationCode).className;  // "tile b1 tx4 n16"
+    let emptyCellClassName = document.getElementById(emptyLocationCode).className;  // "tile b1 tx4 n16"
     let numberClass = "";
-    var numberedCellTileClasses = [];
+    let numberedCellTileClasses = [];
     try {
         // console.log("numberedCellClassName = " + numberedCellClassName);
         numberedCellTileClasses = numberedCellClassName.split(/ +/);
@@ -1306,12 +1306,12 @@ function swap(currentMove) {
     //console.log("numberedCellTileClasses[3] = " + numberedCellTileClasses[3]);
     numberClass = numberedCellTileClasses[3];
     //console.log("numberClass = " + numberClass);
-    var numberOnTile = parseInt(numberClass.substring(1, 3), 10);
-    var modifiedEmptyCellClassName = emptyCellClassName.replace(/n\d{1,2}/, "n" + numberOnTile);
+    let numberOnTile = parseInt(numberClass.substring(1, 3), 10);
+    let modifiedEmptyCellClassName = emptyCellClassName.replace(/n\d{1,2}/, "n" + numberOnTile);
     document.getElementById(emptyLocationCode).className = modifiedEmptyCellClassName;
     unHighlightAllTiles();
     highlightCurrentMoveLocationCode(emptyLocationCode);
-    var modifiedNumberedCellClassName = numberedCellClassName.replace(/n\d{1,2}/, "n0");
+    let modifiedNumberedCellClassName = numberedCellClassName.replace(/n\d{1,2}/, "n0");
     document.getElementById(currentMoveId).className = modifiedNumberedCellClassName;
     updateBlankTileLoc();
     unHighlightBlankTile();
@@ -1393,7 +1393,7 @@ function activateBoards() {
         boards[i].onclick = newBoard;
     }
     let boardsLeft = document.getElementById("thumbnailsLeft").getElementsByTagName("img");
-    for (i = 0; i < boardsLeft.length; i++) {
+    for (let i = 0; i < boardsLeft.length; i++) {
         boardsLeft[i].onclick = newBoard;
     }
 }
@@ -1640,7 +1640,7 @@ function slideRow(currentRow, emptyClRow, myThis) {
     //var alert5 = document.getElementById("alert5");
 
     //var alert7 = document.getElementById("alert7");
-    var i = Math.abs(shiftNum);
+    let i = Math.abs(shiftNum);
     for (i; i > 0; i--) {
         if (false) {
             for (var j = 0; j < tiles.length; j++) {
@@ -1651,7 +1651,7 @@ function slideRow(currentRow, emptyClRow, myThis) {
             }
         }
         updateBlankTileLoc();
-        var alert6 = document.getElementById("alert6");
+        let alert6 = document.getElementById("alert6");
         if (false) {
             alert6.innerHTML += " emptyLocationCode = " + emptyLocationCode + " emptyClCol = " + emptyClCol + "; ";
         }
