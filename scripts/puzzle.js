@@ -1656,12 +1656,12 @@ function slideRow(currentRow, emptyClRow, myThis) {
             alert0.innerHTML += "sNum = " + i + "; ";
             display[0] += " shiftNum = " + i + "; ";
         }
-        var numberedCellClassName = (tiles[cellIndex(currentRow, numberedCellCol)].className);  // "tile b1 tx3 n?"
-        var emptyCellClassName = (tiles[cellIndex(currentRow, emptyClCol)].className);  // "tile b1 tx4 n16"
-        var numberedCellNum = getSquareNumber(currentRow, numberedCellCol);
-        var modifiedNumberedCellClassName = numberedCellClassName.replace(/n\d{1,2}/, "n0");
+        let numberedCellClassName = (tiles[cellIndex(currentRow, numberedCellCol)].className);  // "tile b1 tx3 n?"
+        let emptyCellClassName = (tiles[cellIndex(currentRow, emptyClCol)].className);  // "tile b1 tx4 n16"
+        let numberedCellNum = getSquareNumber(currentRow, numberedCellCol);
+        let modifiedNumberedCellClassName = numberedCellClassName.replace(/n\d{1,2}/, "n0");
         (tiles[cellIndex(currentRow, numberedCellCol)].className) = modifiedNumberedCellClassName;
-        var modifiedEmptyCellClassName = emptyCellClassName.replace(/n\d{1,2}/, "n" + numberedCellNum);
+        let modifiedEmptyCellClassName = emptyCellClassName.replace(/n\d{1,2}/, "n" + numberedCellNum);
         (tiles[cellIndex(currentRow, emptyClCol)].className) = modifiedEmptyCellClassName;
         updateBlankTileLoc();
     }
