@@ -601,10 +601,10 @@ var displace = 0;
 var display = [];
 var dragControl = true;
 var dragging = 0;
-var emptyClCol = 0;
-var emptyClRow = 0;
+let emptyClCol = 0;
+let emptyClRow = 0;
 var emptyLocationCode = "";
-var hint = -1;
+// var hint = -1;
 //var hintTileNumStr;
 // is hinted tile selection highlighted?
 //var hintShowing = false;
@@ -740,7 +740,7 @@ function initVars() {
     dragControl = true;
     dragging = 0;
     emptyLocationCode = "";
-    hint = -1;
+    // hint = -1;
     inputMapIntArr = new Array(16);
     lastMove = "";
     logString = "";
@@ -751,13 +751,8 @@ function initVars() {
     moveStack = []; //new Array();
     if (debug) {
         //msPerMoveInt = 1;
-
-
         // this might work:
         // jQuery("option[value='1']").attr('selected', 'selected');
-
-
-
         //jQuery("#msPerMoveDropdown option[value='1000']").attr("selected", "selected");
     } else {
         //msPerMoveInt = getMsPerMoveInt(); // 1000;
@@ -1012,17 +1007,14 @@ function getMsPerMove() {
     if (debug && console && console.log) {
         console.log("msPerMove = " + parseInt(msPerMoveStr, 10));
     }
-
     let msPerMoveLocal =  parseInt(msPerMoveStr, 10);
     console.log("1015 msPerMoveLocal = + " + msPerMoveLocal);
     return msPerMoveLocal; // parseInt(msPerMoveStr, 10);
-
 }
 function getMsPerMoveInt() {
     if (debug && console && console.log) {
         console.log("502 getMsPerMoveInt() = " + getSecondsPerMoveFloat() * 1000);
     }
-
     let msPerMoveIntLocal = getSecondsPerMoveFloat() * 1000;
     console.log("1025 msPerMoveLocal = " + msPerMoveIntLocal);
     return msPerMoveIntLocal; // getSecondsPerMoveFloat() * 1000;
@@ -1479,11 +1471,11 @@ function getColNum(myThis) {
     return locationCode.charAt(1);
 }
 function incrementMoves() {
-    var movesDiv = document.getElementById("moves");
-    var movesNode = movesDiv.firstChild;
-    var movesText = movesNode.nodeValue;
-    var pieces = movesText.split(" ");
-    var currentMoves = parseInt(pieces[0], 10);
+    let movesDiv = document.getElementById("moves");
+    let movesNode = movesDiv.firstChild;
+    let movesText = movesNode.nodeValue;
+    let pieces = movesText.split(" ");
+    let currentMoves = parseInt(pieces[0], 10);
     currentMoves += 1;
     if ((currentMoves === 1) || (moveNum === 1)) {
         if (automatic === true) {
@@ -1759,13 +1751,13 @@ function tileClick() {
 }  // end function tileClick()
 function updateBlankTileLoc() {
     tiles = document.getElementById("letterbox").getElementsByTagName("a");
-    for (var i = 0; i < tiles.length; i++) {
+    for (let i = 0; i < tiles.length; i++) {
         tiles[i].onclick = tileClick;
-        var tileClassName = (tiles[i].className);
-        var tileClasses = tileClassName.split(" ");
-        var numberClass = tileClasses[3];
-        var locationClass = tileClasses[2];
-        var x = numberClass.substring(1, 3);
+        let tileClassName = (tiles[i].className);
+        let tileClasses = tileClassName.split(" ");
+        let numberClass = tileClasses[3];
+        let locationClass = tileClasses[2];
+        let x = numberClass.substring(1, 3);
         if ((numberClass.substring(1, 3) === "0") ||
             (numberClass.substring(1, 3) === "16")) {
             emptyLocationCode = locationClass.substring(1, 3);
@@ -1808,13 +1800,13 @@ function win() {
     unHighlightAllTiles();
     updateBlankTileLoc();
     setBlankTileImage();
-    setHintTooltipSolved();
+    // setHintTooltipSolved();
     // jQuery('li#autosolve').css('display', 'block');
     jQuery('li#scrambleCommand').css('display', 'block');
 }
 function zeroMoves() {
-    var movesDiv = document.getElementById("moves");
-    var movesNode = movesDiv.firstChild;
+    let movesDiv = document.getElementById("moves");
+    let movesNode = movesDiv.firstChild;
     movesNode.nodeValue = "0 Moves";
 }
 /* used with unhide to hide/unhide blocks of text */
@@ -1846,14 +1838,12 @@ function setHintTooltip() {
         jQuery("#hintLink").attr("title", hintString)
     }
 }
- */
 function setHintTooltipSolved() {
     if (solution) {
         let hintString = " Solved! ";
         jQuery("#hintLink").attr("title", hintString)
     }
 }
-/*
 function getHint(solution) {
     if (debug && console && console.log) {
         // console.log("getHint(solution), solution = " + solution);
@@ -1983,7 +1973,7 @@ function getInputMapIntArray() {
 }
 // convert the string of scrambled tile values "12,14,13,9,5,6,3,0,15,10,11,2,8,7,4,1" into a string array
 function makeInputMapIntArray(scrambledMapString) {
-    var inputMapStrArr = scrambledMapString.split(",");
+    let inputMapStrArr = scrambledMapString.split(",");
     // convert the string array of scrambled tile values into an INTEGER array
     for (let i = 0; i < inputMapStrArr.length; i++) {
         inputMapIntArr[i] = parseInt(inputMapStrArr[i], 10);
@@ -2025,14 +2015,10 @@ function alertNotScrambled() {
     jQuery('.ui-dialog').css('width', '600px');
     jQuery('.ui-dialog').css('z-index', '1000');
 }
-
  */
 function getPuzzleComplete() {
     return puzzleComplete;
 }
-
-
-
 
 /*************/
 /* DEBUGGING */
@@ -2046,26 +2032,18 @@ function showData() {
             (getMsPerMoveInt() == getSecondsPerMoveFloat() * 1000));
     }
 }
-/**********************/
-/* NOT USED */
-/**********************/
-// display the tile values from map[] in a matrix on the HTML page with a position code matrix to the right
 
 /*
  By John Kraus
  john@johnfkraus.com
  www.johnfkraus.com
  The 15 Puzzle used to be solved in a Java class, puzzle.PuzzleSolver. PuzzleSolver was deployed on a server and
- called by puzzle.SolvePuzzleServlet.  John Kraus extracted the solution algorithm in PuzzleSolver from a Java applet by Karl Hornell
+ called by puzzle.SolvePuzzleServlet.  John Kraus extracted the Java solution algorithm in PuzzleSolver from a Java applet by Karl Hornell.
  http://www.javaonthebrain.com/index.html
- John Kraus translated the applet into a Java business class,
- "puzzle.PuzzleSolver".
- Later John Kraus converted the puzzle solving algorithm to JavaScript.
- So no more Java here.
+ John Kraus translated the applet into a Java business class, "puzzle.PuzzleSolver".
+ Later John Kraus converted the puzzle solving algorithm to JavaScript, so that a back end Java server is not required and the puzzle app can now be run just by opening the index.html file in a browser.
  TO DO:
- Convert to object-oriented JavaScript or add a namespace to help prevent naming collisions
- There are too many global variables.
- Add capability for user to request a hint for the next puzzle move.
-
+ Convert to modern JavaScript.  For one thing, there are too many global variables.
+ Put puzzle code under a namespace to help prevent naming collisions
  */
 
