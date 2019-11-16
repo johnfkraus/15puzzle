@@ -52,12 +52,11 @@ let solution = [];
 let subGoals = [1, 0, 2, 0, 3, 4, 0, 5, 0, 6, 0, 7, 8, 0, 9, 13, 0, 10, 14, 0, 11, 12, 15, 0, 16];
 // let testMap3 = [1, 12, 11, 13, 5, 2, 7, 9, 10, 15, 3, 14, 6, 8, 4, 0];
 // let thisline = new Error().lineNumber;
-let solvedMap;
 
+let solvedMap;
 function setSolvedMap(solvedMap) {
     this.solvedMap = solvedMap;
 }
-
 function getSolvedMap() {
     return this.solvedMap;
 }
@@ -93,6 +92,7 @@ function makeDetour(dList, hole) {
 
 function moveHole(tg, ppos) {
     // document.getElementById("map").innerHTML = "map = " + map;
+    let l = 0;
     let k = 0;
     let posCount = 0;
     let negCount = 0;
@@ -229,17 +229,22 @@ function inMap(h, v) {
     return map[7 + h + 6 * v];
 }
 
-function locate(num) {
+function locate(tileNum) {
     assert(holder.length == 20, "assertion error, holder length = " + holder.length);
-    li = 0;
-    while (li < holder.length - 1 && holder[li] != num) {
-        ++li;
+    // let li = 0;
+    //while (li < holder.length - 1 && holder[li] != num) {
+    //    ++li;
+    //}
+    //return li;
+    let locationIndex = 0;
+    while (locationIndex < holder.length - 1 && holder[locationIndex] != tileNum) {
+      ++locationIndex;
     }
-    return li;
+    return locationIndex;
 }
 
 function solve() {
-    var solve_while_counter_4 = 0;
+    //var solve_while_counter_4 = 0;
     var holder_index = 0;
     var value_for_holder_from_inmap = 0;
     // alert('solve() line ' + new Error().lineNumber);
@@ -274,7 +279,7 @@ function solve() {
             // console.log("91 i2 = " + i2 + ", j2 = " + j2);
         }
 
-        goalsDone = 0;
+        let goalsDone = 0;
         i = 0;
         j = 0;
         // solve while #2
@@ -622,17 +627,17 @@ function setMsPerMoveInt(inMsPerMoveInt) {
     jQuery("#msPerMoveDropdown option[value='" + msPerMoveInt + "']").attr("selected", "selected");
 }
 
-var numText;
+let numText;
 //var nextHintStr;
-var oldDragControl;
-var puzzleComplete = false;
-var puzzleWrapDiv; // = document.getElementById("puzzlewrapper");
+let oldDragControl;
+let puzzleComplete = false;
+let puzzleWrapDiv; // = document.getElementById("puzzlewrapper");
 // scrambledMapString for testing
 //var scrambleEnableFlag = 0;
-var scrambleButtonEnabledFlag = 0;
-var scrambledMapString = "12,14,13,9,5,6,3,0,15,10,11,2,8,7,4,1"; // for testing
-var seed = 1;
-var simpleMap = [16];
+let scrambleButtonEnabledFlag = 0;
+let scrambledMapString = "12,14,13,9,5,6,3,0,15,10,11,2,8,7,4,1"; // for testing
+let seed = 1;
+let simpleMap = [16];
 
 var slideH;
 var slidePiece;
@@ -640,8 +645,9 @@ var slideV;
 // var solution = [];
 var solutionArr = []; //new Array();
 var t;
-var t01, t02, t03, t04, t06, t07;
-var timerArray = [t01, t02, t03, t04,  t06, t07];
+// declare time variables
+let t01, t02, t06, t07;
+let timerArray = [t01, t02, t06, t07];
 var tileMap = []; //new Array(0);
 var tiles;
 // var turboSolveEnabledFlag = 0;
@@ -661,16 +667,17 @@ function startPage() {
     });
     // default auto-solve speed: 1000 ms/move
     // jQuery("#msPerMoveDropdown option[value='1000']").attr("selected", "selected");
-    jQuery("div#black").css("background-color", "red");
-    jQuery("div#black").fadeTo("slow", 0);
-    jQuery("div#black").css("display", "none");
+    //jQuery("div#black").css("background-color", "red");
+    //jQuery("div#black").fadeTo("slow", 0);
+    // jQuery("div#black").css("display", "none");
+    jQuery("div#black").css("background-color", "red").fadeTo("slow", 0).css("display", "none");
     jQuery("body").css("height", "200%");
     enableScrambleButton();
     // at this point, the progress bar is visible; the game board is not visible
     seed = makeRandInt();
     showPleaseWait();
-    unHighlightAllTiles();
-    puzzleWrapDiv = document.getElementById("puzzlewrapper");
+    // unHighlightAllTiles();
+    // puzzleWrapDiv = document.getElementById("puzzlewrapper");
     //scrollTopVal = document.getElementById("puzzlewrapper").scrollTop;
     showPleaseWait();
     // initialized variables for page display
@@ -689,9 +696,7 @@ function startPage() {
     enableScrambleButton();
     //enableDebugButton();
     activateBoards();
-    //enableHintButton();
     // ENABLE EFFECTS
-    // enableProfilePhotoRotate();
     //enableScrambleButtonHoverEffect();
     hidePleaseWait();
     setMsPerMoveStrLabel();
@@ -729,7 +734,7 @@ function initVars() {
     zeroMoves();
     autoDisplace = [];
     automatic = false;
-    c = 0;
+    //c = 0;
     counter = 0;
     currentMove = "";
     debug = false;
@@ -772,7 +777,7 @@ function initVars() {
     slideV = null;
     solution = [];
     solutionArr = []; //new Array();
-    timerArray = [t01, t02, t03, t04, t06, t07];
+    timerArray = [t01, t02, t06, t07];
     tileMap = []; //new Array(0);
     tiles = [];
     vertical = null;
@@ -807,16 +812,29 @@ function initMap() {
         map[i * 6] = 1;
     }
     // put values in map[]
+    map = putValuesInMap(map);
+/*
     for (i = 0; i < 4; i++) {
         for (j = 0; j < 4; j++) {
             map[7 + i * 6 + j] = (i * 4 + j + 1) & 15;
         }
     }
+*/
     // tileMap maps row-column codes  "11", "12", "13", ... to array indexes 0, 1, 2 ...
     if (tileMap.length < 6) {
         tileMap.splice(0, 0, "11", "12", "13", "14", "21", "22", "23", "24", "31", "32", "33", "34", "41", "42", "43", "44");
     }
 }
+function putValuesInMap(map) {
+    for (i = 0; i < 4; i++) {
+        for (j = 0; j < 4; j++) {
+            map[7 + i * 6 + j] = (i * 4 + j + 1) & 15;
+        }
+    }
+    return map;
+}
+
+
 /******************/
 /* RE-INITIALIZE */
 /******************/
@@ -840,9 +858,11 @@ function toArray(obj) {
 function scramble() {
     let i, j, k, l;
     if (true) {   //(!automatic)
+        map = putValuesInMap(map);
+/*
         for (i = 0; i < 4; i++)
             for (j = 0; j < 4; j++)
-                map[7 + i * 6 + j] = (i * 4 + j + 1) & 15;
+                map[7 + i * 6 + j] = (i * 4 + j + 1) & 15; */
         for (i = 0; i < 16; i++) {
             //l=(randi()>>5)%15;
             //l=Math.floor(randi()/32)%15;
@@ -1148,7 +1168,7 @@ function init() {
     }
     tileMap.splice(0, 0, "11", "12", "13", "14", "21", "22", "23", "24", "31", "32", "33", "34", "41", "42", "43", "44");
     // console.log("solution = " + solution);
-    // console.log("typeof solution = " + (typeof solution)); // object
+    console.log("1156 typeof solution = " + (typeof solution)); // object
     if (typeof solution == 'array') {
         moves = solution.split(",");
         moveStack = solution.split(",");
@@ -1333,7 +1353,7 @@ function runControl(msPerMoveInt) {
 }
 const sleepPromise = (milliseconds) => {
     return new Promise(resolve => setTimeout(resolve, milliseconds))
-}
+};
 
 /*
 function sleepSimulate(milliseconds) {
@@ -1573,7 +1593,7 @@ function replaceContent(show) {
 function sleep(ms) {
     let dt = new Date();
     dt.setTime(dt.getTime() + ms);
-    while (new Date().getTime() < dt.getTime());
+    while (new Date().getTime() < dt.getTime()){ }
 }
 function slideRow(currentRow, emptyClRow, myThis) {
     let tileText = "";
@@ -1652,7 +1672,7 @@ function slideCol(currentCol, emptyClCol, myThis) {
     let i = Math.abs(shiftNum);
     for (i; i > 0; i--) {
         if (false) {
-            for (var j = 0; j < tiles.length; j++) {
+            for (let j = 0; j < tiles.length; j++) {
                 if (j === 0) {
                     tileText += "<br />ARRAY:<br /> ";
                 }
