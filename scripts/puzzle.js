@@ -1,12 +1,9 @@
 // puzzle/js
 // Ajax-JavaScript-CSS Puzzle by John Kraus
 // john@johnfkraus.com johnkraus3@gmail.com www.johnfkraus.com
-// October 2009, December 2012, March 2013
+// October 2009, December 2012, March 2013, November 2019
 /*
 Copyright (C) 2019 John F. Kraus
-This program is free software: you can redistribute it and/or modify it under the terms of the GNU Affero General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
-This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU Affero General Public License for more details.
-You should have received a copy of the GNU Affero General Public License along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 // ============
@@ -295,14 +292,11 @@ function solve() {
 
         }
         i = 0;
-
-
         // solve while #3
         while (i < j) {
             if (subGoals[i] > 0) {
                 holder[subGoals[i] - 1] = -1;
                 // document.getElementById("holder").innerHTML = "holder = " + holder;
-
             }
             ++i;
         }
@@ -527,7 +521,6 @@ function solve() {
     }
 }
 
-
 function init_solver() {
     let i = 0;
     while (i < 6) {
@@ -549,7 +542,8 @@ function init_solver() {
 // fillMap param is an array of integers
 function fillMap(fillMap) {
     let mapCounter = 0;
-    i = 0;
+    let i = 0;
+    let j = 0;
     while (i < 4) {
         j = 0;
         while (j < 4) {
@@ -593,8 +587,8 @@ window.alert = function (message) {
         });
 };
 // var autoDisplace = []; // new Array(0);
-var automatic = false;
-var c = 0;
+let automatic = false;
+// var c = 0;
 var cellText = "";
 var counter = 0;
 var currentCol = 0;
@@ -653,6 +647,7 @@ var tiles;
 // var turboSolveEnabledFlag = 0;
 var autoSolveEnabledFlag = 0;
 var vertical;
+// the starting point; called from a script in index.html
 function startPage() {
     debug = false;
     // whole page does barrel roll
@@ -699,6 +694,7 @@ function startPage() {
     // enableProfilePhotoRotate();
     //enableScrambleButtonHoverEffect();
     hidePleaseWait();
+    setMsPerMoveStrLabel();
     //checkEvents();
 }
 function initPageScramble() {
@@ -801,8 +797,8 @@ function makeSimpleMap() {
 }
 // initialize the map[] array
 function initMap() {
-    var i;
-    var j;
+    let i;
+    let j;
     for (i = 0; i < map.length; i++) {
         map[i] = 0;
     }
@@ -826,23 +822,23 @@ function initMap() {
 /******************/
 
 function printTileClasses(lineNum) {
-    var obj = jQuery("div#letterbox a");
+    let obj = jQuery("div#letterbox a");
     if (debug && console && console.log) {
         console.log(obj.length);
         console.log("printTileClasses(" + lineNum + ")\n" + toArray(obj).join("\n"));
     }
 }
 function toArray(obj) {
-    var i;
-    var array = [];
+    //var i;
+    let array = [];
     // iterate backwards ensuring that length is an UInt32
-    for (i = obj.length >>> 0; i--;) {
+    for (let i = obj.length >>> 0; i--;) {
         array[i] = jQuery(obj[i]).attr("class");
     }
     return array;
 }
 function scramble() {
-    var i, j, k, l;
+    let i, j, k, l;
     if (true) {   //(!automatic)
         for (i = 0; i < 4; i++)
             for (j = 0; j < 4; j++)
@@ -850,13 +846,16 @@ function scramble() {
         for (i = 0; i < 16; i++) {
             //l=(randi()>>5)%15;
             //l=Math.floor(randi()/32)%15;
-            l = parseInt(randi() / 32, 10) % 15;
+            //l = parseInt(randi() / 32, 10) % 15;  // parseInt expects a string argument
+            l = (randi() / 32 ) % 15;
             //j=Math.floor(7+6*(l/4))+(l&3);
             j = parseInt(7 + 6 * parseInt(l / 4, 10), 10) + (l & 3);
+
             //l=Math.floor((randi()>>5)%15);
-            l = parseInt(randi() / 32) % 15;
+            //l = parseInt(randi() / 32) % 15;
+            l = (randi() / 32 ) % 15;
             k = parseInt(7 + 6 * parseInt(l / 4, 10), 10) + (l & 3);
-            var debugCounter = 0;
+            let debugCounter = 0;
             while (k === j) {
                 //l=Math.floor((randi()>>5)%15);
                 l = parseInt(randi() / 32, 10) % 15;
@@ -871,9 +870,8 @@ function scramble() {
             map[k] = map[j];
             map[j] = l;
         }
-
     }
-    var inArrayStr = "scrambled map[" + map.length + "]";
+    let inArrayStr = "scrambled map[" + map.length + "]";
     for (i = 0; i < map.length; i++) {
         inArrayStr += map[i] + ", ";
     }
@@ -1044,7 +1042,7 @@ function getSecondsPerMoveFloat() {
         console.log("499 mpm = " + mpm + "; getSecondsPerMoveStr = " + getSecondsPerMoveStr() + "; parseFloat(getSecondsPerMoveStr()) = " + parseFloat(getSecondsPerMoveStr()));
     }
     let secondsPerMoveFloatLocal =  parseFloat(getSecondsPerMoveStr());
-    console.log("secondsPerMoveFloatLocal = " + secondsPerMoveFloatLocal);
+    console.log("1047 secondsPerMoveFloatLocal = " + secondsPerMoveFloatLocal);
     return secondsPerMoveFloatLocal; // parseFloat(getSecondsPerMoveStr());
 }
 function setMovesPerSecStrLabel(msPerMoveInt) {
@@ -1129,8 +1127,8 @@ function runAuto() {
 }
 function init() {
     // makeXmlHttpRequestDivHidden();
-    let i;
-    let j;
+    // let i;
+    // let j;
     for (let i = 0; i < map.length; i++) {
         map[i] = 0;
     }
@@ -1600,8 +1598,8 @@ function slideRow(currentRow, emptyClRow, myThis) {
     let i = Math.abs(shiftNum);
     for (i; i > 0; i--) {
         if (false) {
-            for (var j = 0; j < tiles.length; j++) {
-                if (j == 0) {
+            for (let j = 0; j < tiles.length; j++) {
+                if (j === 0) {
                     tileText += "<br />ARRAY:<br /> ";
                 }
                 tileText += tiles[j].className + "; eCol = " + emptyClCol + " eLoc = " + emptyLocationCode + "<br />";
@@ -1945,7 +1943,7 @@ function showData() {
     if (debug && console && console.log) {
         console.log("1483 msPerMoveInt = " + getMsPerMoveInt() +
           "; secPerMoveFl = " + getSecondsPerMoveFloat() + "; OK = " +
-            (getMsPerMoveInt() == getSecondsPerMoveFloat() * 1000));
+            (getMsPerMoveInt() === getSecondsPerMoveFloat() * 1000));
     }
 }
 
