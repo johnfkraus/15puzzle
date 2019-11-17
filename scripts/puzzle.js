@@ -51,7 +51,6 @@ let rounddx = [0, 1, 1, 1, 0, -1, -1, -1, 0, 1, 1, 1, 0, -1, -1, -1, 0, 1, 1, 1,
 let solution = [];
 let subGoals = [1, 0, 2, 0, 3, 4, 0, 5, 0, 6, 0, 7, 8, 0, 9, 13, 0, 10, 14, 0, 11, 12, 15, 0, 16];
 // let testMap3 = [1, 12, 11, 13, 5, 2, 7, 9, 10, 15, 3, 14, 6, 8, 4, 0];
-// let thisline = new Error().lineNumber;
 
 let solvedMap;
 function setSolvedMap(solvedMap) {
@@ -110,17 +109,6 @@ function moveHole(tg, ppos) {
             // document.getElementById("message").innerHTML = "62 Exited when while_counter = " + while_counter;
             // exit();
             alert("102 while_counter = " + while_counter);
-        }
-        //if ((i & 3) != 0) {
-            // alert("i & 3 != 0");
-        //}
-        if (false) {
-            if (confirm('line ' + new Error().lineNumber + ", Math.abs((i & 3) - (ppos & 3)) = " + Math.abs((i & 3) - (ppos & 3)))) {
-                // resume
-            } else {
-                // document.getElementById("message").innerHTML = "78 Exited intentionally";
-                alert('exit()');
-            }
         }
 
         k = (i & 3) < (tg & 3) && holder[i + 1] > 0 ? i + 1 : ((i & 3) > (tg & 3) && holder[i - 1] > 0 ? i - 1 : (i / 4 < tg / 4 && holder[i + 4] > 0 ? i + 4 : i - 4));
@@ -193,14 +181,8 @@ function solvePuzzle(inputMap) {
     // random int between 1 and 3000
     seed = Math.floor(Math.random() * 3000) + 1;
     // console.log('109 seed = ' + seed);
-    // map =
     fillMap(inputMap);
-    // console.log("112 >>>>>>>>>>>>>>>> 94 fillMap map = " + map.toString());
-    // printMap();
     solve();
-    // printMap();
-    // document.getElementById("moves").innerHTML = "moves = " + moves;
-    // run();
 
     solution = new Array(moveCount);
     for (let i = 0; i < moveCount; ++i) {
@@ -245,17 +227,17 @@ function locate(tileNum) {
 
 function solve() {
     //var solve_while_counter_4 = 0;
-    var holder_index = 0;
-    var value_for_holder_from_inmap = 0;
+    let holder_index = 0;
+    let value_for_holder_from_inmap = 0;
     // alert('solve() line ' + new Error().lineNumber);
     // document.getElementById("holder").innerHTML = "holder = " + holder;
     try {
-        var i2 = 0;
+        let i2 = 0;
         // solve while #1
         while (i2 < 4) {
             // alert('line ' + new Error().lineNumber);
             // console.log("229 solve while i2 < 4, i2 = " + i2);
-            var j2 = 0;
+            let j2 = 0;
             // solve while #1 inner 1
             while (j2  < 4) {
                 // // console.log("213 inMap[] = " + my)
@@ -267,8 +249,6 @@ function solve() {
                 value_for_holder_from_inmap = inMap(j2, i2);
                 holder[holder_index] = inMap(j2, i2);
                 // document.getElementById("holder").innerHTML = "holder = " + holder;
-
-
 
                 // holder[i * 4 + j] = inMap(j, i);
                 // ++j;
@@ -568,7 +548,6 @@ function fillMap(fillMap) {
 // document.getElementById("result_array").innerHTML = "resultArray = " + resultArray;
 // console.log("resultArray = " + resultArray);
 
-
 /**************/
 /* INITIALIZE */
 /**************/
@@ -591,32 +570,25 @@ window.alert = function (message) {
             width: 'auto'
         });
 };
-// var autoDisplace = []; // new Array(0);
 let automatic = false;
-// var c = 0;
-var cellText = "";
-var counter = 0;
-var currentCol = 0;
-var currentMove = "";
-var currentRow = 0;
-var debug = false;
-var displace = 0;
+let cellText = "";
+let counter = 0;
+let currentCol = 0;
+let currentMove = "";
+let currentRow = 0;
+let debug = false;
+let displace = 0;
 // display array is for debugging messages
-var display = [];
-var dragControl = true;
-var dragging = 0;
+let display = [];
+let dragControl = true;
+let dragging = 0;
 let emptyClCol = 0;
 let emptyClRow = 0;
-var emptyLocationCode = "";
-// var hint = -1;
-//var hintTileNumStr;
-// is hinted tile selection highlighted?
-//var hintShowing = false;
-var initVarsFlag = 0;
-var inputMapIntArr = new Array(16);
-var lastMove = "";
-var logString = "";
-// var map = new Array(36);
+let emptyLocationCode = "";
+let initVarsFlag = 0;
+let inputMapIntArr = new Array(16);
+let lastMove = "";
+let logString = "";
 var moveCount = 0;
 var moveNum = 0;
 // var moves = []; //new Array();
@@ -626,26 +598,19 @@ function setMsPerMoveInt(inMsPerMoveInt) {
     msPerMoveInt = inMsPerMoveInt;
     jQuery("#msPerMoveDropdown option[value='" + msPerMoveInt + "']").attr("selected", "selected");
 }
-
 let numText;
-//var nextHintStr;
 let oldDragControl;
 let puzzleComplete = false;
 let puzzleWrapDiv; // = document.getElementById("puzzlewrapper");
 // scrambledMapString for testing
-//var scrambleEnableFlag = 0;
 let scrambleButtonEnabledFlag = 0;
 let scrambledMapString = "12,14,13,9,5,6,3,0,15,10,11,2,8,7,4,1"; // for testing
 let seed = 1;
 let simpleMap = [16];
-
 let slideH;
 let slidePiece;
 let slideV;
-// var solution = [];
 let solutionArr = []; //new Array();
-// t affects game board selection
-// var t;
 // declare time variables
 let t01, t02, t06, t07;
 let timerArray = [t01, t02, t06, t07];
@@ -668,18 +633,12 @@ function startPage() {
     });
     // default auto-solve speed: 1000 ms/move
     // jQuery("#msPerMoveDropdown option[value='1000']").attr("selected", "selected");
-    //jQuery("div#black").css("background-color", "red");
-    //jQuery("div#black").fadeTo("slow", 0);
-    // jQuery("div#black").css("display", "none");
     jQuery("div#black").css("background-color", "red").fadeTo("slow", 0).css("display", "none");
     jQuery("body").css("height", "200%");
     enableScrambleButton();
     // at this point, the progress bar is visible; the game board is not visible
     seed = makeRandInt();
     showPleaseWait();
-    // unHighlightAllTiles();
-    // puzzleWrapDiv = document.getElementById("puzzlewrapper");
-    //scrollTopVal = document.getElementById("puzzlewrapper").scrollTop;
     showPleaseWait();
     // initialized variables for page display
     initVars();
@@ -690,18 +649,13 @@ function startPage() {
     replaceNodeText("solved", " ");
     sleep(50);
     getSolution();
-    //setTimeout('rotateJohnBoy()', 2000);
     // ENABLE CLICKABLES
     enableAutoSolveButton();
-    //enableTurboSolveButton();
     enableScrambleButton();
-    //enableDebugButton();
     activateBoards();
     // ENABLE EFFECTS
-    //enableScrambleButtonHoverEffect();
     hidePleaseWait();
     setMsPerMoveStrLabel();
-    //checkEvents();
 }
 function initPageScramble() {
     seed = makeRandInt();
@@ -858,29 +812,29 @@ function toArray(obj) {
 }
 function scramble() {
     let i, j, k, l;
-    if (true) {   //(!automatic)
+    // if (true) {   //(!automatic)
         map = putValuesInMap(map);
-/*
-        for (i = 0; i < 4; i++)
-            for (j = 0; j < 4; j++)
-                map[7 + i * 6 + j] = (i * 4 + j + 1) & 15; */
         for (i = 0; i < 16; i++) {
             //l=(randi()>>5)%15;
             //l=Math.floor(randi()/32)%15;
             //l = parseInt(randi() / 32, 10) % 15;  // parseInt expects a string argument
-            l = (randi() / 32 ) % 15;
+            l = Math.floor(randi() / 32 ) % 15;
             //j=Math.floor(7+6*(l/4))+(l&3);
-            j = parseInt(7 + 6 * parseInt(l / 4, 10), 10) + (l & 3);
+            // j = parseInt(7 + 6 * parseInt(l / 4, 10), 10) + (l & 3);
+            //j = parseInt(7 + 6 * parseInt(l / 4, 10), 10) + (l & 3);
+            j = Math.floor(7 + 6 * Math.floor(l / 4)) + (l & 3);
 
             //l=Math.floor((randi()>>5)%15);
-            //l = parseInt(randi() / 32) % 15;
-            l = (randi() / 32 ) % 15;
-            k = parseInt(7 + 6 * parseInt(l / 4, 10), 10) + (l & 3);
+            // l = parseInt(randi() / 32) % 15;
+            l = Math.floor(randi() / 32) % 15;
+
+            //l = (randi() / 32 ) % 15;
+            k = Math.floor(7 + 6 * Math.floor(l / 4)) + (l & 3);
             let debugCounter = 0;
             while (k === j) {
                 //l=Math.floor((randi()>>5)%15);
-                l = parseInt(randi() / 32, 10) % 15;
-                k = parseInt(7 + 6 * parseInt(l / 4, 10), 10) + (l & 3);
+                l = Math.floor(randi() / 32) % 15;
+                k = Math.floor(7 + 6 * Math.floor(l / 4)) + (l & 3);
                 debugCounter++;
                 if (debugCounter > 300) {
                     alert("debugCounter = " + debugCounter);
@@ -891,7 +845,7 @@ function scramble() {
             map[k] = map[j];
             map[j] = l;
         }
-    }
+    // }
     let inArrayStr = "scrambled map[" + map.length + "]";
     for (i = 0; i < map.length; i++) {
         inArrayStr += map[i] + ", ";
@@ -934,34 +888,6 @@ function enableScrambleButton() {
         });
     }
 }
-/*
-function mouseEnter(elementIdStr) {
-    // Bind the mouse enter to the second DIV.
-    $(elementIdStr).bind("mouseenter mouseleave",
-        //$("span#scrambleSpan").bind("mouseenter mouseleave",
-        function (event) {
-            if (debug && console && console.log) {
-                // console.log(event.type, " :: ", this.id);
-            }
-        }
-    );
-}
-
- */
-/*
-function enableProfilePhotoRotate() {
-    jQuery("img#profilePhoto").click(function () {
-        jQuery("img#profilePhoto").rotate({
-            animateTo: 360,
-            duration: 1000,
-            callback: function () {
-                // back to 0 degrees
-                jQuery("img#profilePhoto").rotate(0);
-            }
-        });
-    });
-}
-*/
 
 /**********************/
 /* GRATUITOUS EFFECTS */
@@ -1170,7 +1096,9 @@ function init() {
     tileMap.splice(0, 0, "11", "12", "13", "14", "21", "22", "23", "24", "31", "32", "33", "34", "41", "42", "43", "44");
     // console.log("solution = " + solution);
     console.log("1156 typeof solution = " + (typeof solution)); // object
+    let tos = typeof solution;
     if (typeof solution == 'array') {
+        throw new Error();
         moves = solution.split(",");
         moveStack = solution.split(",");
         moveCount = moves.length;
@@ -1352,10 +1280,11 @@ function runControl(msPerMoveInt) {
     }
     // return getSolvedMap();
 }
+/*
 const sleepPromise = (milliseconds) => {
     return new Promise(resolve => setTimeout(resolve, milliseconds))
 };
-
+*/
 /*
 function sleepSimulate(milliseconds) {
     let start = new Date().getTime();
@@ -1776,7 +1705,7 @@ function getEmptyClCol() {
 }
 function unPlaceTiles() {
     tiles = document.getElementById("letterbox").getElementsByTagName("a");
-    for (var i = 0; i < tiles.length; i++) {
+    for (let i = 0; i < tiles.length; i++) {
         tiles[i].className = tiles[i].className.substring(0, 11);
     }
 }
