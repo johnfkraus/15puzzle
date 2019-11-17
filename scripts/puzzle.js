@@ -639,9 +639,9 @@ let scrambledMapString = "12,14,13,9,5,6,3,0,15,10,11,2,8,7,4,1"; // for testing
 let seed = 1;
 let simpleMap = [16];
 
-var slideH;
-var slidePiece;
-var slideV;
+let slideH;
+let slidePiece;
+let slideV;
 // var solution = [];
 var solutionArr = []; //new Array();
 var t;
