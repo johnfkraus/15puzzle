@@ -1295,6 +1295,7 @@ function sleepSimulate(milliseconds) {
     }
 }
 */
+/*
 function runControlLoop(msPerMoveInt) {
     setMsPerMoveInt(msPerMoveInt);
         let start = new Date().getTime();
@@ -1315,6 +1316,7 @@ function runControlLoop(msPerMoveInt) {
         }
     return getSolvedMap();
 }
+*/
 function showPleaseWait() {
     let lbBackgroundDivStyle = document.getElementById("letterboxBackground").style;
     lbBackgroundDivStyle.visibility = 'visible';
@@ -1323,14 +1325,6 @@ function hidePleaseWait() {
     let lbBackgroundDivStyle = document.getElementById("letterboxBackground").style;
     lbBackgroundDivStyle.visibility = 'hidden';
 }
-//function makeXmlHttpRequestDivHidden() {
-    // var xmlDivStyle = document.getElementById("xmlHttpRequestDiv").style;
-    // xmlDivStyle.visibility = 'hidden';
-//}
-//function makeXmlHttpRequestDivVisible() {
-  //  var xmlDivStyle = document.getElementById("xmlHttpRequestDiv").style;
-  //  xmlDivStyle.visibility = 'visible';
-//}
 // Functions in alpha order start here
 function activateBoards() {
     let boards = document.getElementById("thumbnails").getElementsByTagName("img");
@@ -1464,7 +1458,6 @@ function makeSortedArray() {
     return [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 16, 12, 13, 14, 15]; // array of numbers
 }
 function newBoard() {
-    //clearTimeout(t);
     // enable AutoSolve button
     jQuery('li#autosolve').css('display', 'block');
     jQuery('li#scrambleCommand').css('display', 'block');
@@ -1498,9 +1491,6 @@ function placeTiles() {
     }
     tiles = document.getElementById("letterbox").getElementsByTagName("a");
     for (i = 0; i < tiles.length; i++) {
-        //var number = frequencyTable[i];
-        // assign a number to each tile in the letterbox -- randomly
-        //tiles[i].className = tiles[i].className + ' n' + number;
         tiles[i].onclick = tileClick;
     }
     updateBlankTileLoc();
@@ -1547,6 +1537,7 @@ function slideRow(currentRow, emptyClRow, myThis) {
     let numberedCellCol = 0;
     let i = Math.abs(shiftNum);
     for (i; i > 0; i--) {
+/*
         if (false) {
             for (let j = 0; j < tiles.length; j++) {
                 if (j === 0) {
@@ -1555,20 +1546,28 @@ function slideRow(currentRow, emptyClRow, myThis) {
                 tileText += tiles[j].className + "; eCol = " + emptyClCol + " eLoc = " + emptyLocationCode + "<br />";
             }
         }
-        updateBlankTileLoc();
+
+ */
+        // updateBlankTileLoc();
+        /*
         let alert6 = document.getElementById("alert6");
         if (false) {
             alert6.innerHTML += " emptyLocationCode = " + emptyLocationCode + " emptyClCol = " + emptyClCol + "; ";
         }
+
+         */
         numberedCellCol = parseInt(emptyClCol, 10) + parseInt(shiftNumSign, 10);
-        let alerta = document.getElementById("alerta");
-        let alert0 = document.getElementById("alert0");
+        // let alerta = document.getElementById("alerta");
+        // let alert0 = document.getElementById("alert0");
+/*
         if (false) {
             alerta.innerHTML +=
                 " numberedCellCol = emptyClCol (" + parseInt(emptyClCol, 10) + ") + " + parseInt(shiftNumSign, 10) + " = " + numberedCellCol + "; ";
             alert0.innerHTML += "sNum = " + i + "; ";
             display[0] += " shiftNum = " + i + "; ";
         }
+
+ */
         let numberedCellClassName = (tiles[cellIndex(currentRow, numberedCellCol)].className);  // "tile b1 tx3 n?"
         let emptyCellClassName = (tiles[cellIndex(currentRow, emptyClCol)].className);  // "tile b1 tx4 n16"
         let numberedCellNum = getSquareNumber(currentRow, numberedCellCol);
