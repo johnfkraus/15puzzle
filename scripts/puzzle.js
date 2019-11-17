@@ -643,16 +643,17 @@ let slideH;
 let slidePiece;
 let slideV;
 // var solution = [];
-var solutionArr = []; //new Array();
-var t;
+let solutionArr = []; //new Array();
+// t affects game board selection
+// var t;
 // declare time variables
 let t01, t02, t06, t07;
 let timerArray = [t01, t02, t06, t07];
-var tileMap = []; //new Array(0);
-var tiles;
+let tileMap = []; //new Array(0);
+let tiles;
 // var turboSolveEnabledFlag = 0;
-var autoSolveEnabledFlag = 0;
-var vertical;
+let autoSolveEnabledFlag = 0;
+let vertical;
 // the starting point; called from a script in index.html
 function startPage() {
     debug = false;
@@ -1135,7 +1136,7 @@ function runAuto() {
                     }
                     automatic = false;
                     dragControl = oldDragControl;
-                    clearTimeout(t);
+                    // clearTimeout(t);
                 } else {
                     lastMove = currentMove;
                     currentMove = getNextMove();
@@ -1534,7 +1535,7 @@ function makeSortedArray() {
     return [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 16, 12, 13, 14, 15]; // array of numbers
 }
 function newBoard() {
-    clearTimeout(t);
+    //clearTimeout(t);
     // enable AutoSolve button
     jQuery('li#autosolve').css('display', 'block');
     jQuery('li#scrambleCommand').css('display', 'block');
