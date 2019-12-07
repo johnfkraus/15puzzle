@@ -604,7 +604,7 @@ let puzzleComplete = false;
 let puzzleWrapDiv; // = document.getElementById("puzzlewrapper");
 // scrambledMapString for testing
 let scrambleButtonEnabledFlag = 0;
-let scrambledMapString = "12,14,13,9,5,6,3,0,15,10,11,2,8,7,4,1"; // for testing
+//let scrambledMapString = "12,14,13,9,5,6,3,0,15,10,11,2,8,7,4,1"; // for testing
 let seed = 1;
 let simpleMap = [16];
 let slideH;
@@ -788,12 +788,9 @@ function putValuesInMap(map) {
     }
     return map;
 }
-
-
 /******************/
 /* RE-INITIALIZE */
 /******************/
-
 function printTileClasses(lineNum) {
     let obj = jQuery("div#letterbox a");
     if (debug && console && console.log) {
@@ -812,27 +809,15 @@ function toArray(obj) {
 }
 function scramble() {
     let i, j, k, l;
-    // if (true) {   //(!automatic)
+
         map = putValuesInMap(map);
         for (i = 0; i < 16; i++) {
-            //l=(randi()>>5)%15;
-            //l=Math.floor(randi()/32)%15;
-            //l = parseInt(randi() / 32, 10) % 15;  // parseInt expects a string argument
             l = Math.floor(randi() / 32 ) % 15;
-            //j=Math.floor(7+6*(l/4))+(l&3);
-            // j = parseInt(7 + 6 * parseInt(l / 4, 10), 10) + (l & 3);
-            //j = parseInt(7 + 6 * parseInt(l / 4, 10), 10) + (l & 3);
             j = Math.floor(7 + 6 * Math.floor(l / 4)) + (l & 3);
-
-            //l=Math.floor((randi()>>5)%15);
-            // l = parseInt(randi() / 32) % 15;
             l = Math.floor(randi() / 32) % 15;
-
-            //l = (randi() / 32 ) % 15;
             k = Math.floor(7 + 6 * Math.floor(l / 4)) + (l & 3);
             let debugCounter = 0;
             while (k === j) {
-                //l=Math.floor((randi()>>5)%15);
                 l = Math.floor(randi() / 32) % 15;
                 k = Math.floor(7 + 6 * Math.floor(l / 4)) + (l & 3);
                 debugCounter++;
@@ -845,7 +830,7 @@ function scramble() {
             map[k] = map[j];
             map[j] = l;
         }
-    // }
+
     let inArrayStr = "scrambled map[" + map.length + "]";
     for (i = 0; i < map.length; i++) {
         inArrayStr += map[i] + ", ";
@@ -1106,7 +1091,7 @@ function init() {
             moves[i] = moves[i].trim();
         }
     }
-    var inArrayStr2 = "moves[" + moves.length + "]";
+    let inArrayStr2 = "moves[" + moves.length + "]";
     for (i = 0; i < moves.length; i++) {
         inArrayStr2 += moves[i] + ", ";
     }
