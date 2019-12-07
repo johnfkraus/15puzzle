@@ -1234,9 +1234,7 @@ function swap(currentMove) {
     let numberClass = "";
     let numberedCellTileClasses = [];
     try {
-        // console.log("numberedCellClassName = " + numberedCellClassName);
         numberedCellTileClasses = numberedCellClassName.split(/ +/);
-        // console.log("numberedCellTileClasses = " + numberedCellTileClasses);
     }
     catch (err) {
         console.error(err);
@@ -1246,10 +1244,7 @@ function swap(currentMove) {
         alert(txt);
         //initPageScramble();
     }
-    //console.log("numberedCellTileClasses = " + numberedCellTileClasses);
-    //console.log("numberedCellTileClasses[3] = " + numberedCellTileClasses[3]);
     numberClass = numberedCellTileClasses[3];
-    //console.log("numberClass = " + numberClass);
     let numberOnTile = parseInt(numberClass.substring(1, 3), 10);
     let modifiedEmptyCellClassName = emptyCellClassName.replace(/n\d{1,2}/, "n" + numberOnTile);
     document.getElementById(emptyLocationCode).className = modifiedEmptyCellClassName;
@@ -1271,14 +1266,11 @@ function runControl(msPerMoveInt) {
         console.log("1318 runControl() msPerMoveInt = " + msPerMoveInt + "; local msPerMoveInt = " + msPerMoveInt);
     }
     runAuto();  // UI makes a move
-    //console.log("1316 getInputMapIntArray() = " + getInputMapIntArray());
     setSolvedMap(getInputMapIntArray());
-    //console.log("1306 msPerMoveInt = " + msPerMoveInt);
     if(isItScrambled()) {
         t06 = setTimeout("doHighlighting()", msPerMoveInt / 2);
         t07 = setTimeout("runControl(msPerMoveInt)", msPerMoveInt);
     }
-    // return getSolvedMap();
 }
 /*
 const sleepPromise = (milliseconds) => {
@@ -1496,7 +1488,7 @@ function placeTiles() {
     updateBlankTileLoc();
 }
 function puzzleIsComplete() {
-    var hash = makeHash();
+    let hash = makeHash();
     if ((hash == "12345678910111612131415") || (hash == "12316456789101112131415") || (hash == "12345671689101112131415") ||
         (hash == "12345678910111213141516") || (hash == "1234567891011012131415") || (hash == "1230456789101112131415") ||
         (hash == "1234567089101112131415") || (hash == "1234567891011121314150")) {
@@ -1634,7 +1626,6 @@ function tileClick() {
         unsetBlankTileImage();
         currentRow = parseInt(getRowNum(this), 10);
         currentCol = parseInt(getColNum(this), 10);
-        // var clickedLocationCode = '' + currentRow + currentCol;
         // don't move any tiles if user clicked the blank tile
         if (cellIsEmpty(currentRow, currentCol)) {
             return;
@@ -1644,10 +1635,8 @@ function tileClick() {
         }
         // slide row if user clicked row with the empty tile
         if (currentRow === emptyClRow) {
-            //enableSolveButton();
             slideRow(currentRow, emptyClRow, this);
         } else if (currentCol === emptyClCol) {
-            //enableSolveButton();
             slideCol(currentCol, emptyClCol, this);
         } else {
             return;
@@ -1696,12 +1685,12 @@ function getBlankTileLocCodeStr() {
     }
     return blankTileLocCodeStr;
 }
-function getEmptyClRow() {
-    return parseInt(getBlankTileLocCodeStr().charAt(0), 10);
-}
-function getEmptyClCol() {
-    return parseInt(getBlankTileLocCodeStr().charAt(1), 10);
-}
+// function getEmptyClRow() {
+//     return parseInt(getBlankTileLocCodeStr().charAt(0), 10);
+// }
+// function getEmptyClCol() {
+//     return parseInt(getBlankTileLocCodeStr().charAt(1), 10);
+// }
 function unPlaceTiles() {
     tiles = document.getElementById("letterbox").getElementsByTagName("a");
     for (let i = 0; i < tiles.length; i++) {
@@ -1712,8 +1701,6 @@ function win() {
     unHighlightAllTiles();
     updateBlankTileLoc();
     setBlankTileImage();
-    // setHintTooltipSolved();
-    // jQuery('li#autosolve').css('display', 'block');
     jQuery('li#scrambleCommand').css('display', 'block');
 }
 function zeroMoves() {
@@ -1754,9 +1741,7 @@ function playSolution(msPerMoveInt) {
     jQuery('li#autosolve').css('display', 'none');
     jQuery('li#scrambleCommand').css('display', 'none');
     if ((isItScrambled()) && testArraySum136(getInputMapIntArray())) {
-        //disableSolveButton();
         init();
-        // runControl(getMsPerMoveInt());
         console.log("1845 msPerMoveInt = " + msPerMoveInt);
 
         runControl(msPerMoveInt);
@@ -1770,10 +1755,9 @@ function playSolution(msPerMoveInt) {
     //jQuery('li#autosolve').css('display','block');
     return solvedMap1;
 }
-// using jQuery Ajax
+
 function getSolution() {
     //debug = true;
-    //getProblemAndSolution();
     var scrambledMapString = makeScrambledMapString();
     var scrambledMapArray = scrambledMapString.split(",");
     if (debug && console && console.log) {
@@ -1793,35 +1777,16 @@ function getSolution() {
         // solution = solvePuzzle(parameters);
         solution = solvePuzzle(scrambledMapArray);
         console.log("solution = " + solution);
-        // if puzzle is solved on remote server:
-        // DEPRECATED
-        /*
-        if (false) {
-            $.ajax({
-                type: "POST",
-                url: "http://104.238.80.20:8080/johns15puzz/solve",
-                data: parameters
-            }).done(function (msg) {
-                solution = msg;
-                if (debug && console && console.log) {
-                    // console.log("msg/solution = " + solution);
-                }
-                hint = getHint(solution);
-                setHintTooltip();
-            });
-        } */
     }
 }
 function makeScrambledMapString() {
     scrambledMapString = "";
     // get scrambled tile values from web page
     tiles = document.getElementById("letterbox").getElementsByTagName("a");
-    for (var i = 0; i < tiles.length; i++) {
-        var tileClassName = (tiles[i].className);
-        var tileClasses = tileClassName.split(" ");
-        var numberClass = tileClasses[3];
-        //var locationClass = tileClasses[2];
-        //var emptyLocationCode = "";
+    for (let i = 0; i < tiles.length; i++) {
+        let tileClassName = (tiles[i].className);
+        let tileClasses = tileClassName.split(" ");
+        let numberClass = tileClasses[3];
         scrambledMapString += numberClass.substring(1, 3);
         if (i < tiles.length - 1) {
             scrambledMapString += ",";
@@ -1833,8 +1798,8 @@ function makeScrambledMapString() {
 // blank tile value is 0 until the puzzle is solved when the blank tile value becomes 16
 // this is a model integrity test
 function testArraySum136(inputMapIntArr) {
-    var inArrayIntSum = 0;
-    for (var i = 0; i < inputMapIntArr.length; i++) {
+    let inArrayIntSum = 0;
+    for (let i = 0; i < inputMapIntArr.length; i++) {
         //inArrayStr += inputMapIntArr[i] + ", ";
         inArrayIntSum += inputMapIntArr[i];
     }
@@ -1865,7 +1830,6 @@ function isItScrambled() {
 function isScrambled(inputMapIntArr) {
     console.log("running isScrambled, inputMapIntArray = " + inputMapIntArr.toString());
     let k = 0;
-    // var i;
     for (let i = 0; i < inputMapIntArr.length; i++) {
         k = i + 1;
         if (inputMapIntArr[i] !== (k)) {
