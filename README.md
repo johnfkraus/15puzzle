@@ -5,6 +5,8 @@
 
 Play the game here: http://johnfkraus.com/15puzzle/index.html
 
+<a href="http://johnfkraus.com/15puzzle/index.html" target="_blank">http://johnfkraus.com/15puzzle/index.html</a>
+
 To play the game on your local machine, download or clone the project and open the index.html file in your browser.  That's all.
 
 To do:
