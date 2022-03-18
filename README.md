@@ -6,6 +6,14 @@
 
 Play the game here: http://johns15puzzle.com.s3-website-us-east-1.amazonaws.com/#
 
+Move tiles by clicking on them.
+
+Choose your favorite puzzle background image.
+
+Click "Auto-Solve" to see the puzzle solve itself; adjust the time per move using the drop-down box.
+
+Click "Scramble" to start over.
+
 To play the game on your local machine, download or clone the project and open the index.html file in your browser.  That's all.
 
 To do:
