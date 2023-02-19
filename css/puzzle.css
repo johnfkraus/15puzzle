@@ -887,11 +887,11 @@ div#solve-scramble {
     left       : 175px;
     top        : 5px;
 }
-
+/*  #dropdown, top was 3px; */
 #dropdown {
     position : absolute;
     left     : 305px;
-    top      : 3px;
+    top      : -3px;
 }
 
 #movesPerSec {
