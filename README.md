@@ -17,6 +17,7 @@ Click "Scramble" to start over.
 To play the game on your local machine, download or clone the project and open the index.html file in your browser.  That's all.
 
 To do:
-1.  Update the code to modern JavaScript.  I wrote most of this during 2009-10.
-2.  Implement a responsive framework so it works well as a mobile application.  Note, however, that it works on mobile devices as-is but the user must inconveniently zoom in to the game board.
+1.  Update the code to modern JavaScript.  I wrote most of this during 2009-10 in <ECMAScript 5, adding some jQuery later.
+2.  Implement a responsive framework so it works well as a mobile application.  Note, however, that this puzzle works fine on mobile devices as-is but the user must inconveniently zoom in to the game board.
 3.  Add testing.
+4.  Improve the inefficient puzzle-solving algorithm. 
