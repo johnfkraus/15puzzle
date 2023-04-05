@@ -1,0 +1,145 @@
+# merge requests - will trigger pipeline to run build, test and deploy review (only).
+
+image: node
+
+stages:
+  - build
+  - test
+  - deploy review
+  - deploy staging
+  - deploy production
+  - production tests
+
+cache:
+  key: ${CI_COMMIT_REF_SLUG}
+  paths:
+    - node_modules/
+  policy: pull
+
+variables:
+  URL_PREFIX: johns15puzzle
+  STAGING_DOMAIN: ${URL_PREFIX}-staging.surge.sh
+  PRODUCTION_DOMAIN: ${URL_PREFIX}.surge.sh
+
+build website:
+  stage: build
+  only:
+    - main
+    - merge_requests
+  script:
+    - echo $CI_COMMIT_SHORT_SHA
+    - ls -l ./src/pages
+    - sed -i "s/%%VERSION%%/$CI_COMMIT_SHORT_SHA/" ./src/pages/index.js
+    - sed -i "s/%%ENVIRONMENT%%/$CI_ENVIRONMENT_NAME/" ./src/pages/index.js
+    - sed -i "s/%%VERSION%%/$CI_COMMIT_SHORT_SHA/" ./src/components/layout.js    
+    - sed -i "s/%%ENVIRONMENT%%/$CI_ENVIRONMENT_NAME/" ./src/components/layout.js
+    - npm install
+    - npm install -g gatsby-cli
+    - gatsby build
+  artifacts:
+    paths:
+      - ./public
+
+test artifact:
+  image: alpine
+  stage: test
+  only:
+    - main
+    - merge_requests
+  # cache: {}
+  script:
+    - ls -l
+    - grep -q "Gatsby" ./public/index.html
+
+test website:
+  stage: test
+  only:
+    - main
+    - merge_requests
+  script:
+    - npm install
+    - npm install -g gatsby-cli
+    - gatsby serve &
+    - sleep 6
+    - curl -s "http://localhost:9000" | tac | tac | grep -q "Gatsby"
+
+deploy review:
+  stage: deploy review
+  only:
+    - merge_requests
+  environment:
+    name: review/$CI_COMMIT_REF_NAME
+    # url: https://appy-mc-appface-$CI_ENVIRONMENT_SLUG.surge.sh
+    url: https://$URL_PREFIX-$CI_ENVIRONMENT_SLUG.surge.sh
+    on_stop: stop review
+  script:
+    - echo $URL_PREFIX
+    - echo $CI_COMMIT_REF_NAME
+    - echo $CI_ENVIRONMENT_SLUG
+    - echo $CI_ENVIRONMENT_URL
+    - echo $CI_ENVIRONMENT_NAME
+    - npm install --global surge
+    # - surge --project ./public --domain appy-mc-appface-$CI_ENVIRONMENT_SLUG.surge.sh
+    - surge --project ./public --domain $URL_PREFIX-$CI_ENVIRONMENT_SLUG.surge.sh
+
+stop review:
+  stage: deploy review
+  only:
+    - merge_requests
+  variables:
+    GIT_STRATEGY: none
+  script:
+    - echo $URL_PREFIX-$CI_ENVIRONMENT_SLUG.surge.sh
+    - npm install --global surge
+    - surge teardown $URL_PREFIX-$CI_ENVIRONMENT_SLUG.surge.sh
+  when: manual
+  environment:
+    name: review/$CI_COMMIT_REF_NAME
+    action: stop
+
+.deploy_template: &deploy
+  only:
+    - main
+  script:
+    - npm install --global surge
+    - surge --project ./public --domain $DOMAIN
+  environment:
+    url: http://$DOMAIN
+
+deploy staging:
+  <<: *deploy
+  stage: deploy staging
+  variables:
+    DOMAIN: $STAGING_DOMAIN
+  cache: {}
+  environment:
+    name: staging
+
+deploy production:
+  stage: deploy production
+  cache: {}
+  environment:
+    name: production
+    url: http://$PRODUCTION_DOMAIN
+  only:
+    - main
+  when: manual
+  allow_failure: false
+  before_script:
+    - npm install --global surge    
+  script:
+    - surge --project ./public --domain $PRODUCTION_DOMAIN
+
+production tests:
+  stage: production tests
+  cache: {}
+  image: alpine
+  only:
+    - main
+  script:
+    - apk add curl
+    - echo $CI_COMMIT_SHORT_SHA
+    - ls -l
+    - cat /etc/*release*
+    - curl -s "http://$PRODUCTION_DOMAIN" | tac | tac | grep -q "Gatsby"
+    - curl -s "http://$PRODUCTION_DOMAIN" | tac | tac | grep -q "$CI_COMMIT_SHORT_SHA"
