@@ -12,3 +12,4 @@ Make reponsive to mobile app format.
 
 Set up pipeline in Gitlab CI
 
+Delete WEB-INF?
