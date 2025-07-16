@@ -1,0 +1,24 @@
+name: Deploy DEV Website to Surge
+
+on:
+  push:
+    branches:
+      - dev
+
+jobs:
+  build:
+    runs-on: ubuntu-latest # The operating system to run the workflow on
+
+    name: Deploying 15Puzzle to surge # The name of this job
+
+    steps:
+      - uses: actions/checkout@v4 # Checks out your repository code
+      - uses: actions/setup-node@v4 # Sets up the Node.js environment
+        with:
+          node-version: 18 # Specifies the Node.js version to use
+      - run: npm install -g surge # Installs Surge globally
+      - run: surge ./ ${{ secrets.SURGE_DOMAIN_DEV }} --token ${{ secrets.SURGE_TOKEN }} # Deploys your site to Surge
+        # Replace "." with the path to your static site's build directory if needed (e.g., "dist" or "build")
+
+      - name: Test URL using curl for OK response
+        run: curl -sL -D - -o /dev/null https://${{secrets.SURGE_DOMAIN2}}/

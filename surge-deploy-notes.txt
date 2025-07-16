@@ -21,7 +21,8 @@ You can store surge domain name locally in CNAME file in public directory (which
 
 surge teardown
 
-create variables in Gitlab CI
+create variables in Gitlab CI or "repository variables" in Github:
+
 SURGE_LOGIN johnkraus3@gmail.com
 SURGE_TOKEN  (obtained from running 'surge token'); hide it.
 
