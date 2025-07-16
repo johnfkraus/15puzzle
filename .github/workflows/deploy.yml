@@ -21,4 +21,5 @@ jobs:
         # Replace "." with the path to your static site's build directory if needed (e.g., "dist" or "build")
 
       - name: Test URL using curl for OK response
-        run: curl -sL -D - -o /dev/null https://${{secrets.SURGE_DOMAIN2}}/
+        run: curl -sL -D - -o /dev/null https://${{secrets.SURGE_DOMAIN_DEV}}/
+

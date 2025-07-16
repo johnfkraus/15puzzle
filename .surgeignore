@@ -1,2 +1,6 @@
 animation-demos
 WEB-INF
+*.swp
+README.md
+surge-deploy-notes.txt
+TODO.md

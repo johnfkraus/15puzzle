@@ -1,5 +1,3 @@
-
-
 # To Do
 
 Remove duplicate jquery.js
